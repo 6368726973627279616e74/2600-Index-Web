@@ -1,0 +1,4 @@
+# ignore local copies of other sites web pages
+# http://www.robotstxt.org/wc/norobots.html
+User-agent: *
+Disallow: /Links

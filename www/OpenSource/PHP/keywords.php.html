@@ -1,0 +1,159 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">  keywords.php</font></i>
+
+<i><font color="#9A1900">  Author:      wrepp</font></i>
+<i><font color="#9A1900">  Date:        10/14/2009</font></i>
+<i><font color="#9A1900">  Description: list keywords</font></i>
+<i><font color="#9A1900">  Notes:</font></i>
+<i><font color="#9A1900">  </font></i>
+<i><font color="#9A1900">  05/18/2010 wre split -&gt; preg_split.</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+
+<b><font color="#000080">&lt;!DOCTYPE</font></b> <font color="#009900">HTML</font> <font color="#009900">PUBLIC</font> <font color="#FF0000">"-//W3C//DTD HTML 4.01 Transitional//EN"</font>
+<font color="#FF0000">"http://www.w3.org/TR/html4/loose.dtd"</font><b><font color="#000080">&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+
+  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"db.php"</font><font color="#990000">);</font>
+
+<i><font color="#9A1900">/* mysql */</font></i>
+  <font color="#009900">$conn</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_connect</font></b> <font color="#990000">(</font><font color="#009900">$dbhost</font><font color="#990000">,</font> <font color="#009900">$dbuser</font><font color="#990000">,</font> <font color="#009900">$dbpass</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><font color="#FF0000">'Error connecting to mysql'</font><font color="#990000">);</font>
+  <b><font color="#000000">mysqli_select_db</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$dbname</font><font color="#990000">);</font>
+  
+<i><font color="#9A1900">/* query parameters */</font></i>
+  <font color="#009900">$o</font> <font color="#990000">=</font> @<font color="#009900">$_GET</font><font color="#990000">[</font><font color="#FF0000">"o"</font><font color="#990000">];</font>
+  <i><font color="#9A1900">#echo "o=" . $o . "=&lt;br&gt;";</font></i>
+<font color="#990000">?&gt;</font>
+
+<b><font color="#0000FF">&lt;html&gt;</font></b>
+  <b><font color="#0000FF">&lt;head&gt;</font></b>
+    <b><font color="#0000FF">&lt;meta</font></b> <font color="#009900">http-equiv</font><font color="#990000">=</font><font color="#FF0000">"Content-Type"</font> <font color="#009900">content</font><font color="#990000">=</font><font color="#FF0000">"text/html; charset=utf-8"</font><b><font color="#0000FF">&gt;</font></b>
+    <b><font color="#0000FF">&lt;title&gt;</font></b>2600 Index<b><font color="#0000FF">&lt;/title&gt;</font></b>
+    <font color="#990000">&lt;?php</font>
+      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$o</font> <font color="#990000">==</font> <font color="#FF0000">""</font><font color="#990000">)</font>  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"header.php"</font><font color="#990000">);</font>
+      <b><font color="#0000FF">else</font></b>  <font color="#FF0000">{</font>
+    <font color="#990000">?&gt;</font>
+      <b><font color="#0000FF">&lt;style</font></b> <font color="#009900">type</font><font color="#990000">=</font><font color="#FF0000">"text/css"</font><b><font color="#0000FF">&gt;</font></b>
+        <font color="#993399">.section</font>  <font color="#FF0000">{</font>
+          <font color="#0000FF">font-size:</font><i><font color="#009900">1em</font></i>;
+          <font color="#0000FF">font-weight:</font><i><font color="#009900">bold</font></i>;
+          <font color="#0000FF">font-family:</font><i><font color="#009900">arial</font></i>, <i><font color="#009900">times</font></i> <i><font color="#009900">new</font></i> <i><font color="#009900">roman</font></i>, <i><font color="#009900">serif</font></i>;
+        <font color="#FF0000">}</font>
+        <font color="#993399">.red</font>  <font color="#FF0000">{</font>
+          <font color="#0000FF">color:</font> <font color="#FF0000">#FF0000</font>;
+        <font color="#FF0000">}</font>
+        body <font color="#FF0000">{</font><font color="#0000FF">font-size:</font><i><font color="#009900">75%</font></i><font color="#FF0000">}</font>
+      <b><font color="#0000FF">&lt;/style&gt;</font></b>
+    <font color="#990000">&lt;?php</font>
+      <font color="#FF0000">}</font>
+    <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/head&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;body&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$o</font> <font color="#990000">==</font> <font color="#FF0000">""</font><font color="#990000">)</font>  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"page.php"</font><font color="#990000">);</font>
+     <i><font color="#9A1900">#$include = include "page.php";</font></i>
+     <i><font color="#9A1900">#echo "include=" . $include;</font></i>
+     <i><font color="#9A1900">#if ($o == "")  echo $include;</font></i>
+  <font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"content"</font><b><font color="#0000FF">&gt;</font></b>
+    <b><font color="#0000FF">&lt;noscript&gt;</font></b>
+    &lt;p class='red'&gt;This page requires Javascript to function properly!!&lt;/p&gt;
+    <b><font color="#0000FF">&lt;/noscript&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Keywords<b><font color="#0000FF">&lt;/p&gt;</font></b>
+  <b><font color="#0000FF">&lt;table</font></b> <font color="#009900">width</font><font color="#990000">=</font><font color="#FF0000">"75%"</font> <font color="#009900">cellspacing</font><font color="#990000">=</font><font color="#FF0000">"1px"</font> <font color="#009900">cellpadding</font><font color="#990000">=</font><font color="#FF0000">"2px"</font> <b><font color="#0000FF">&gt;</font></b>
+  <b><font color="#0000FF">&lt;thead&gt;</font></b>
+  <b><font color="#0000FF">&lt;tr</font></b> <font color="#009900">bgcolor</font><font color="#990000">=</font><font color="#FF0000">"lightgrey"</font><b><font color="#0000FF">&gt;</font></b>
+    <b><font color="#0000FF">&lt;td&gt;</font></b>Keyword<b><font color="#0000FF">&lt;/td&gt;</font></b>
+    <b><font color="#0000FF">&lt;td&gt;</font></b>Keyword<b><font color="#0000FF">&lt;/td&gt;</font></b>
+    <b><font color="#0000FF">&lt;td&gt;</font></b>Keyword<b><font color="#0000FF">&lt;/td&gt;</font></b>
+    <b><font color="#0000FF">&lt;td&gt;</font></b>Keyword<b><font color="#0000FF">&lt;/td&gt;</font></b>
+    <b><font color="#0000FF">&lt;td&gt;</font></b>Keyword<b><font color="#0000FF">&lt;/td&gt;</font></b>
+    <b><font color="#0000FF">&lt;td&gt;</font></b>Keyword<b><font color="#0000FF">&lt;/td&gt;</font></b>
+  <b><font color="#0000FF">&lt;/tr&gt;</font></b>
+  <b><font color="#0000FF">&lt;/thead&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT * "</font>  <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Keywords "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY Keyword;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql;</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+    
+    <i><font color="#9A1900">#$nbr = mysqli_num_rows($result);</font></i>
+
+    <font color="#009900">$inbr</font> <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>  <i><font color="#9A1900">// number for records</font></i>
+    <font color="#009900">$cnbr</font> <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>  <i><font color="#9A1900">// number for color</font></i>
+    <b><font color="#0000FF">while</font></b> <font color="#990000">(</font><font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">))</font>  <font color="#FF0000">{</font>
+    
+    <i><font color="#9A1900">/* first time thru and every six items */</font></i>
+      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">==</font> <font color="#993399">0</font> <font color="#990000">||</font> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">6</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#993399">0</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+  <font color="#990000">?&gt;</font>
+      <b><font color="#0000FF">&lt;tr</font></b> <font color="#009900">bgcolor</font><font color="#990000">=</font><font color="#FF0000">&lt;?php if ($cnbr % 2)  echo "palegreen"</font>; <font color="#009900">else</font>  <font color="#009900">echo</font> <font color="#FF0000">"honeydew"</font>;?<b><font color="#0000FF">&gt;</font></b> &gt;
+  <font color="#990000">&lt;?php</font>
+      <font color="#FF0000">}</font>
+      <i><font color="#9A1900">#echo $inbr % 6;</font></i>
+      <font color="#009900">$href</font> <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'WikipediaLink'</font><font color="#990000">]</font> <font color="#990000">!=</font> <font color="#FF0000">""</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+        
+      <i><font color="#9A1900">/* get first one if multiple links */</font></i>
+        <i><font color="#9A1900">//$links = split("\r\n", $row['WikipediaLink']);</font></i>
+        <font color="#009900">$links</font> <font color="#990000">=</font> <b><font color="#000000">preg_split</font></b><font color="#990000">(</font><font color="#FF0000">"/\r\n/"</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'WikipediaLink'</font><font color="#990000">]);</font>
+        <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#000000">count</font></b><font color="#990000">(</font><font color="#009900">$links</font><font color="#990000">)</font> <font color="#990000">&gt;</font> <font color="#993399">0</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+           <font color="#009900">$href</font> <font color="#990000">=</font> <font color="#009900">$links</font><font color="#990000">[</font><font color="#993399">0</font><font color="#990000">];</font>
+        <font color="#FF0000">}</font>
+        <b><font color="#0000FF">else</font></b>  <font color="#009900">$href</font> <font color="#990000">=</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'WikipediaLink'</font><font color="#990000">];</font>
+      <font color="#FF0000">}</font>
+  <font color="#990000">?&gt;</font>      
+        <b><font color="#0000FF">&lt;td&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">style</font><font color="#990000">=</font><font color="#FF0000">"text-decoration: none"</font> <font color="#009900">title</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $row['Notes']?&gt;"</font> 
+             <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $href ?&gt;"</font><b><font color="#0000FF">&gt;</font></b>
+            <font color="#990000">&lt;?php</font> <b><font color="#0000FF">echo</font></b> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Keyword'</font><font color="#990000">]</font> <font color="#990000">?&gt;</font>
+          <b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/td&gt;</font></b>
+  <font color="#990000">&lt;?php</font>
+    <i><font color="#9A1900">/* ignore first time, then after every six items */</font></i>
+      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">!=</font> <font color="#993399">0</font> <font color="#990000">&amp;&amp;</font> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">6</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#993399">5</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+  <font color="#990000">?&gt;</font>      
+      <b><font color="#0000FF">&lt;/tr&gt;</font></b>
+  <font color="#990000">&lt;?php</font>
+        <font color="#009900">$cnbr</font><font color="#990000">++;</font>
+      <font color="#FF0000">}</font>
+  <font color="#990000">?&gt;</font>      
+  <font color="#990000">&lt;?php</font>
+      <font color="#009900">$inbr</font><font color="#990000">++;</font>
+    <font color="#FF0000">}</font>
+    <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">&lt;</font> <font color="#993399">1</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+      <b><font color="#0000FF">echo</font></b> <font color="#FF0000">"&lt;tr&gt;&lt;td&gt;None found.&lt;td&gt;&lt;/tr&gt;"</font><font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+  <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/table&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+  <b><font color="#000000">mysqli_close</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">);</font>
+<font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"foot"</font><b><font color="#0000FF">&gt;</font></b>
+    <font color="#990000">&lt;?php</font> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$o</font> <font color="#990000">==</font> <font color="#FF0000">""</font><font color="#990000">)</font>  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"footer.php"</font><font color="#990000">);</font>
+          <b><font color="#0000FF">else</font></b>  <font color="#FF0000">{</font>
+     <font color="#990000">?&gt;</font>
+            <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">HREF</font><font color="#990000">=</font><font color="#FF0000">"JavaScript:void(0);"</font> <font color="#009900">onClick</font><font color="#990000">=</font><font color="#FF0000">"JavaScript:window.close();return false"</font><b><font color="#0000FF">&gt;</font></b>
+              Close
+            <b><font color="#0000FF">&lt;/a&gt;</font></b>
+    <font color="#990000">&lt;?php</font>
+          <font color="#FF0000">}</font><font color="#990000">;</font>
+    <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+  <b><font color="#0000FF">&lt;/body&gt;</font></b>
+<b><font color="#0000FF">&lt;/html&gt;</font></b>
+
+
+</tt></pre>

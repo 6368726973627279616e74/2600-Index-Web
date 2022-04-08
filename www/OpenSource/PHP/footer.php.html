@@ -1,0 +1,30 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">  footer.php</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+
+<font color="#990000">&lt;?php</font>
+
+<i><font color="#9A1900">/* work with vhost or subfolder - locate stylesheet */</font></i>
+  <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#000000">is_file</font></b> <font color="#990000">(</font><font color="#FF0000">"style.css"</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+    <font color="#009900">$fullpath</font> <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+  <font color="#FF0000">}</font>
+  <b><font color="#0000FF">elseif</font></b> <font color="#990000">(</font><b><font color="#000000">is_file</font></b> <font color="#990000">(</font><font color="#FF0000">"/style.css"</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+    <font color="#009900">$fullpath</font> <font color="#990000">=</font> <font color="#FF0000">"/"</font><font color="#990000">;</font>
+  <font color="#FF0000">}</font>
+  <b><font color="#0000FF">elseif</font></b> <font color="#990000">(</font><b><font color="#000000">is_file</font></b> <font color="#990000">(</font><font color="#FF0000">"../style.css"</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+    <font color="#009900">$fullpath</font> <font color="#990000">=</font> <font color="#FF0000">"../"</font><font color="#990000">;</font>
+  <font color="#FF0000">}</font>
+
+<font color="#990000">?&gt;</font>
+
+<b><font color="#0000FF">&lt;br&gt;</font></b>
+<i><font color="#9A1900">&lt;!-- original</font></i>
+<i><font color="#9A1900">Copyleft &amp;copy 2008&lt;?php //if (date("Y") &lt;&gt; 2008) echo "-" . date("Y"); ?&gt; w.r.epp&lt;br&gt;</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+Copyleft <b><font color="#0000FF">&lt;img</font></b> <font color="#009900">src</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $fullpath ?&gt;Copyleft.jpg"</font> <font color="#009900">style</font><font color="#990000">=</font><font color="#FF0000">"vertical-align: bottom"</font> <font color="#009900">alt</font><font color="#990000">=</font><font color="#FF0000">"Copyleft image"</font><b><font color="#0000FF">&gt;</font></b> 2008<font color="#990000">&lt;?php</font> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#000000">date</font></b><font color="#990000">(</font><font color="#FF0000">"Y"</font><font color="#990000">)</font> <font color="#990000">&lt;&gt;</font> <font color="#993399">2008</font><font color="#990000">)</font> <b><font color="#0000FF">echo</font></b> <font color="#FF0000">"-"</font> <font color="#990000">.</font> <b><font color="#000000">date</font></b><font color="#990000">(</font><font color="#FF0000">"Y"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font> William R. Epp, banner by Max Nardi.
+<b><font color="#0000FF">&lt;br&gt;</font></b>
+</tt></pre>

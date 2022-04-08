@@ -1,0 +1,47 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><font color="#990000">&lt;?php</font>
+
+<i><font color="#9A1900">/*</font></i>
+<i><font color="#9A1900">  updateLink.php</font></i>
+
+<i><font color="#9A1900">  Author:      wrepp</font></i>
+<i><font color="#9A1900">  Date:        07/17/2009</font></i>
+<i><font color="#9A1900">  Description: update Status column of Links table</font></i>
+<i><font color="#9A1900">  Notes:       </font></i><u><font color="#0000FF">http://localhost/2600/Util/updateLink</font></u><i><font color="#9A1900">?id=430&amp;s=Err&amp;d=yes</font></i>
+<i><font color="#9A1900">*/</font></i>
+
+  <font color="#009900">$path</font> <font color="#990000">=</font> <font color="#FF0000">"../"</font><font color="#990000">;</font>
+
+  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"db.php"</font><font color="#990000">);</font>
+
+<i><font color="#9A1900">/* mysql */</font></i>
+  <font color="#009900">$conn</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_connect</font></b> <font color="#990000">(</font><font color="#009900">$dbhost</font><font color="#990000">,</font> <font color="#009900">$dbuser</font><font color="#990000">,</font> <font color="#009900">$dbpass</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><font color="#FF0000">'Error connecting to mysql'</font><font color="#990000">);</font>
+  <b><font color="#000000">mysqli_select_db</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$dbname</font><font color="#990000">);</font>
+
+<i><font color="#9A1900">/* parameters */</font></i>
+  <font color="#009900">$LinksID</font>    <font color="#990000">=</font> <font color="#009900">$_GET</font><font color="#990000">[</font><font color="#FF0000">'id'</font><font color="#990000">];</font>
+  <font color="#009900">$Status</font>     <font color="#990000">=</font> <font color="#009900">$_GET</font><font color="#990000">[</font><font color="#FF0000">'s'</font><font color="#990000">];</font>
+  <font color="#009900">$debug</font>      <font color="#990000">=</font> <b><font color="#000000">strtolower</font></b> <font color="#990000">(</font><font color="#009900">$_GET</font><font color="#990000">[</font><font color="#FF0000">'d'</font><font color="#990000">]);</font>
+
+<i><font color="#9A1900">/* update */</font></i>
+  <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"UPDATE Links "</font> <font color="#990000">.</font>
+          <font color="#FF0000">"SET Status = '"</font> <font color="#990000">.</font> <font color="#009900">$Status</font> <font color="#990000">.</font> <font color="#FF0000">"', "</font> <font color="#990000">.</font>
+          <font color="#FF0000">"    Validated = '"</font> <font color="#990000">.</font> <b><font color="#000000">date</font></b> <font color="#990000">(</font><font color="#FF0000">"Y-m-d H:i:s"</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">"' "</font> <font color="#990000">.</font>
+          <font color="#FF0000">"WHERE LinksID = "</font> <font color="#990000">.</font> <font color="#009900">$LinksID</font> <font color="#990000">.</font> <font color="#FF0000">";"</font><font color="#990000">;</font>
+  <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+  <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$debug</font> <font color="#990000">!=</font> <font color="#FF0000">"yes"</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+    <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><font color="#009900">$sql</font> <font color="#990000">.</font> <font color="#FF0000">' : '</font> <font color="#990000">.</font> <b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+    <b><font color="#0000FF">echo</font></b> <font color="#FF0000">"Status '"</font> <font color="#990000">.</font> <font color="#009900">$Status</font> <font color="#990000">.</font> <font color="#FF0000">"' updated!"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql;</font></i>
+  <font color="#FF0000">}</font>
+  <b><font color="#0000FF">else</font></b>  <b><font color="#0000FF">echo</font></b> <font color="#009900">$sql</font><font color="#990000">;</font>
+
+
+<i><font color="#9A1900">/* wrap it up */</font></i>
+  <b><font color="#000000">mysqli_close</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">);</font>
+
+<font color="#990000">?&gt;</font>
+</tt></pre>

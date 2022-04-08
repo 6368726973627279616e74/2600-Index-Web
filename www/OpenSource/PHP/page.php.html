@@ -1,0 +1,225 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">  page.php</font></i>
+
+<i><font color="#9A1900">  Author:      wrepp</font></i>
+<i><font color="#9A1900">  Date:        10/13/2008</font></i>
+<i><font color="#9A1900">  Description: default page format for 2600 index web site</font></i>
+<i><font color="#9A1900">  Notes:       table editors only available if sub-directory found</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+
+<font color="#990000">&lt;?php</font>
+
+  <font color="#009900">$path</font> <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+  <font color="#009900">$cwd</font> <font color="#990000">=</font> <b><font color="#000000">getcwd</font></b> <font color="#990000">();</font>
+  <i><font color="#9A1900">#echo $cwd . "-&gt;" . substr ($cwd, -7) . "&lt;br&gt;";</font></i>
+  <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#000000">substr</font></b> <font color="#990000">(</font><font color="#009900">$cwd</font><font color="#990000">,</font> <font color="#990000">-</font><font color="#993399">12</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#FF0000">"TableEditors"</font> <font color="#990000">||</font>
+      <b><font color="#000000">substr</font></b> <font color="#990000">(</font><font color="#009900">$cwd</font><font color="#990000">,</font> <font color="#990000">-</font><font color="#993399">4</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#FF0000">"Util"</font> <font color="#990000">||</font>
+      <b><font color="#000000">substr</font></b> <font color="#990000">(</font><font color="#009900">$cwd</font><font color="#990000">,</font> <font color="#990000">-</font><font color="#993399">7</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#FF0000">"Reports"</font> <font color="#990000">||</font>
+      <b><font color="#000000">substr</font></b> <font color="#990000">(</font><font color="#009900">$cwd</font><font color="#990000">,</font> <font color="#990000">-</font><font color="#993399">10</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#FF0000">"OpenSource"</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+    <font color="#009900">$path</font> <font color="#990000">=</font> <font color="#FF0000">"../"</font><font color="#990000">;</font>
+  <font color="#FF0000">}</font>
+
+<font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"head"</font><b><font color="#0000FF">&gt;</font></b>
+    <b><font color="#0000FF">&lt;img</font></b> <font color="#009900">src</font><font color="#990000">=</font><font color="#FF0000">"&lt;?=$path?&gt;banner.jpg"</font> <font color="#009900">alt</font><font color="#990000">=</font><font color="#FF0000">"2600 Index"</font> <font color="#009900">style</font><font color="#990000">=</font><font color="#FF0000">"margin-top: 5px; font-size: 50%; color: white"</font><b><font color="#0000FF">&gt;</font></b>
+    <font color="#990000">&lt;?php</font>
+      <font color="#009900">$filename</font> <font color="#990000">=</font> <font color="#FF0000">"message.txt"</font><font color="#990000">;</font>
+      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#000000">is_file</font></b> <font color="#990000">(</font><font color="#009900">$filename</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+        <font color="#009900">$f</font> <font color="#990000">=</font> <b><font color="#000000">fopen</font></b> <font color="#990000">(</font><font color="#009900">$filename</font><font color="#990000">,</font> <font color="#FF0000">"r"</font><font color="#990000">);</font>
+        <font color="#009900">$tmp</font> <font color="#990000">=</font> <b><font color="#000000">fgets</font></b> <font color="#990000">(</font><font color="#009900">$f</font><font color="#990000">);</font>
+        <b><font color="#000000">fclose</font></b> <font color="#990000">(</font><font color="#009900">$f</font><font color="#990000">);</font>
+        <font color="#009900">$text</font> <font color="#990000">=</font> <b><font color="#000000">substr</font></b> <font color="#990000">(</font><font color="#009900">$tmp</font><font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">,</font> <b><font color="#000000">strlen</font></b> <font color="#990000">(</font><font color="#009900">$tmp</font><font color="#990000">)-</font><font color="#993399">1</font><font color="#990000">);</font>  <i><font color="#9A1900">// remove line feed</font></i>
+        <b><font color="#0000FF">echo</font></b> <font color="#009900">$text</font><font color="#990000">;</font>
+      <font color="#FF0000">}</font>
+      <font color="#990000">?&gt;</font>
+    <font color="#990000">&lt;?php</font>
+      <b><font color="#0000FF">if</font></b> <font color="#990000">(!</font><b><font color="#0000FF">isset</font></b> <font color="#990000">(</font><font color="#009900">$_SERVER</font><font color="#990000">[</font><font color="#FF0000">'HTTPS'</font><font color="#990000">])</font> <font color="#990000">)</font> <font color="#FF0000">{</font>
+        <b><font color="#0000FF">echo</font></b> <font color="#FF0000">'&lt;a style="font-size: 30%; color: white" href="https:/www.2600index.info"&gt; try using the 2600 Index SSL version&lt;/a&gt;'</font><font color="#990000">;</font>
+      <font color="#FF0000">}</font>
+     <font color="#990000">?&gt;</font>
+<i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">    &lt;a href="http://americancensorship.org"&gt;&lt;img style="width:300px; height:40px; " src="/2600/stop-censorship-small.png"&gt;&lt;/a&gt;</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+<i><font color="#9A1900">&lt;!-- 11/01/2013 no long responds</font></i>
+<i><font color="#9A1900">    &lt;a style="width:400px;height:70px;vertical-align:middle;text-align:center;background-color:#000;position:absolute;z-index:16;top:0px;left:250px;background-image:url(http://americancensorship.org/images/stop-censorship-small.png);background-position:center center;background-repeat:no-repeat;" href="http://americancensorship.org"&gt;&lt;/a&gt;</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"left"</font><b><font color="#0000FF">&gt;</font></b>
+    <b><font color="#0000FF">&lt;dl&gt;</font></b>
+      <b><font color="#0000FF">&lt;dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;index.php"</font><b><font color="#0000FF">&gt;</font></b>Home<b><font color="#0000FF">&lt;/a&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;article.php"</font><b><font color="#0000FF">&gt;</font></b>Articles<b><font color="#0000FF">&lt;/a&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;search.php"</font><b><font color="#0000FF">&gt;</font></b>Search<b><font color="#0000FF">&lt;/a&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;status.php"</font><b><font color="#0000FF">&gt;</font></b>Status<b><font color="#0000FF">&lt;/a&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;BestOf2600Book.php"</font><b><font color="#0000FF">&gt;</font></b>Best of 2600<b><font color="#0000FF">&lt;/a&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;keywords.php"</font><b><font color="#0000FF">&gt;</font></b>Keywords<b><font color="#0000FF">&lt;/a&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;links.php"</font><b><font color="#0000FF">&gt;</font></b>Links<b><font color="#0000FF">&lt;/a&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;mirrors.php"</font><b><font color="#0000FF">&gt;</font></b>Mirrors<b><font color="#0000FF">&lt;/a&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+    <b><font color="#0000FF">&lt;/dl&gt;</font></b>
+
+
+  <font color="#990000">&lt;?php</font>
+  <i><font color="#9A1900">/* only if subdirectory exists */</font></i>
+    <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#000000">is_dir</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"Reports"</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+  <font color="#990000">?&gt;</font>
+<i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">      &lt;dl&gt;</font></i>
+<i><font color="#9A1900">        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;</font></i>
+<i><font color="#9A1900">      &lt;/dl&gt;</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+      <b><font color="#0000FF">&lt;dl&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt</font></b> <font color="#009900">style</font><font color="#990000">=</font><font color="#FF0000">"color:grey"</font><b><font color="#0000FF">&gt;</font></b>
+          <b><font color="#0000FF">&lt;b&gt;</font></b><b><font color="#000080">&amp;nbsp;</font></b> Reports<b><font color="#0000FF">&lt;/b&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dl&gt;</font></b>
+      <b><font color="#0000FF">&lt;dl&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;Reports/ArticlesWithNoKeywords.php"</font><b><font color="#0000FF">&gt;</font></b>Article/Keyword<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;Reports/KeywordsWithNoArticles.php"</font><b><font color="#0000FF">&gt;</font></b>Keyword/Article<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;Reports/Links.php"</font><b><font color="#0000FF">&gt;</font></b>Links<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;Reports/MissingData.php"</font><b><font color="#0000FF">&gt;</font></b>Missing Data<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dl&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font>
+    <font color="#FF0000">}</font>
+  <i><font color="#9A1900">/* only if subdirectory exists */</font></i>
+    <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#000000">is_dir</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"Util"</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+  <font color="#990000">?&gt;</font>
+<i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">      &lt;dl&gt;</font></i>
+<i><font color="#9A1900">        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;</font></i>
+<i><font color="#9A1900">      &lt;/dl&gt;</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+      <b><font color="#0000FF">&lt;dl&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt</font></b> <font color="#009900">style</font><font color="#990000">=</font><font color="#FF0000">"color:grey"</font><b><font color="#0000FF">&gt;</font></b>
+          <b><font color="#0000FF">&lt;b&gt;</font></b><b><font color="#000080">&amp;nbsp;</font></b> Util<b><font color="#0000FF">&lt;/b&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dl&gt;</font></b>
+      <b><font color="#0000FF">&lt;dl&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;Util/AssignArticles.php"</font><b><font color="#0000FF">&gt;</font></b>Assign Articles<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;Util/ValidateLinks.php"</font><b><font color="#0000FF">&gt;</font></b>Validate Links<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;Util/wgetLinks.php"</font><b><font color="#0000FF">&gt;</font></b>wget Links<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;Util/writeStats.php"</font><b><font color="#0000FF">&gt;</font></b>Write Stats<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;Util/writeBestOf2600Book.php"</font><b><font color="#0000FF">&gt;</font></b>Write 2600 Book<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;Util/addIssue.php"</font><b><font color="#0000FF">&gt;</font></b>Add Issue<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;Util/buildOpenSource.php"</font><b><font color="#0000FF">&gt;</font></b>Build Open Source<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dl&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font>
+    <font color="#FF0000">}</font>
+  <i><font color="#9A1900">/* only if subdirectory exists */</font></i>
+    <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#000000">is_dir</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"TableEditors"</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+  <font color="#990000">?&gt;</font>
+<i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">      &lt;dl&gt;</font></i>
+<i><font color="#9A1900">        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;</font></i>
+<i><font color="#9A1900">      &lt;/dl&gt;</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+      <b><font color="#0000FF">&lt;dl&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt</font></b> <font color="#009900">style</font><font color="#990000">=</font><font color="#FF0000">"color:grey"</font><b><font color="#0000FF">&gt;</font></b>
+          <b><font color="#0000FF">&lt;b&gt;</font></b><b><font color="#000080">&amp;nbsp;</font></b> Table Editors<b><font color="#0000FF">&lt;/b&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dl&gt;</font></b>
+      <b><font color="#0000FF">&lt;dl&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;TableEditors/TableEditor.php?a=reset"</font><b><font color="#0000FF">&gt;</font></b>Table Editor<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;TableEditors/Addendums.php?a=reset"</font><b><font color="#0000FF">&gt;</font></b>Addendums<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;TableEditors/Articles.php?a=reset"</font><b><font color="#0000FF">&gt;</font></b>Articles<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;TableEditors/Authors.php?a=reset"</font><b><font color="#0000FF">&gt;</font></b>Authors<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;TableEditors/Issues.php?a=reset"</font><b><font color="#0000FF">&gt;</font></b>Issues<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;TableEditors/Keywords.php?a=reset"</font><b><font color="#0000FF">&gt;</font></b>Keywords<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;TableEditors/KeywordXref.php?a=reset"</font><b><font color="#0000FF">&gt;</font></b>KeywordXref<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;TableEditors/Links.php?a=reset"</font><b><font color="#0000FF">&gt;</font></b>Links<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dl&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font> 
+    <font color="#FF0000">}</font>
+
+  <i><font color="#9A1900">/* only if subdirectory exists */</font></i>
+    <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#000000">is_dir</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"OpenSource"</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+  <font color="#990000">?&gt;</font>
+      <b><font color="#0000FF">&lt;dl&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt</font></b> <font color="#009900">style</font><font color="#990000">=</font><font color="#FF0000">"color:grey"</font><b><font color="#0000FF">&gt;</font></b>
+          <b><font color="#0000FF">&lt;b&gt;</font></b><b><font color="#000080">&amp;nbsp;</font></b> Open Source<b><font color="#0000FF">&lt;/b&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dl&gt;</font></b>
+      <b><font color="#0000FF">&lt;dl&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;OpenSource/overview.php"</font><b><font color="#0000FF">&gt;</font></b>Overview<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;OpenSource/directoryListing.php?o=SQL"</font><b><font color="#0000FF">&gt;</font></b>SQL<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;OpenSource/directoryListing.php?o=PHP"</font><b><font color="#0000FF">&gt;</font></b>PHP<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+        <b><font color="#0000FF">&lt;dt&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"nav"</font> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?php echo $path ?&gt;OpenSource/directoryListing.php?o=Data"</font><b><font color="#0000FF">&gt;</font></b>Data<b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/dt&gt;</font></b>
+      <b><font color="#0000FF">&lt;/dl&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font> 
+    <font color="#FF0000">}</font>
+  <font color="#990000">?&gt;</font>
+  
+  
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+</tt></pre>

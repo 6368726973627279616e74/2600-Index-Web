@@ -1,0 +1,398 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">/* </font></i>
+<i><font color="#9A1900"> *   Load2600Issue.java</font></i>
+<i><font color="#9A1900"> *   w.r.e.c.</font></i>
+<i><font color="#9A1900"> *   10/13/2008</font></i>
+<i><font color="#9A1900"> *   </font></i>
+<i><font color="#9A1900"> *   Retrieve 2600 issue and save in database.</font></i>
+<i><font color="#9A1900"> */</font></i>
+<b><font color="#000080">package</font></b> wepp<font color="#990000">;</font>
+
+<b><font color="#000080">import</font></b> java<font color="#990000">.</font>net<font color="#990000">.</font>URL<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> java<font color="#990000">.</font>net<font color="#990000">.</font>URLConnection<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> java<font color="#990000">.</font>sql<font color="#990000">.</font>Connection<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> java<font color="#990000">.</font>sql<font color="#990000">.</font>DriverManager<font color="#990000">;</font>
+<i><font color="#9A1900">//import java.sql.PreparedStatement;</font></i>
+<b><font color="#000080">import</font></b> java<font color="#990000">.</font>sql<font color="#990000">.</font>ResultSet<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> java<font color="#990000">.</font>sql<font color="#990000">.</font>Statement<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> java<font color="#990000">.</font>util<font color="#990000">.</font>Date<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> java<font color="#990000">.</font>io<font color="#990000">.*;</font>
+<b><font color="#000080">import</font></b> java<font color="#990000">.</font>util<font color="#990000">.</font>Properties<font color="#990000">;</font>
+
+<b><font color="#000080">import</font></b> org<font color="#990000">.</font>htmlparser<font color="#990000">.</font>Node<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> org<font color="#990000">.</font>htmlparser<font color="#990000">.</font>Parser<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> org<font color="#990000">.</font>htmlparser<font color="#990000">.</font>filters<font color="#990000">.*;</font>
+<b><font color="#000080">import</font></b> org<font color="#990000">.</font>htmlparser<font color="#990000">.</font>nodes<font color="#990000">.</font>RemarkNode<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> org<font color="#990000">.</font>htmlparser<font color="#990000">.</font>nodes<font color="#990000">.</font>TagNode<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> org<font color="#990000">.</font>htmlparser<font color="#990000">.</font>nodes<font color="#990000">.</font>TextNode<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> org<font color="#990000">.</font>htmlparser<font color="#990000">.</font>util<font color="#990000">.</font>NodeIterator<font color="#990000">;</font>
+<b><font color="#000080">import</font></b> org<font color="#990000">.</font>htmlparser<font color="#990000">.</font>util<font color="#990000">.</font>NodeList<font color="#990000">;</font>
+
+
+<i><font color="#9A1900">/**</font></i>
+<i><font color="#9A1900"> * </font></i><font color="#009900">@author</font><i><font color="#9A1900"> wepp</font></i>
+<i><font color="#9A1900"> *</font></i>
+<i><font color="#9A1900"> */</font></i>
+<b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> <font color="#008080">Load2600Issue</font> <font color="#FF0000">{</font>
+
+	<i><font color="#9A1900">/**</font></i>
+<i><font color="#9A1900">	 * </font></i><font color="#009900">@param</font><i><font color="#9A1900"> args</font></i>
+<i><font color="#9A1900">	 */</font></i>
+	<b><font color="#0000FF">public</font></b> <b><font color="#0000FF">static</font></b> <font color="#009900">void</font> <b><font color="#000000">main</font></b> <font color="#990000">(</font>String<font color="#990000">[]</font> args<font color="#990000">)</font> <font color="#FF0000">{</font>
+
+		<i><font color="#9A1900">/* local variables */</font></i>		
+		<font color="#008080">String</font> sURL <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+		<font color="#008080">String</font> sSQL <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+		<font color="#008080">String</font> sTitle <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+		<font color="#008080">String</font> sUrlYear <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+		<font color="#008080">String</font> sUrlPeriod <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+		<font color="#008080">String</font> sPeriod <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+		<font color="#008080">String</font> sCoverLink <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+		<font color="#008080">String</font> sBackCoverLink <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+	    <font color="#008080">String</font> sFilename <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+	    <font color="#008080">String</font> sConnect<font color="#990000">;</font>
+	    <font color="#008080">String</font> sUser<font color="#990000">;</font>
+	    <font color="#008080">String</font> sPassword<font color="#990000">;</font>
+	    <i><font color="#9A1900">//String sFullFilename = "";</font></i>
+		<i><font color="#9A1900">// test: winter2006, winter2007, summer2008, autumn2004, winter1995,</font></i>
+		<i><font color="#9A1900">//       winter2002, winter1990, winter1988, winter2005, spring2003</font></i>
+		<font color="#008080">String</font> sArg <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+		
+		<font color="#008080">Integer</font> iYear <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+		<font color="#008080">Integer</font> iIssuesID <font color="#990000">=</font> <font color="#990000">-</font><font color="#993399">1</font><font color="#990000">;</font>
+		<font color="#008080">Integer</font> iQuarter <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+		<font color="#008080">Integer</font> iVolume <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+		
+		<font color="#008080">Boolean</font> bRepeat <font color="#990000">=</font> <b><font color="#0000FF">false</font></b><font color="#990000">;</font>
+		
+		<font color="#008080">Statement</font> stmt<font color="#990000">;</font>
+		<font color="#008080">ResultSet</font> rs<font color="#990000">;</font>
+
+		<font color="#008080">NodeList</font> nlParse<font color="#990000">;</font>
+		<font color="#008080">NodeList</font> nlChild<font color="#990000">;</font>
+		
+		<i><font color="#9A1900">/* debug option */</font></i>
+		<b><font color="#0000FF">for</font></b> <font color="#990000">(</font><font color="#009900">int</font> i <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> i <font color="#990000">&lt;</font> args<font color="#990000">.</font>length<font color="#990000">;</font> i<font color="#990000">++)</font>  <font color="#FF0000">{</font>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>args<font color="#990000">[</font>i<font color="#990000">].</font><b><font color="#000000">compareToIgnoreCase</font></b> <font color="#990000">(</font><font color="#FF0000">"debug"</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#993399">0</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+				bDebug <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
+			<font color="#FF0000">}</font>
+			<b><font color="#0000FF">else</font></b> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>args<font color="#990000">[</font>i<font color="#990000">].</font><b><font color="#000000">length</font></b> <font color="#990000">()</font> <font color="#990000">&gt;</font> <font color="#993399">0</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+				sArg <font color="#990000">=</font> args<font color="#990000">[</font>i<font color="#990000">];</font>
+			<font color="#FF0000">}</font>
+		<font color="#FF0000">}</font>
+
+		<i><font color="#9A1900">/* load MySQL properties */</font></i>
+		<i><font color="#9A1900">//System.err.println ("curdir=" + System.getProperty("user.dir"));</font></i>
+		<font color="#008080">Properties</font> properties <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Properties</font></b> <font color="#990000">();</font>
+	    <b><font color="#0000FF">try</font></b> <font color="#FF0000">{</font>
+	        properties<font color="#990000">.</font><b><font color="#000000">load</font></b> <font color="#990000">(</font>Load2600Issue<font color="#990000">.</font><b><font color="#0000FF">class</font></b><font color="#990000">.</font><b><font color="#000000">getResourceAsStream</font></b><font color="#990000">(</font><font color="#FF0000">"/Load2600Issue.properties"</font><font color="#990000">));</font>
+	        System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font>properties<font color="#990000">.</font><b><font color="#000000">toString</font></b><font color="#990000">());</font>
+	    <font color="#FF0000">}</font>
+	    <b><font color="#0000FF">catch</font></b> <font color="#990000">(</font><font color="#008080">IOException</font> e<font color="#990000">)</font> <font color="#FF0000">{</font>
+	    	e<font color="#990000">.</font><b><font color="#000000">printStackTrace</font></b><font color="#990000">();</font>
+	    <font color="#FF0000">}</font>
+	    sConnect <font color="#990000">=</font> properties<font color="#990000">.</font><b><font color="#000000">getProperty</font></b> <font color="#990000">(</font><font color="#FF0000">"connect"</font><font color="#990000">);</font>
+	    sUser <font color="#990000">=</font> properties<font color="#990000">.</font><b><font color="#000000">getProperty</font></b> <font color="#990000">(</font><font color="#FF0000">"user"</font><font color="#990000">);</font>
+	    sPassword <font color="#990000">=</font> properties<font color="#990000">.</font><b><font color="#000000">getProperty</font></b> <font color="#990000">(</font><font color="#FF0000">"password"</font><font color="#990000">);</font>
+
+		<i><font color="#9A1900">/* get issue titles from 2600 web site */</font></i>
+		<b><font color="#0000FF">try</font></b> <font color="#FF0000">{</font>
+            
+			<i><font color="#9A1900">/* Register the JDBC driver for MySQL */</font></i>
+			Class<font color="#990000">.</font><b><font color="#000000">forName</font></b> <font color="#990000">(</font>C_JDBC_CLASS<font color="#990000">);</font>
+        
+			<font color="#008080">Connection</font> con <font color="#990000">=</font> DriverManager<font color="#990000">.</font><b><font color="#000000">getConnection</font></b> <font color="#990000">(</font>sConnect<font color="#990000">,</font> sUser<font color="#990000">,</font> sPassword<font color="#990000">);</font>
+
+			<i><font color="#9A1900">/* determine next period */</font></i>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>sArg<font color="#990000">.</font><b><font color="#000000">equalsIgnoreCase</font></b> <font color="#990000">(</font><font color="#FF0000">"next"</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+				System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font><font color="#FF0000">"Arg="</font> <font color="#990000">+</font> sArg<font color="#990000">);</font>
+				
+				<i><font color="#9A1900">/* get last issue in database */</font></i>
+				sSQL <font color="#990000">=</font> <font color="#FF0000">"SELECT * "</font> <font color="#990000">+</font>
+					   <font color="#FF0000">"FROM Issues "</font> <font color="#990000">+</font>
+					   <font color="#FF0000">"WHERE IssueYear = (SELECT MAX(IssueYear) FROM Issues) "</font> <font color="#990000">+</font>
+					   <font color="#FF0000">"ORDER BY Quarter DESC "</font> <font color="#990000">+</font>
+					   <font color="#FF0000">"LIMIT 1;  "</font><font color="#990000">;</font>
+				stmt <font color="#990000">=</font> con<font color="#990000">.</font><b><font color="#000000">createStatement</font></b> <font color="#990000">();</font>
+				<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>bDebug<font color="#990000">)</font>  System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font>sSQL<font color="#990000">);</font>
+			
+				rs <font color="#990000">=</font> stmt<font color="#990000">.</font><b><font color="#000000">executeQuery</font></b> <font color="#990000">(</font>sSQL<font color="#990000">);</font>
+				rs<font color="#990000">.</font><b><font color="#000000">last</font></b> <font color="#990000">();</font>
+				
+				<i><font color="#9A1900">/* last quarter rolls over to next year */</font></i>
+				<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>rs<font color="#990000">.</font><b><font color="#000000">getInt</font></b> <font color="#990000">(</font><font color="#FF0000">"Quarter"</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#993399">4</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+			        iYear <font color="#990000">=</font> rs<font color="#990000">.</font><b><font color="#000000">getInt</font></b><font color="#990000">(</font><font color="#FF0000">"IssueYear"</font><font color="#990000">)</font> <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">;</font>
+			        iQuarter <font color="#990000">=</font> <font color="#993399">1</font><font color="#990000">;</font>
+				<font color="#FF0000">}</font>
+				<b><font color="#0000FF">else</font></b>  <font color="#FF0000">{</font>
+					iYear <font color="#990000">=</font> rs<font color="#990000">.</font><b><font color="#000000">getInt</font></b><font color="#990000">(</font><font color="#FF0000">"IssueYear"</font><font color="#990000">);</font>
+					iQuarter <font color="#990000">=</font> rs<font color="#990000">.</font><b><font color="#000000">getInt</font></b> <font color="#990000">(</font><font color="#FF0000">"Quarter"</font><font color="#990000">)</font> <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">;</font>
+				<font color="#FF0000">}</font>
+				
+			    <b><font color="#0000FF">switch</font></b> <font color="#990000">(</font>iQuarter<font color="#990000">)</font> <font color="#FF0000">{</font>
+					<b><font color="#0000FF">case</font></b> <font color="#993399">1</font> <font color="#990000">:</font>
+						sPeriod <font color="#990000">=</font> <font color="#FF0000">"spring"</font><font color="#990000">;</font>
+						<b><font color="#0000FF">break</font></b><font color="#990000">;</font>
+					<b><font color="#0000FF">case</font></b> <font color="#993399">2</font> <font color="#990000">:</font>
+						sPeriod <font color="#990000">=</font> <font color="#FF0000">"summer"</font><font color="#990000">;</font>
+						<b><font color="#0000FF">break</font></b><font color="#990000">;</font>
+					<b><font color="#0000FF">case</font></b> <font color="#993399">3</font> <font color="#990000">:</font>
+						sPeriod <font color="#990000">=</font> <font color="#FF0000">"autumn"</font><font color="#990000">;</font>
+						<b><font color="#0000FF">break</font></b><font color="#990000">;</font>
+					<b><font color="#0000FF">case</font></b> <font color="#993399">4</font> <font color="#990000">:</font>
+						sPeriod <font color="#990000">=</font> <font color="#FF0000">"winter"</font><font color="#990000">;</font>
+						<b><font color="#0000FF">break</font></b><font color="#990000">;</font>
+			    <font color="#FF0000">}</font>
+			
+				<i><font color="#9A1900">/* set next period/year */</font></i>
+				sArg <font color="#990000">=</font> sPeriod <font color="#990000">+</font> iYear<font color="#990000">.</font><b><font color="#000000">toString</font></b> <font color="#990000">();</font>
+			<font color="#FF0000">}</font>
+			
+			<i><font color="#9A1900">/* get arg variables */</font></i>
+			System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font><font color="#FF0000">"Arg="</font> <font color="#990000">+</font> sArg<font color="#990000">);</font>
+			iYear <font color="#990000">=</font> Integer<font color="#990000">.</font><b><font color="#000000">parseInt</font></b> <font color="#990000">(</font>sArg<font color="#990000">.</font><b><font color="#000000">substring</font></b><font color="#990000">(</font><font color="#993399">6</font><font color="#990000">,</font> <font color="#993399">10</font><font color="#990000">));</font>
+			sPeriod <font color="#990000">=</font> sArg<font color="#990000">.</font><b><font color="#000000">substring</font></b> <font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> <font color="#993399">6</font><font color="#990000">);</font>
+			sUrlYear <font color="#990000">=</font> iYear<font color="#990000">.</font><b><font color="#000000">toString</font></b> <font color="#990000">();</font>
+			sUrlPeriod <font color="#990000">=</font> sPeriod<font color="#990000">;</font>
+			
+			<i><font color="#9A1900">/* special cases for cover link */</font></i>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>sPeriod<font color="#990000">.</font><b><font color="#000000">toLowerCase</font></b> <font color="#990000">().</font><b><font color="#000000">equals</font></b> <font color="#990000">(</font><font color="#FF0000">"winter"</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+				sUrlYear <font color="#990000">=</font> iYear<font color="#990000">.</font><b><font color="#000000">toString</font></b> <font color="#990000">();</font>
+				<i><font color="#9A1900">/* second year in url has 0 or 2 or 4 digits (assume 4 after 2007) */</font></i>
+				<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>iYear <font color="#990000">==</font> <font color="#993399">1999</font> <font color="#990000">||</font>
+					iYear <font color="#990000">==</font> <font color="#993399">2002</font> <font color="#990000">||</font>
+					iYear <font color="#990000">==</font> <font color="#993399">2003</font> <font color="#990000">||</font>
+					iYear <font color="#990000">==</font> <font color="#993399">2004</font> <font color="#990000">||</font>
+					iYear <font color="#990000">==</font> <font color="#993399">2005</font> <font color="#990000">||</font>
+					iYear <font color="#990000">&gt;=</font> <font color="#993399">2007</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+					sUrlYear <font color="#990000">=</font> iYear<font color="#990000">.</font><b><font color="#000000">toString</font></b> <font color="#990000">();</font>
+					sUrlYear <font color="#990000">+=</font> iYear<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">;</font>  <i><font color="#9A1900">// four digits</font></i>
+				<font color="#FF0000">}</font>
+				<b><font color="#0000FF">else</font></b> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>iYear <font color="#990000">==</font> <font color="#993399">1988</font> <font color="#990000">||</font>
+						 iYear <font color="#990000">==</font> <font color="#993399">1989</font> <font color="#990000">||</font>
+						 iYear <font color="#990000">==</font> <font color="#993399">1990</font> <font color="#990000">||</font>
+						 iYear <font color="#990000">==</font> <font color="#993399">1991</font> <font color="#990000">||</font>
+						 iYear <font color="#990000">==</font> <font color="#993399">1992</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+					<i><font color="#9A1900">// zero digits</font></i>
+				<font color="#FF0000">}</font>
+				<b><font color="#0000FF">else</font></b>  <font color="#FF0000">{</font>
+					sUrlYear <font color="#990000">=</font> iYear<font color="#990000">.</font><b><font color="#000000">toString</font></b> <font color="#990000">();</font>
+					<font color="#008080">Integer</font> i <font color="#990000">=</font> iYear <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">;</font>
+					sUrlYear <font color="#990000">+=</font> i<font color="#990000">.</font><b><font color="#000000">toString</font></b> <font color="#990000">().</font><b><font color="#000000">substring</font></b> <font color="#990000">(</font><font color="#993399">2</font><font color="#990000">);</font>  <i><font color="#9A1900">// two digits</font></i>
+				<font color="#FF0000">}</font>
+			<font color="#FF0000">}</font>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>sPeriod<font color="#990000">.</font><b><font color="#000000">toLowerCase</font></b> <font color="#990000">().</font><b><font color="#000000">equals</font></b> <font color="#990000">(</font><font color="#FF0000">"autumn"</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+				<i><font color="#9A1900">/* some have fall instead of autumn */</font></i>
+				<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>iYear <font color="#990000">&gt;=</font> <font color="#993399">2000</font> <font color="#990000">&amp;&amp;</font> iYear <font color="#990000">&lt;=</font> <font color="#993399">2004</font><font color="#990000">)</font>  sUrlPeriod <font color="#990000">=</font> <font color="#FF0000">"fall"</font><font color="#990000">;</font>
+			<font color="#FF0000">}</font>
+			
+			<i><font color="#9A1900">/* build 2600 url */</font></i>
+			sURL <font color="#990000">=</font> <font color="#FF0000">"http://store.2600.com/"</font> <font color="#990000">+</font> sUrlPeriod <font color="#990000">+</font> sUrlYear <font color="#990000">+</font> <font color="#FF0000">".html"</font><font color="#990000">;</font>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>bDebug<font color="#990000">)</font> System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font><font color="#FF0000">"URL="</font> <font color="#990000">+</font> sURL<font color="#990000">);</font>
+			
+			<i><font color="#9A1900">/* format for database */</font></i>
+			sPeriod <font color="#990000">=</font> sPeriod<font color="#990000">.</font><b><font color="#000000">substring</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font><font color="#993399">1</font><font color="#990000">).</font><b><font color="#000000">toUpperCase</font></b><font color="#990000">()</font> <font color="#990000">+</font> sPeriod<font color="#990000">.</font><b><font color="#000000">substring</font></b> <font color="#990000">(</font><font color="#993399">1</font><font color="#990000">,</font> <font color="#993399">6</font><font color="#990000">).</font><b><font color="#000000">toLowerCase</font></b><font color="#990000">();</font>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>sPeriod<font color="#990000">.</font><b><font color="#000000">equals</font></b> <font color="#990000">(</font><font color="#FF0000">"Spring"</font><font color="#990000">))</font>  iQuarter <font color="#990000">=</font> <font color="#993399">1</font><font color="#990000">;</font>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>sPeriod<font color="#990000">.</font><b><font color="#000000">equals</font></b> <font color="#990000">(</font><font color="#FF0000">"Summer"</font><font color="#990000">))</font>  iQuarter <font color="#990000">=</font> <font color="#993399">2</font><font color="#990000">;</font>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>sPeriod<font color="#990000">.</font><b><font color="#000000">equals</font></b> <font color="#990000">(</font><font color="#FF0000">"Autumn"</font><font color="#990000">))</font>  iQuarter <font color="#990000">=</font> <font color="#993399">3</font><font color="#990000">;</font>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>sPeriod<font color="#990000">.</font><b><font color="#000000">equals</font></b> <font color="#990000">(</font><font color="#FF0000">"Winter"</font><font color="#990000">))</font>  iQuarter <font color="#990000">=</font> <font color="#993399">4</font><font color="#990000">;</font>
+			
+			iVolume <font color="#990000">=</font> iYear <font color="#990000">-</font> <font color="#993399">1983</font><font color="#990000">;</font>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>bDebug<font color="#990000">)</font> System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font><font color="#FF0000">"Period="</font> <font color="#990000">+</font> sPeriod <font color="#990000">+</font> <font color="#FF0000">", Year="</font> <font color="#990000">+</font> iYear <font color="#990000">+</font>  <font color="#FF0000">", Quarter="</font> <font color="#990000">+</font> iQuarter <font color="#990000">+</font> <font color="#FF0000">", Volume="</font> <font color="#990000">+</font> iVolume<font color="#990000">);</font>
+
+			<i><font color="#9A1900">/* get page */</font></i>
+			<font color="#008080">URL</font> url <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">URL</font></b> <font color="#990000">(</font>sURL<font color="#990000">);</font>
+			<font color="#008080">URLConnection</font> urlcon <font color="#990000">=</font> url<font color="#990000">.</font><b><font color="#000000">openConnection</font></b> <font color="#990000">();</font>
+			urlcon<font color="#990000">.</font><b><font color="#000000">setRequestProperty</font></b><font color="#990000">(</font> <font color="#FF0000">"User-agent"</font><font color="#990000">,</font> <font color="#FF0000">"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"</font> <font color="#990000">);</font>
+		    <font color="#008080">Parser</font> parser <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Parser</font></b> <font color="#990000">(</font>urlcon<font color="#990000">);</font>
+		    
+		    <i><font color="#9A1900">/* did we get redirected? */</font></i>
+		    <b><font color="#0000FF">if</font></b> <font color="#990000">(!</font>sURL<font color="#990000">.</font><b><font color="#000000">equalsIgnoreCase</font></b> <font color="#990000">(</font>parser<font color="#990000">.</font><b><font color="#000000">getURL</font></b> <font color="#990000">()))</font>  <font color="#FF0000">{</font>
+		    	System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font><font color="#FF0000">"Page not found, ignored!"</font><font color="#990000">);</font>
+		    	<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>bDebug<font color="#990000">)</font>  System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font><font color="#FF0000">"Redirected to="</font> <font color="#990000">+</font> parser<font color="#990000">.</font><b><font color="#000000">getURL</font></b> <font color="#990000">());</font>
+		    <font color="#FF0000">}</font>
+		    <b><font color="#0000FF">else</font></b>  <font color="#FF0000">{</font>
+		    	
+			    <i><font color="#9A1900">/* get cover image link */</font></i>
+			    sCoverLink <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+			    nlParse <font color="#990000">=</font> parser<font color="#990000">.</font><b><font color="#000000">parse</font></b> <font color="#990000">(</font><b><font color="#0000FF">new</font></b> <b><font color="#000000">TagNameFilter</font></b> <font color="#990000">(</font><font color="#FF0000">"img"</font><font color="#990000">));</font>  <i><font color="#9A1900">// all image items</font></i>
+				<b><font color="#0000FF">for</font></b> <font color="#990000">(</font><font color="#008080">NodeIterator</font> ni <font color="#990000">=</font> nlParse<font color="#990000">.</font><b><font color="#000000">elements</font></b><font color="#990000">();</font> ni<font color="#990000">.</font><b><font color="#000000">hasMoreNodes</font></b><font color="#990000">();</font> <font color="#990000">)</font> <font color="#FF0000">{</font>
+					<i><font color="#9A1900">// testing // printNode (ni.nextNode ());</font></i>
+					<font color="#008080">String</font> sTmp <font color="#990000">=</font> ni<font color="#990000">.</font><b><font color="#000000">nextNode</font></b> <font color="#990000">().</font><b><font color="#000000">getText</font></b> <font color="#990000">();</font>
+					<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>bDebug<font color="#990000">)</font>  System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b>  <font color="#990000">(</font>sTmp<font color="#990000">);</font>
+					<i><font color="#9A1900">//if (sTmp.toLowerCase ().contains (sPeriod.toLowerCase ()))  {</font></i>
+					<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>sTmp<font color="#990000">.</font><b><font color="#000000">toLowerCase</font></b> <font color="#990000">().</font><b><font color="#000000">contains</font></b> <font color="#990000">(</font><font color="#FF0000">"click to enlarge"</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+						<font color="#009900">int</font> iStart <font color="#990000">=</font> sTmp<font color="#990000">.</font><b><font color="#000000">indexOf</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">);</font>
+						<font color="#009900">int</font> iEnd <font color="#990000">=</font> sTmp<font color="#990000">.</font><b><font color="#000000">indexOf</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">,</font> iStart<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">);</font>
+						sCoverLink <font color="#990000">=</font> sTmp<font color="#990000">.</font><b><font color="#000000">substring</font></b><font color="#990000">(</font>iStart<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font> iEnd<font color="#990000">);</font>
+					<font color="#FF0000">}</font>
+				<font color="#FF0000">}</font>
+			    <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>bDebug<font color="#990000">)</font>  System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font><font color="#FF0000">"CoverLink="</font> <font color="#990000">+</font> sCoverLink<font color="#990000">);</font>
+
+			    <i><font color="#9A1900">/* get cover image */</font></i>
+			    sFilename <font color="#990000">=</font> sPeriod <font color="#990000">+</font> iYear<font color="#990000">.</font><b><font color="#000000">toString</font></b> <font color="#990000">()</font> <font color="#990000">+</font> <font color="#FF0000">".gif"</font><font color="#990000">;</font>
+			    <i><font color="#9A1900">//sFullFilename = "/var/www/2600/FrontCoverImages/" + sFilename;</font></i>
+			    <b><font color="#000000">downloadFile</font></b> <font color="#990000">(</font>sCoverLink<font color="#990000">,</font> sFilename<font color="#990000">);</font>
+			    sCoverLink <font color="#990000">=</font> <font color="#FF0000">"FrontCoverImages/"</font> <font color="#990000">+</font> sFilename<font color="#990000">;</font>
+			    sBackCoverLink <font color="#990000">=</font> <font color="#FF0000">"BackCoverImages/"</font> <font color="#990000">+</font> sFilename<font color="#990000">;</font>
+			    
+				bRepeat <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
+			    <b><font color="#0000FF">while</font></b> <font color="#990000">(</font>bRepeat<font color="#990000">)</font>  <font color="#FF0000">{</font>
+			    	bRepeat <font color="#990000">=</font> <b><font color="#0000FF">false</font></b><font color="#990000">;</font>
+			    	
+					<i><font color="#9A1900">/* get IssueID */</font></i>
+					sSQL <font color="#990000">=</font> <font color="#FF0000">"SELECT * FROM Issues "</font> <font color="#990000">+</font> 
+					       <font color="#FF0000">"WHERE Period = '"</font> <font color="#990000">+</font> sPeriod <font color="#990000">+</font> <font color="#FF0000">"' "</font> <font color="#990000">+</font> 
+					       <font color="#FF0000">"  AND IssueYear = "</font> <font color="#990000">+</font> iYear<font color="#990000">;</font>
+					stmt <font color="#990000">=</font> con<font color="#990000">.</font><b><font color="#000000">createStatement</font></b> <font color="#990000">();</font>
+					<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>bDebug<font color="#990000">)</font>  System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font>sSQL<font color="#990000">);</font>
+					
+					rs <font color="#990000">=</font> stmt<font color="#990000">.</font><b><font color="#000000">executeQuery</font></b> <font color="#990000">(</font>sSQL<font color="#990000">);</font>
+					rs<font color="#990000">.</font><b><font color="#000000">last</font></b> <font color="#990000">();</font>
+					
+					<i><font color="#9A1900">/* add if not in database */</font></i>
+					<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>rs<font color="#990000">.</font><b><font color="#000000">getRow</font></b> <font color="#990000">()</font> <font color="#990000">&lt;</font> <font color="#993399">1</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+						bRepeat <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
+						System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font><font color="#FF0000">"Add "</font> <font color="#990000">+</font> sPeriod <font color="#990000">+</font> <font color="#FF0000">"/"</font> <font color="#990000">+</font> iYear <font color="#990000">+</font> <font color="#FF0000">"."</font><font color="#990000">);</font>
+						sSQL <font color="#990000">=</font> <font color="#FF0000">"INSERT INTO Issues (Period, IssueYear, CoverLink, BackCoverLink, Quarter, Volume, Pages) "</font> <font color="#990000">+</font>
+						       <font color="#FF0000">"VALUES ('"</font> <font color="#990000">+</font> sPeriod <font color="#990000">+</font> <font color="#FF0000">"',"</font> <font color="#990000">+</font> iYear<font color="#990000">.</font><b><font color="#000000">toString</font></b><font color="#990000">()</font> <font color="#990000">+</font> <font color="#FF0000">",'"</font> <font color="#990000">+</font> sCoverLink <font color="#990000">+</font> <font color="#FF0000">"','"</font> <font color="#990000">+</font> 
+						                sBackCoverLink <font color="#990000">+</font> <font color="#FF0000">"',"</font> <font color="#990000">+</font> iQuarter<font color="#990000">.</font><b><font color="#000000">toString</font></b><font color="#990000">()</font> <font color="#990000">+</font> <font color="#FF0000">","</font> <font color="#990000">+</font> iVolume<font color="#990000">.</font><b><font color="#000000">toString</font></b><font color="#990000">()</font> <font color="#990000">+</font> <font color="#FF0000">",68)"</font><font color="#990000">;</font>
+						stmt <font color="#990000">=</font> con<font color="#990000">.</font><b><font color="#000000">createStatement</font></b> <font color="#990000">();</font>
+						<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>bDebug<font color="#990000">)</font>  System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font>sSQL<font color="#990000">);</font>
+						stmt<font color="#990000">.</font><b><font color="#000000">execute</font></b> <font color="#990000">(</font>sSQL<font color="#990000">);</font>
+					<font color="#FF0000">}</font>
+					<b><font color="#0000FF">else</font></b>  iIssuesID <font color="#990000">=</font> rs<font color="#990000">.</font><b><font color="#000000">getInt</font></b> <font color="#990000">(</font><font color="#FF0000">"IssuesID"</font><font color="#990000">);</font>
+			    <font color="#FF0000">}</font>
+			    
+			    <i><font color="#9A1900">/* articles */</font></i>
+			    parser<font color="#990000">.</font><b><font color="#000000">reset</font></b> <font color="#990000">();</font>
+			    nlParse <font color="#990000">=</font> parser<font color="#990000">.</font><b><font color="#000000">parse</font></b><font color="#990000">(</font><b><font color="#0000FF">new</font></b> <b><font color="#000000">TagNameFilter</font></b> <font color="#990000">(</font><font color="#FF0000">"li"</font><font color="#990000">));</font>  <i><font color="#9A1900">// all list items</font></i>
+			    <b><font color="#0000FF">for</font></b> <font color="#990000">(</font><font color="#008080">NodeIterator</font> ni <font color="#990000">=</font> nlParse<font color="#990000">.</font><b><font color="#000000">elements</font></b> <font color="#990000">();</font> ni<font color="#990000">.</font><b><font color="#000000">hasMoreNodes</font></b> <font color="#990000">();</font> <font color="#990000">)</font> <font color="#FF0000">{</font>
+			    	nlChild <font color="#990000">=</font> ni<font color="#990000">.</font><b><font color="#000000">nextNode</font></b> <font color="#990000">().</font><b><font color="#000000">getChildren</font></b> <font color="#990000">();</font>
+			    	sTitle <font color="#990000">=</font> nlChild<font color="#990000">.</font><b><font color="#000000">elementAt</font></b> <font color="#990000">(</font><font color="#993399">0</font><font color="#990000">).</font><b><font color="#000000">toPlainTextString</font></b> <font color="#990000">();</font>
+			    	<i><font color="#9A1900">/* remove new line, convert double quote to single */</font></i>
+			    	sTitle <font color="#990000">=</font> sTitle<font color="#990000">.</font><b><font color="#000000">replaceAll</font></b> <font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">,</font> <font color="#FF0000">""</font><font color="#990000">);</font>
+			    	sTitle <font color="#990000">=</font> sTitle<font color="#990000">.</font><b><font color="#000000">replaceAll</font></b> <font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">,</font> <font color="#FF0000">"'"</font><font color="#990000">);</font>
+			    	System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font>sTitle<font color="#990000">);</font>
+			    	
+			    	<i><font color="#9A1900">/* check if alrady on file */</font></i>
+			    	sSQL <font color="#990000">=</font> <font color="#FF0000">"SELECT * FROM Articles "</font> <font color="#990000">+</font>
+			    	       <font color="#FF0000">"WHERE IssuesID = "</font> <font color="#990000">+</font> iIssuesID <font color="#990000">+</font>
+			    	       <font color="#FF0000">"  AND Title = </font><font color="#CC33CC">\"</font><font color="#FF0000">"</font> <font color="#990000">+</font> sTitle <font color="#990000">+</font> <font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">;</font>
+					stmt <font color="#990000">=</font> con<font color="#990000">.</font><b><font color="#000000">createStatement</font></b> <font color="#990000">();</font>
+					<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>bDebug<font color="#990000">)</font>  System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font>sSQL<font color="#990000">);</font>
+					rs <font color="#990000">=</font> stmt<font color="#990000">.</font><b><font color="#000000">executeQuery</font></b> <font color="#990000">(</font>sSQL<font color="#990000">);</font>
+					rs<font color="#990000">.</font><b><font color="#000000">last</font></b> <font color="#990000">();</font>
+					
+					<i><font color="#9A1900">/* add if not on file */</font></i>
+					<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>rs<font color="#990000">.</font><b><font color="#000000">getRow</font></b> <font color="#990000">()</font> <font color="#990000">&lt;</font> <font color="#993399">1</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+			    	
+			    		<i><font color="#9A1900">/* update database with issue title */</font></i>
+				    	sSQL <font color="#990000">=</font> <font color="#FF0000">"INSERT INTO Articles (IssuesID, AuthorsID, Title, Synopsis) "</font> <font color="#990000">+</font>
+				    	       <font color="#FF0000">"VALUES ("</font> <font color="#990000">+</font> iIssuesID <font color="#990000">+</font> <font color="#FF0000">",1,</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font> <font color="#990000">+</font> sTitle <font color="#990000">+</font> <font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">,'')"</font><font color="#990000">;</font>
+						stmt <font color="#990000">=</font> con<font color="#990000">.</font><b><font color="#000000">createStatement</font></b> <font color="#990000">();</font>
+						<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>bDebug<font color="#990000">)</font>  System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font>sSQL<font color="#990000">);</font>
+						stmt<font color="#990000">.</font><b><font color="#000000">execute</font></b> <font color="#990000">(</font>sSQL<font color="#990000">);</font>
+					<font color="#FF0000">}</font>
+			    <font color="#FF0000">}</font>
+			    
+			    <i><font color="#9A1900">/* done */</font></i>
+			    con<font color="#990000">.</font><b><font color="#000000">close</font></b> <font color="#990000">();</font>
+		    <font color="#FF0000">}</font>
+		<font color="#FF0000">}</font>
+		<b><font color="#0000FF">catch</font></b> <font color="#990000">(</font><font color="#008080">Exception</font> e<font color="#990000">)</font>  <font color="#FF0000">{</font>
+			e<font color="#990000">.</font><b><font color="#000000">printStackTrace</font></b> <font color="#990000">();</font>
+		<font color="#FF0000">}</font>
+		
+		System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font><font color="#FF0000">"Done @ "</font> <font color="#990000">+</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Date</font></b> <font color="#990000">());</font>
+
+	<font color="#FF0000">}</font>  <i><font color="#9A1900">// main</font></i>
+
+	
+	<i><font color="#9A1900">/* testing */</font></i>
+	<b><font color="#0000FF">static</font></b> <font color="#009900">void</font> <b><font color="#000000">printNode</font></b> <font color="#990000">(</font><font color="#008080">Node</font> node<font color="#990000">)</font>  <font color="#FF0000">{</font>
+
+		<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>node <font color="#008080">instanceof</font> TextNode<font color="#990000">)</font>  <font color="#FF0000">{</font>
+	        <i><font color="#9A1900">// downcast to TextNode</font></i>
+			<font color="#008080">TextNode</font> text <font color="#990000">=</font> <font color="#990000">(</font>TextNode<font color="#990000">)</font>node<font color="#990000">;</font>
+			System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">print</font></b> <font color="#990000">(</font><font color="#FF0000">"Text="</font><font color="#990000">);</font>
+			System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">print</font></b> <font color="#990000">(</font>text<font color="#990000">.</font><b><font color="#000000">getText</font></b> <font color="#990000">());</font>
+			System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font><font color="#FF0000">"="</font><font color="#990000">);</font>
+		<font color="#FF0000">}</font>
+		<b><font color="#0000FF">else</font></b> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>node <font color="#008080">instanceof</font> RemarkNode<font color="#990000">)</font>  <font color="#FF0000">{</font>
+			<font color="#008080">RemarkNode</font> remark <font color="#990000">=</font> <font color="#990000">(</font>RemarkNode<font color="#990000">)</font> node<font color="#990000">;</font>
+			System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">print</font></b> <font color="#990000">(</font><font color="#FF0000">"remark="</font><font color="#990000">);</font>
+			System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">print</font></b> <font color="#990000">(</font>remark<font color="#990000">.</font><b><font color="#000000">getText</font></b> <font color="#990000">());</font>
+			System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font><font color="#FF0000">"="</font><font color="#990000">);</font>
+		<font color="#FF0000">}</font>
+		<b><font color="#0000FF">else</font></b> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>node <font color="#008080">instanceof</font> TagNode<font color="#990000">)</font>  <font color="#FF0000">{</font>
+
+			<b><font color="#0000FF">try</font></b> <font color="#FF0000">{</font>
+
+				<i><font color="#9A1900">// downcast to TagNode</font></i>
+	            <font color="#008080">TagNode</font> tag <font color="#990000">=</font> <font color="#990000">(</font>TagNode<font color="#990000">)</font>node<font color="#990000">;</font>
+				System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font>tag<font color="#990000">.</font><b><font color="#000000">getText</font></b> <font color="#990000">());</font>
+	
+				<font color="#008080">NodeList</font> nl <font color="#990000">=</font> tag<font color="#990000">.</font><b><font color="#000000">getChildren</font></b> <font color="#990000">();</font>
+				<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>nl <font color="#990000">!=</font> <b><font color="#0000FF">null</font></b><font color="#990000">)</font>  <font color="#FF0000">{</font>
+					<b><font color="#0000FF">for</font></b> <font color="#990000">(</font><font color="#008080">NodeIterator</font> i <font color="#990000">=</font> nl<font color="#990000">.</font><b><font color="#000000">elements</font></b> <font color="#990000">();</font> i<font color="#990000">.</font><b><font color="#000000">hasMoreNodes</font></b> <font color="#990000">();</font> <font color="#990000">)</font> <font color="#FF0000">{</font>
+						<b><font color="#000000">printNode</font></b> <font color="#990000">(</font>i<font color="#990000">.</font><b><font color="#000000">nextNode</font></b> <font color="#990000">());</font>
+					<font color="#FF0000">}</font>
+				<font color="#FF0000">}</font>
+			<font color="#FF0000">}</font>
+		    <b><font color="#0000FF">catch</font></b> <font color="#990000">(</font><font color="#008080">Exception</font> e<font color="#990000">)</font>  <font color="#FF0000">{</font>
+		        e<font color="#990000">.</font><b><font color="#000000">printStackTrace</font></b> <font color="#990000">();</font>
+		    <font color="#FF0000">}</font>
+		<font color="#FF0000">}</font>
+	<font color="#FF0000">}</font>  <i><font color="#9A1900">// printNode</font></i>
+
+	
+	<b><font color="#0000FF">public</font></b> <b><font color="#0000FF">static</font></b> <font color="#009900">void</font> <b><font color="#000000">downloadFile</font></b> <font color="#990000">(</font><font color="#008080">String</font> sAddress<font color="#990000">,</font> <font color="#008080">String</font> sFilename<font color="#990000">)</font> <font color="#FF0000">{</font>
+		
+		<i><font color="#9A1900">/* local variable */</font></i>
+		<font color="#008080">OutputStream</font> out <font color="#990000">=</font> <b><font color="#0000FF">null</font></b><font color="#990000">;</font>
+		<font color="#008080">URLConnection</font> conn <font color="#990000">=</font> <b><font color="#0000FF">null</font></b><font color="#990000">;</font>
+		<font color="#008080">InputStream</font>  in <font color="#990000">=</font> <b><font color="#0000FF">null</font></b><font color="#990000">;</font>
+		
+		<b><font color="#0000FF">try</font></b> <font color="#FF0000">{</font>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(!</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">File</font></b> <font color="#990000">(</font>sFilename<font color="#990000">).</font><b><font color="#000000">exists</font></b> <font color="#990000">())</font>  <font color="#FF0000">{</font>
+				<font color="#008080">URL</font> url <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">URL</font></b> <font color="#990000">(</font>sAddress<font color="#990000">);</font>
+				out <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">BufferedOutputStream</font></b> <font color="#990000">(</font><b><font color="#0000FF">new</font></b> <b><font color="#000000">FileOutputStream</font></b> <font color="#990000">(</font>sFilename<font color="#990000">));</font>
+				conn <font color="#990000">=</font> url<font color="#990000">.</font><b><font color="#000000">openConnection</font></b> <font color="#990000">();</font>
+				in <font color="#990000">=</font> conn<font color="#990000">.</font><b><font color="#000000">getInputStream</font></b> <font color="#990000">();</font>
+				<font color="#009900">byte</font><font color="#990000">[]</font> buffer <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <font color="#009900">byte</font><font color="#990000">[</font><font color="#993399">1024</font><font color="#990000">];</font>
+				<font color="#009900">int</font> iRead<font color="#990000">;</font>
+				<font color="#009900">long</font> lWritten <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+				<b><font color="#0000FF">while</font></b> <font color="#990000">((</font>iRead <font color="#990000">=</font> in<font color="#990000">.</font><b><font color="#000000">read</font></b> <font color="#990000">(</font>buffer<font color="#990000">))</font> <font color="#990000">!=</font> <font color="#990000">-</font><font color="#993399">1</font><font color="#990000">)</font> <font color="#FF0000">{</font>
+					out<font color="#990000">.</font><b><font color="#000000">write</font></b><font color="#990000">(</font>buffer<font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">,</font> iRead<font color="#990000">);</font>
+					lWritten <font color="#990000">+=</font> iRead<font color="#990000">;</font>
+				<font color="#FF0000">}</font>
+			<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>bDebug<font color="#990000">)</font>  System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b> <font color="#990000">(</font>sFilename <font color="#990000">+</font> <font color="#FF0000">"</font><font color="#CC33CC">\t</font><font color="#FF0000">"</font> <font color="#990000">+</font> lWritten<font color="#990000">);</font>
+			<font color="#FF0000">}</font>
+		<font color="#FF0000">}</font>
+		<b><font color="#0000FF">catch</font></b> <font color="#990000">(</font><font color="#008080">Exception</font> ex<font color="#990000">)</font> <font color="#FF0000">{</font>
+			ex<font color="#990000">.</font><b><font color="#000000">printStackTrace</font></b> <font color="#990000">();</font>
+		<font color="#FF0000">}</font>
+		<b><font color="#0000FF">finally</font></b> <font color="#FF0000">{</font>
+			<b><font color="#0000FF">try</font></b> <font color="#FF0000">{</font>
+				<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>in <font color="#990000">!=</font> <b><font color="#0000FF">null</font></b><font color="#990000">)</font>  in<font color="#990000">.</font><b><font color="#000000">close</font></b><font color="#990000">();</font>
+				<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>out <font color="#990000">!=</font> <b><font color="#0000FF">null</font></b><font color="#990000">)</font>  out<font color="#990000">.</font><b><font color="#000000">close</font></b><font color="#990000">();</font>
+			<font color="#FF0000">}</font>
+			<b><font color="#0000FF">catch</font></b> <font color="#990000">(</font><font color="#008080">IOException</font> ioe<font color="#990000">)</font> <font color="#FF0000">{</font>
+			<font color="#FF0000">}</font>
+		<font color="#FF0000">}</font>
+	<font color="#FF0000">}</font>  <i><font color="#9A1900">// downloadFile</font></i>
+
+
+	<i><font color="#9A1900">/* class global */</font></i>
+    <i><font color="#9A1900">/* global constants */</font></i>
+    <b><font color="#0000FF">static</font></b> <b><font color="#0000FF">final</font></b> <font color="#008080">String</font> C_JDBC_CLASS <font color="#990000">=</font> <font color="#FF0000">"com.mysql.jdbc.Driver"</font><font color="#990000">;</font>
+	
+    <i><font color="#9A1900">/* global variables */</font></i>
+	<b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> <font color="#009900">boolean</font> bDebug <font color="#990000">=</font> <b><font color="#0000FF">false</font></b><font color="#990000">;</font>
+
+<font color="#FF0000">}</font> <i><font color="#9A1900">// Load2600Issue</font></i>
+</tt></pre>

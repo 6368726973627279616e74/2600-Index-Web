@@ -1,0 +1,1440 @@
+1	Not Assigned	\N	\N	Initial value.
+2	Emmanuel Goldstein	Eric Corley	letters@2600.com	Editor/Owner.
+3	dual	\N	\N	\N
+4	OSIN	\N	\N	\N
+5	Barrett Brown		Barrett.Brown@gmail.com	I've assumed Barret D. Brown and Barrett Brown are the same author.
+6	ZoeB	\N	\N	\N
+7	The Prophet	\N	\N	\N
+8	zeitgeist	\N	\N	\N
+9	MS-Luddite	\N	\N	\N
+10	Element.Crying	\N	Element.Crying@Gmail.com	\N
+11	Vitaminion	\N	vitaminion@gmail.com	\N
+12	mOther	\N	\N	\N
+13	PriesT	\N	priestinaround@gmail.com	\N
+14	ilikenwf	\N	parwok@gmail.com	\N
+15	Readers	\N	\N	Letters to the editor.
+16	Nick Farr	\N	nickfarr@hacdc.org	\N
+17	m0untainrebel	\N	m0untainrebel@riseup.net	\N
+18	Atom Smasher	\N	atom@smasher.org	pgp = 762A 3B98 A3C3 96C9 C6B7 582A B88D 52E4 D9F5 7808
+19	MasterChen		infoinject@gmail.com	
+20	Frater Perdurabo	\N	\N	\N
+21	The Cheshire Catalyst	Richard Cheshire	cheshire@2600.com	Former publisher of the TAP Newsletter. I've assumed "The Cheshire Catalyst" and "Cheshire Catalyst" are the same author.
+22	briatych	\N	\N	\N
+23	Dragorn	\N	\N	\N
+24	glider			I've assumed Glider and glider are the same author.
+25	suN8Hclf	\N	suN8Hclf@vp.pl	\N
+26	Dr. Zoltan	\N	drzoltan@drzoltan.com	\N
+27	Peter Wrenshall		987654321@hush.ai	
+28	malpelo93	\N	malpelo93@gmail.com	\N
+29	Terry Stenvold	\N	thebmxr@gmail.com	\N
+30	Tim	\N	\N	\N
+31	Carbide			I've assumed Carbide and carbide are the same author.
+34	ntbnnt	\N	\N	\N
+35	Derneval R. Rodrigues Da Cunha		curupira@2600.com	I've assumed Derneval and Derneval R. Rodrigues Da Cunha are the same author.
+36	Gr@ve_Rose		graverose@mail.com	
+37	Sai Emrys	\N	2600@saizai.com	AIM: #ca2600: saizai\
+GPG: 0xAFF1F292
+39	Uriah C.	\N	\N	\N
+40	sc0ut64	\N	sc0ut64@yahoo.ca	\N
+41	Barry Wels	\N	\N	\N
+42	Aaron	\N	\N	\N
+43	Plasticman	\N	\N	\N
+44	L0j1k	\N	l0j1k@l0j1k.net	\N
+45	Acrobatic		jbnunn@gmail.com	
+46	Jacob P. Silvia	\N	jacob.silvia@gmail.com	\N
+47	drlecter	\N	\N	\N
+48	Turgon	\N	\N	\N
+49	Porter Payne	\N	\N	\N
+50	J.R. Vela	\N	jrvela@aristasol.com	\N
+51	SiliconeClone	\N	\N	\N
+52	The Thomps	\N	\N	\N
+53	Agent Zer0	\N	agentzr0@gmail.com	\N
+54	glutton			I've assumed Glutton and glutton are the same author.
+55	Kn1ghtl0rd		kn1ghtl0rd@hotmail.com\
+Kn1ghtl0rd@kn1ghtl0rd.org	
+56	phundie	\N	phundie@yahoo.com	\N
+57	xinit	\N	\N	\N
+58	silic0nsilence	\N	2600@silic0nsilence	\N
+59	He-Who-Must-Not-Be-Named	\N	\N	\N
+60	AtomicRhino	\N	AnAtomicRhino@gmail.com	\N
+61	Martin Eberhard	\N	\N	\N
+62	Anonymous			I've assumed anonymous and Anonymous are the same author.
+63	Akasha	\N	\N	\N
+64	Plux	\N	\N	\N
+65	reid			I've assumed Reid and reid are the same author.
+66	Andreas Rietzler	\N	Andreas.Rietzler@uni-konstanz.de	\N
+67	Dionysus	\N	\N	\N
+68	Variable Rush	Bradley Hall	variablerush@gmail.com	\N
+69	Casandro	\N	\N	\N
+70	black_death	\N	blackdeathx@gmail.com	\N
+73	WillPC	\N	willpc@hushmail.com	\N
+75	GutBomb	\N	\N	\N
+76	Phatbot	\N	chunkylover37@gmail.com	\N
+77	Erik Paulsen	\N	\N	\N
+78	Mercereau	\N	\N	aka dohboy.
+79	satevia	\N	\N	\N
+80	Rop Gonggrijp	\N	\N	\N
+81	Cronicl3		cronicl3@gmail.com	
+82	Estragon	\N	\N	\N
+83	stderr	\N	stderr.dev@gmail.com	\N
+84	Alt229	\N	\N	\N
+85	Agent5	\N	\N	\N
+86	Anonymous Chi-Town Hacker	\N	\N	\N
+87	Gausss VanSant	\N	\N	\N
+88	sail0r	\N	sail0r@creepjoint.net	IRC #2600 via ICQ 490590026.
+89	S. Pidgorny	\N	\N	\N
+90	Scotty Fitzgerald	\N	\N	\N
+91	Tessian		tessian@gmail.com	
+92	Silent Strider	\N	\N	\N
+93	Poacher	\N	\N	\N
+94	Darkarchives	\N	\N	\N
+95	Paradox	\N	\N	\N
+96	forgotten247			I've assumed Forgotten247 and forgotten247 are the same author.
+97	Metalx1000	Kris Occhipinti	metalx1000@yahoo.com	
+98	Cliff	\N	\N	\N
+99	Isreal	\N	\N	\N
+100	DieselDragon	\N	Hyperspeed666@gmail.com	\N
+101	Kartikeya Putra	\N	alienbaby@freaknetwork.in	\N
+102	Bre Prettis	\N	\N	\N
+103	Ik	\N	\N	\N
+104	Half Life	\N	halflife811@gmail.com	\N
+105	Ian Murphy	\N	back_space@hackermail.com	aka Backspace
+106	Pappy	\N	\N	\N
+107	Yimir	\N	roi_noir@hotmail.com	\N
+108	Unanimously Anonymous	\N	\N	\N
+109	=-virus-=	\N	\N	\N
+110	Tony Hepo	\N	\N	\N
+111	Milton Bradley	\N	\N	\N
+112	gLoBus	\N	\N	\N
+113	Zilg0	\N	Zilg0@trashmail.net	\N
+114	You	\N	\N	\N
+115	Agent Smith	\N	\N	\N
+116	Dagfari	\N	\N	\N
+117	PhreakerD7	\N	\N	\N
+118	Donoli	\N	\N	\N
+119	krt	\N	\N	\N
+120	b1tl0ck	\N	\N	\N
+121	MS3FGX	Tom Nardi	MS3FGX@gmail.com	<a href="http://www.digifail.com">Current Research and Projects</a>
+122	route	\N	\N	\N
+123	Geospart	\N	\N	\N
+124	The Termionic Overlord	\N	\N	\N
+125	Ariel Saia	\N	\N	\N
+126	Kousu	\N	kousue@gmail.com	\N
+127	daColombian	\N	jmwco@blazemail.com	\N
+128	Evil Wrangler	\N	\N	\N
+129	Akurei	\N	\N	\N
+130	Mitch Altman	\N	\N	\N
+131	Sidge.2 & Bimmerfan	\N	\N	\N
+132	Franz Kafka	\N	\N	\N
+133	Toni-Sama	\N	\N	\N
+134	SickCodeMonkey	\N	\N	\N
+135	Marxc2001	\N	\N	\N
+136	Witchlight	\N	\N	\N
+137	Azohko	\N	\N	\N
+138	Passdown	\N	\N	\N
+139	DBTC	\N	\N	\N
+140	quel	\N	\N	\N
+141	Acidus		acidus@msblabs.org\
+Acidus@resnet.gatech.edu	Most Significant Bit Labs
+142	Zaphraud	\N	\N	\N
+143	Major Lump	\N	MajorLump@hotmail.com	\N
+144	Cadet Crusher	\N	\N	\N
+145	Xyzzy	\N	\N	\N
+146	John Smith	\N	\N	\N
+147	Bill Squire	\N	\N	aka BillSF
+148	EvilBrak	\N	evilbrak@yahoo.com	\N
+149	Natas	\N	natas@oldskoolphreak.com	\N
+150	Alex Muentz, Esq.	\N	lex@successfulseasons.com	\N
+151	Tom from New England	\N	\N	aka Mr. Icom
+152	SLEZ	\N	\N	\N
+153	James Penguin	\N	jamespenguin@gmail.com	\N
+154	valnour	\N	\N	I've assumed Valnour is the same author.
+155	comfreak	\N	\N	\N
+156	Toby Zimmerer	\N	\N	\N
+157	Cristian	\N	\N	\N
+158	The Piano Guy	\N	\N	\N
+159	Rick Davis	\N	\N	\N
+160	Comspec - Sigma Nu	\N	\N	\N
+161	Dale Thorn	\N	d_t_h_o_r_n@yahoo.com	\N
+162	Royal	\N	anonymousroyal@gmail.com	\N
+163	Pirho	\N	\N	\N
+164	Phillip Torrone	\N	fill@2600.com	\N
+165	Byron Bussey	\N	\N	\N
+166	c-dollar	\N	\N	\N
+167	ax0n	\N	ax0n@h-i-r.net	\N
+168	Joseph Battaglia	\N	sephail@2600.com	\N
+169	cipz	\N	cipz@lv2600.com	\N
+170	Kcahon	\N	\N	\N
+171	Tokachu	\N	tokachu@gmail.com	\N
+172	\\/indic8tr	\N	\N	\N
+173	noir		noir.na@gmail.com	
+174	Arcade One	\N	\N	\N
+175	Edward Stoever	\N	edward@database-expert.com	\N
+176	undergr0und n1nja	\N	\N	\N
+177	chr0nicxb0red0m	\N	mediscript4540@hotmail.com	\N
+178	Ray Dios Haque	\N	rayhaque@gmail.com	\N
+179	Dexterous1	\N	\N	\N
+180	GurtDotCom	\N	\N	\N
+181	Mark Abene	\N	\N	aka Phiber Optik
+182	Sakuramboo	\N	\N	\N
+183	Moebius Strip	\N	\N	\N
+184	Dr. Apocalypse	\N	dr.apocalypse@gmail.com	\N
+185	Ghostie	\N	\N	\N
+186	dNight	\N	d_night@comcast.net	\N
+187	Particle Bored	\N	\N	\N
+188	b0rn_slippy	\N	\N	\N
+189	Battery	\N	Battery@chicago2600.net	\N
+190	alokincilo	\N	\N	\N
+191	Insert Name Here	\N	\N	\N
+192	Sibios	\N	sibios@gmail.com	\N
+193	WagStaff	\N	\N	\N
+194	Bruce Schneier	\N	\N	\N
+195	c0z	\N	\N	\N
+196	kaigeX	\N	\N	\N
+197	Simon Templer	\N	\N	\N
+198	David Ip	\N	auto209182@hushmail.com	\N
+199	David Norman	\N	\N	\N
+200	mirrorshades	\N	poj28qe02@sneakmail.com	\N
+201	FxYxIxE	\N	\N	\N
+202	Xen	\N	xenuhdo@gmail.com	\N
+203	Bryan Elliott	\N	\N	\N
+204	Michael Saarna	\N	\N	\N
+205	Andrew Smith	\N	\N	\N
+206	iSEPIC	\N	\N	\N
+207	Henry Q. Buther	\N	\N	\N
+208	Savage Monkey	\N	\N	\N
+209	Squealing Sheep	\N	\N	\N
+210	modman		modman@optonline.net	
+211	iNSiDER	\N	\N	\N
+212	Black Ratchet		blackratchet@blackratchet.org	
+213	graphak	\N	\N	\N
+214	Rob	\N	\N	\N
+215	Don	\N	\N	\N
+216	windwaker	\N	windwaker101@gmail.com	\N
+217	FreeRider	\N	\N	\N
+218	J.M.	\N	\N	\N
+219	blakmac	\N	blakmac@gmail.com	\N
+220	Mister Bojangles	\N	cougar.slayer@gmail.com	\N
+221	Jonathan Pamplin	\N	j.pamplin@gmail.com	\N
+222	greyarea	\N	greyarea@phreaksandgeeks.com	\N
+223	BreakDecks	\N	\N	\N
+224	dopamine	Aubrey Ellen Shomo	\N	\N
+225	0vid	\N	\N	\N
+226	subphreeky	\N	subphreeky@yahoo.com	\N
+227	Shawn Frederick	\N	waxycast@hotmail.com	\N
+228	CeeJay	\N	\N	\N
+229	Stephonovich	\N	\N	\N
+230	Thorn	\N	thorn2600@yahoo.com	\N
+231	t_ratv	\N	\N	\N
+232	Mystic		mystic@lostways.com	
+233	El Rey	\N	\N	\N
+234	stankdawg		stankdawg@stankdawg.com\
+StankDawg@hotmail.com	I've assumed stankdawg and StankDawg are the same author.
+235	Eprom Jones	\N	\N	\N
+236	Dit and Dah	\N	\N	\N
+237	Apratt	\N	\N	\N
+238	st4r_runner	\N	\N	\N
+239	A5an0	\N	\N	\N
+240	striker	\N	\N	\N
+241	BrothaReWT	\N	\N	\N
+242	A0nRkjk=	\N	\N	\N
+243	divarin	\N	\N	\N
+244	XlogicX		XlogicX@phx2600.com\
+drkhypnos314@hotmail.com\
+No.Axiom@gmail	drkhypnos314@hotmail.com used in 21:1 and 26:1.\
+No.Axiom@gmail used in 29:1.
+245	Seal	\N	\N	\N
+246	Inglix the Mad	\N	\N	\N
+247	SystemDownfall and Worm	\N	Systemdownfall@blueoxidine.com	\N
+248	FocusHacks	\N	\N	\N
+249	JFast	\N	\N	\N
+250	Daniel	\N	daniels@stud.cs.uit.no	\N
+251	SistemRoot	\N	\N	\N
+252	Morcheeba	\N	\N	\N
+253	J.V.	\N	evilpope@thepopeisevil.com	\N
+254	chiLL p3ngu1n	\N	\N	\N
+255	george	\N	\N	\N
+256	Big Bird	\N	\N	\N
+257	Luckycan	\N	\N	\N
+258	solemneyed	\N	\N	\N
+259	JackAceHole	\N	\N	\N
+260	Trent Bradley	\N	\N	aka Blue Collar Camel
+261	Pyscho	\N	\N	\N
+262	Muskrat	\N	\N	\N
+263	Bob Krinkle	\N	\N	\N
+264	dk00	\N	\N	\N
+265	The AntiLuddite	\N	\N	\N
+266	Redbird	\N	redbird@2600.com	\N
+267	clorox	\N	\N	\N
+268	VileSYN	\N	\N	\N
+269	Kong	\N	\N	\N
+270	Moby Disk	\N	\N	\N
+271	H2007	\N	\N	\N
+272	RSG	\N	\N	\N
+273	Josh D	\N	\N	\N
+274	Bac	\N	\N	\N
+275	Aristotle	\N	\N	\N
+276	Chess	\N	\N	\N
+277	DarKry	\N	darkry@gmail.com	\N
+278	LoungeTab	\N	LoungeTab@hotmail.com	\N
+279	DJ Williams	\N	\N	\N
+280	uberpenguin	\N	uberpenguin@hotpop.com	\N
+281	wishbone	\N	\N	\N
+282	skilar	\N	skilar@linux.net	\N
+283	Anonymous Author	\N	\N	MDG: d03d3293cd954af6bccd53eac5d828fc
+284	Patrick Madigan	\N	\N	\N
+285	Sam Nitzberg	\N	sam@iamsam.com	\N
+286	David Dunn		unbr34k4bl3@gmail.com	
+287	HOMA	\N	\N	\N
+288	Suicidal	\N	\N	\N
+289	Mojo	\N	\N	\N
+290	Barfbag	\N	barfbag@theblankpages.com	\N
+291	Samjack	\N	\N	\N
+292	slummin	\N	\N	\N
+293	Frater Ignotius	\N	unknown@paranoia.no	\N
+294	tele	\N	\N	\N
+295	spite	\N	Spite_fowl@yahoo.com	\N
+296	jumbobrian	\N	jumbobrian@yahoo.com	\N
+297	bill			AKA fsu_tkd90
+298	Fernando	\N	\N	\N
+299	MeGaBiTe1	\N	megabite1@hotmail.com	\N
+300	max_9909	\N	max_9909@yahoo.com	\N
+301	Zourick	\N	\N	\N
+302	slick0	\N	\N	\N
+303	SDMX	\N	\N	\N
+304	arse	\N	\N	\N
+305	akaak	\N	\N	\N
+306	Gruggni	\N	\N	\N
+307	shinohara	\N	shinohara@ziplip.com	\N
+308	Chris Johnson	\N	\N	\N
+309	L. Gallion	\N	\N	\N
+310	Solthae	\N	\N	\N
+311	SARain	\N	\N	\N
+312	Eoban	\N	eoban@eoban.com	\N
+313	Toby		toby@richards.net	I've assumed Toby and toby are the same author.
+314	b-bstf	\N	\N	\N
+315	wideband dreamer	\N	\N	a.k.a. dark spectrum
+316	Sairys	\N	\N	\N
+317	MobiusRenoire	\N	\N	\N
+318	JK			I've assumed JK and jk are the same author.
+319	Wrangler	\N	\N	\N
+320	Galahad	\N	galahad@galahadhq.com	\N
+321	Stik	\N	\N	\N
+322	TRM	\N	\N	\N
+323	Irving Washingon	\N	thedarkshirt@hotmail.com	\N
+324	Jesters8	\N	Jesters8@yahoo.com	\N
+325	TOneZ2600	\N	\N	\N
+326	Grandmaster Plague	\N	\N	\N
+327	TEV	\N	\N	\N
+328	dave	\N	\N	\N
+329	CronoS@OlympoS	\N	\N	\N
+330	J. P. Arnold	\N	\N	\N
+331	I. O. Hook	\N	\N	\N
+332	k0nk	\N	\N	\N
+333	Kevin T. Blakley	\N	\N	\N
+334	Michael Hampton	\N	\N	Homeland Stupidity
+335	Chris Dickinson	\N	\N	\N
+336	KellyKeeton.com	\N	\N	\N
+337	enferex	\N	mattdavis9@gmail.com	A 757 Labs Effort
+338	frameloss	\N	\N	\N
+339	hypo	\N	\N	\N
+340	D4vedw1n	\N	\N	\N
+341	scamorama	\N	\N	\N
+342	linear			United Phone Losers
+343	Virgil Griffith	\N	\N	\N
+344	Lex Neva	\N	\N	\N
+345	Sigma	\N	\N	\N
+346	No Author Specified	\N	\N	\N
+347	Felixalias	\N	\N	\N
+348	Ethernium57	\N	\N	\N
+349	haxadecimal	\N	\N	\N
+350	Leviathan	\N	\N	\N
+351	Professor L	\N	\N	\N
+352	Juraj Bednar	\N	ca@jurajbednar.com	\N
+353	Screamer Chaotix	\N	screamer@hackermind.net	\N
+354	Lucky225		lucky225@2600.com\
+Lucky225@hotmail.com\
+Lucky225@verizonfears.com	
+355	0x20Cowboy	\N	\N	\N
+356	RaT_HaCk	\N	RaT_HaCk@net-troy.com	\N
+357	decoder	\N	decoder@oldskoolphreak.com	\N
+358	methodic	\N	methodic@libpcap.net	\N
+359	Xphile	\N	\N	\N
+360	sunpuke	\N	\N	\N
+361	Darlok	\N	\N	\N
+362	Schnarf	\N	\N	\N
+363	Joseph B. Zekany	\N	\N	\N
+364	The Pissed Off One Armed Man	\N	\N	\N
+365	Shiv Polarity	\N	shivPolarity@myrealbox.com	\N
+366	Lirakis	\N	\N	\N
+367	mojomonkee	\N	\N	\N
+368	X3N0X	\N	\N	\N
+369	Shawn F.	\N	\N	\N
+370	dead_pilgrim	\N	\N	\N
+371	redxlegion	R. Kirk Noble	redxlegion@yahoo.com	Red Legion
+372	C.B. Cates	\N	\N	\N
+373	C3llph			I've assumed C3llph and c3llph are the same author.
+374	Shade	\N	\N	\N
+375	Kairi Nakatsuki	\N	kairi@phreaker.net	\N
+376	bland_inquisitor		bland_inquisitor@hotmail.com	I've assumed bland_inquisitor and Bland Inquisitor are the same author.
+377	Jimmy Yu	\N	\N	\N
+378	The Dark Shirt	\N	\N	\N
+379	atoma	\N	\N	\N
+380	_cHiCkEn_	\N	\N	\N
+381	The Rev. Dr. Jackal-Headed-God	\N	\N	\N
+382	superbeast	\N	\N	\N
+383	Dark Spectrum	\N	\N	\N
+384	minion	\N	\N	\N
+385	Charles	\N	\N	\N
+386	Rev. Karn	\N	\N	ZenLogic/Freebooter
+387	osiris188	\N	Updates81@hotmail.com	\N
+388	Epiphany and J0hny_Lightning	\N	j0hnylightning@hotmail.com\
+epiphany@port7alliance.com	\N
+389	ddShelby	\N	\N	\N
+390	Spyrochaete	\N	\N	\N
+391	FragSpaz	\N	fragspaz@fragspaz.com	\N
+392	Plazmatic Shadow	\N	plaz@kevinsnet.com	\N
+393	Bill Melater	\N	retaleMlliB@hotmail.com	\N
+394	Chris Shiflett	\N	chris@shiflett.org	\N
+395	Gr3y t0qu3	\N	greytoque@paladindesign.ca	\N
+396	Maniac_Dan	\N	\N	\N
+397	c0ld_b00t	\N	\N	\N
+398	D. Foetus	\N	\N	\N
+399	Kr@kH3d (DFxC)	\N	\N	\N
+400	Live_wire	\N	\N	\N
+401	0/V3_3y3d_/V\\0/Vst3r	\N	haxor2600@mailcity.com	\N
+402	area_51	\N	\N	\N
+403	phantasm	\N	phantasm@textbox.net	\N
+404	Alex Daniel	\N	\N	\N
+405	The Flatline	\N	\N	\N
+406	Straightface	\N	straightfacegangsta@excite.com	\N
+407	di0nysus	\N	\N	\N
+408	Tom Morrow 3.0	\N	\N	\N
+409	kaige	\N	kaigex@yahoo.com	Is kaigeX the same author?
+410	Eric	\N	\N	\N
+411	Code0	\N	\N	\N
+412	Mangaburn	\N	mangaburn@ziplip.com	\N
+413	Mark12085	\N	\N	\N
+414	LiquidBinary	\N	\N	\N
+415	psyk0mantis	\N	digital_shad0w@hotmail.com	\N
+416	Khoder bin Hakkin	\N	\N	\N
+417	Kris Olson	\N	\N	\N
+418	Mr. Glenn Frog	\N	\N	\N
+419	iCe799	\N	ice799@linuxmail.org	\N
+420	Derek P. Moore	\N	\N	\N
+421	unformed	\N	\N	\N
+422	HJH	\N	\N	\N
+423	dufu			I've assumed Dufu and dufu are the same author.
+424	David Nicol	\N	\N	\N
+425	Iconoclast	\N	phosgene@setec.org\
+iconoclast@thepentagon.com	\N
+426	Thermofish (JW)	\N	\N	\N
+427	Boris Loza	\N	\N	\N
+428	docburton	\N	\N	\N
+429	Grifter	\N	grifter@staticdischarge.org	\N
+430	Tazz Shippensburg	\N	\N	\N
+431	Ben Mccorkle	\N	\N	\N
+432	AcidFlame	\N	flameacid@hotmail.com	\N
+433	Cunning Linguist	\N	cunninglinguist@hushmail.com	\N
+434	diabolik	\N	diabolik@nitric.net	\N
+435	Steven Kreuzer	\N	skreuzer@mac.com	\N
+436	Elf Qrin	\N	\N	\N
+437	Captain B	\N	\N	\N
+438	dalai	\N	dalai@swbt.net	A Traumatized Production
+439	Pankaj Arora	\N	pankajarora@paware.com	\N
+440	hairball	\N	hairball@illgotten.net	\N
+441	g00gleminer	\N	g00gleminer@fiberia.com	\N
+442	Chris Brynes	\N	\N	JEAH Communications, LLC
+443	Javier O.	\N	javier@yahoo.com	\N
+444	Pete	\N	\N	\N
+445	dual_parallel	\N	dual_parallel@hotmail.com	\N
+446	Suicidal_251	\N	\N	\N
+447	Wumpus Hunter	\N	\N	\N
+448	angelazaharia	\N	\N	\N
+449	Rob Rohan	\N	\N	\N
+450	netfreak	\N	\N	\N
+451	Elite158	\N	\N	\N
+452	horrid	\N	\N	\N
+453	mennonite	\N	\N	\N
+454	Nv	\N	\N	\N
+455	dknfy	\N	dknfy@hotmail.com	\N
+456	A.W.M.	\N	\N	\N
+457	xile	\N	\N	\N
+458	Clovis	\N	\N	\N
+459	Braddock Gaskill	\N	braddock@braddock.com	\N
+460	The Walrus	\N	\N	\N
+461	Pack Rat Sam	\N	\N	\N
+462	HoTsAbI	\N	hotsabi@yahoo.com	\N
+463	phobik	\N	\N	\N
+464	SnakeByte	\N	SnakeByte@kryptocrew.de	\N
+465	Plex Inphiniti	\N	\N	\N
+466	Sean Whalen	\N	arpspoof@gmx.net	\N
+467	Darbycrsh	\N	\N	\N
+468	Nickels 1	\N	\N	\N
+469	deadkode	\N	deadkode@phreaker.net	\N
+470	Dark Overlord of the DoC			
+471	Achilles Outlaw, Ph.D.	\N	\N	\N
+472	Dr. Leovinus	\N	\N	\N
+473	J-Fast	\N	\N	\N
+474	Golden_Eternity	\N	\N	\N
+475	Hi_Risc	\N	\N	aka ASB
+476	Stephen Thomas	\N	stephenthomas@rampantsolutions.com	\N
+477	The Datapharmer	\N	c11h15no2@yahoo.com	\N
+478	m0rtis	\N	\N	\N
+479	Amatus	\N	\N	\N
+480	Alex	\N	\N	\N
+481	ThinkT4nk		thinkt4nk@cyberarmy.com	
+482	Todd Garrison	\N	\N	\N
+483	L14	\N	\N	\N
+484	Mr. Brownstone	\N	\N	\N
+485	Loki	\N	\N	\N
+486	Lumikant	\N	\N	\N
+487	Durkeim the Withered God	\N	\N	\N
+488	Chris Silva	\N	\N	\N
+489	Trailblazer	\N	trailblazer@usa.com	\N
+490	Thuull	\N	\N	\N
+491	6M AL	\N	\N	\N
+492	Lunius	\N	\N	\N
+493	Chris McKinstry	\N	\N	\N
+494	TC	\N	\N	\N
+495	W1nt3rmut3	\N	mut3@oldskoolphreak.com	\N
+496	Papa Doc History	\N	\N	\N
+497	annie niemoose	\N	\N	\N
+498	autocode	\N	\N	\N
+499	Phocks	\N	phocks@site-forge.com	\N
+500	6-Pack	\N	\N	\N
+501	Deviant Ollam	\N	\N	\N
+502	cbsm2009	\N	\N	\N
+503	Fantacmet	\N	\N	\N
+504	der_m	\N	\N	\N
+505	KES	\N	\N	\N
+506	The Philosopher	\N	philosopher2600@gmail.com	IRC on 2600net in #2600, #telephreak and #telephony. Telephreak BBS at telnet://bbs.telephreak.org
+507	RussianBlue	\N	\N	\N
+508	shotintoeternity	\N	shotintoeternity@gmail	\N
+509	Jason Scott	\N	\N	\N
+510	Brendan Griffiths	\N	\N	\N
+511	IntlOrange	\N	\N	\N
+512	Julian Todd	\N	\N	\N
+513	CRCF	\N	\N	\N
+514	ChrisJohnRiley	\N	\N	\N
+515	phishphreek	\N	phishphreek@gmail.com	\N
+516	Aesun	\N	\N	\N
+517	copycat	\N	\N	\N
+518	Dspanky	\N	\N	Blue Collar Hacker's Union
+519	Sam Morse	\N	sigint98@yahoo.com	\N
+520	FaultySignal9	\N	\N	\N
+521	CaS	\N	cas@globalhacking.com	\N
+522	Renaldo	\N	\N	\N
+523	LeXeR	\N	\N	\N
+524	Common Knowledge	\N	\N	\N
+525	xdroop	\N	\N	\N
+526	Also Sprach Zarathustra	\N	\N	\N
+527	canyoumatrix	\N	canyoumatrix@yahoo.com	\N
+528	Sect0r F4ailure	\N	\N	\N
+529	rys	\N	\N	\N
+530	Waphle/Managahtzul	\N	\N	\N
+531	Hiemlich VonScootertraus the 53rd	\N	\N	\N
+532	Silvio Manuel	\N	\N	\N
+533	BrotherBen	\N	\N	\N
+534	Brent Ranney	\N	\N	\N
+535	Dean Swift	\N	\N	\N
+536	fU9A5i	\N	\N	\N
+537	ASM_dood	\N	\N	\N
+538	DEFT	\N	deft@payze.com	\N
+539	CSS	\N	\N	\N
+540	Megatron	\N	\N	\N
+541	Cxi~	\N	\N	\N
+542	Static	\N	static@mentalwaste.8m.com	\N
+543	KireC	\N	\N	\N
+544	AgentK	\N	kent@tegels.org	\N
+545	princessopensource	\N	\N	\N
+546	Munzenfernsprechermann	\N	\N	\N
+547	Javaman	\N	\N	\N
+548	Zarathustra	\N	\N	\N
+549	Deamtime	\N	\N	\N
+550	Crim, Redomega	\N	\N	\N
+551	Dr.Clue	\N	dr.clue@grond.demon.co.uk	\N
+552	Xprotocol	\N	\N	\N
+553	obitus	\N	obitus@marmoset.net	\N
+554	Pip Macki	\N	\N	\N
+555	Kevin Mitnick	\N	\N	\N
+556	guinsu	\N	\N	\N
+557	Phrostbyte	\N	\N	\N
+558	Astroman66	\N	\N	\N
+559	magus	\N	securid@terrorists.net	\N
+560	xenox	\N	\N	\N
+561	Chatreaux	\N	\N	\N
+562	silicon kill	\N	\N	\N
+563	Jinx	\N	Jinx@grapplers.com	\N
+564	EchoMirage	\N	webmaster@echomirage.com	\N
+565	Lord Xarph	\N	xarph@blueneptune.com	\N
+566	ccsucks	\N	\N	\N
+567	skrooyoo	\N	\N	\N
+568	~sn0crash	\N	sn0crash@DigitalPhreak.net	\N
+569	Mandark	\N	\N	\N
+570	bober	\N	\N	\N
+571	Phredog	\N	\N	\N
+572	Number Six	\N	\N	\N
+573	Kurruppt2k	\N	\N	\N
+574	Seuss	\N	\N	\N
+575	MMX	\N	\N	\N
+576	Maverick(212)	\N	\N	\N
+577	Slatan	\N	\N	\N
+578	Android	\N	\N	\N
+579	Black Axe	\N	\N	\N
+580	Jim Nieken	\N	\N	\N
+581	Jim Johnstone	\N	\N	\N
+582	Bob	\N	\N	\N
+583	Raz	\N	\N	\N
+584	Prototype Zero	\N	prototype0@collegeclub.com	\N
+585	PayLay	\N	paylay666@yahoo.com	\N
+586	Ulf of VSU	\N	\N	\N
+587	THX1138	\N	\N	\N
+588	The Abstruse One	\N	\N	\N
+589	ElecRage	\N	\N	\N
+590	Lobo The Duck	\N	\N	\N
+591	CYB D8RG/ASM	\N	\N	\N
+592	/bin/laden	\N	\N	\N
+593	TELEgodzilla	\N	\N	\N
+594	-theJestre-	\N	jestre@usa.net	\N
+595	skwp	\N	\N	\N
+596	HeadTrip	\N	\N	\N
+597	Hacks	\N	hacks@rocketmail.com	\N
+598	Madjestr	\N	\N	\N
+599	Hex	\N	\N	\N
+600	MIFF			I've assumed miff and MIFF are the same author.
+601	Happy Harry	\N	\N	\N
+602	radiat	\N	\N	\N
+603	nux	\N	\N	\N
+604	J-lite	\N	\N	\N
+605	saint	\N	saint@peachworld.com	\N
+606	root access	\N	blakvortex@juno.com	\N
+607	Demonologist	\N	\N	\N
+608	rift	\N	\N	\N
+609	JediMaster666	\N	jedimaster666@hotmail.com	\N
+610	DJ Tazz	\N	\N	\N
+611	jaundice	\N	\N	\N
+612	Zenstick	\N	\N	\N
+613	HyTek	\N	\N	\N
+614	Clawz	\N	\N	\N
+615	Thomas Icom/IIRG		ticom@iirs.com\
+ticom@2600.com	voicemail: 4266\
+Cybertek\
+I've assumed Thomas Icom and Thomas Icom/IIRG are the same author as they have the same email address.
+616	johnk	\N	\N	\N
+617	Luna	\N	\N	\N
+618	Sikdogg	\N	\N	\N
+619	darknite	\N	darknite@kurir.net\
+darknite@brigade.ml.org	\N
+620	Outlawyr	\N	\N	Attorney at Law
+621	Friedo	\N	friedo@interport.net	\N
+622	rain.forest.puppy	\N	rfpuppy@iname.com	\N
+623	Flack	\N	flack@theshop.net	\N
+624	Kingpin	\N	kingpin@l0pht.com\
+kingpin@2600.com	L0pht Heavy Industries\
+617\
+RDT Syndicate
+625	Kermit the Hog	\N	\N	\N
+626	EZ Freeze	\N	\N	\N
+627	VmasterX	\N	\N	\N
+628	Catatonic Dismay	\N	\N	\N
+629	Phineas Phreak	\N	\N	\N
+630	Mr. Curious	\N	\N	\N
+631	Khypoa	\N	\N	\N
+632	Fencer		fencer@nudist.org\
+fencer@privateer.org	I've assumed fencer and Fencer are the same author.
+633	nex	\N	\N	\N
+634	MSD	\N	\N	\N
+635	kriminal 3nigma	\N	\N	\N
+636	Fever	\N	a_fever@juno.com	\N
+637	Black Ice	\N	\N	\N
+638	deth6	\N	\N	of the Bullz On Parade
+639	J.P.	\N	\N	\N
+640	Armageddon	\N	\N	\N
+641	m0tion	\N	\N	\N
+642	Phunda Mental	\N	\N	\N
+643	D-Recz	\N	\N	\N
+644	Datum Fluvius	\N	\N	\N
+645	Crossbar	\N	\N	\N
+646	thirdhorse	\N	\N	\N
+647	Informagnet	\N	\N	\N
+648	Ex-Eleven	\N	\N	\N
+649	jeremy	\N	\N	\N
+650	Democritus	\N	\N	"Father of Materialism"
+651	Konceptor	\N	konceptor@hotmail.com	\N
+652	digital/Digital	\N	digitaldigital@darkcore.com	\N
+653	Tom Modern	\N	\N	\N
+654	Phluck	\N	\N	\N
+655	Krellis		krellis@the-pentagon.com	
+656	Axon	\N	\N	\N
+657	The IMC	\N	imc@kingcontent.com	\N
+658	Sundance Bean	\N	\N	\N
+659	kasper	\N	kasper@supernova.digital-galaxy.net	\N
+660	DrNick	\N	\N	\N
+661	Dr.Seuss of the OCPP	\N	\N	\N
+662	DataStorm	\N	havok@tfs.net	\N
+663	Archive	\N	\N	\N
+664	the Rainer	\N	\N	\N
+665	vandal	\N	\N	\N
+666	Tempest	\N	\N	\N
+667	Jeff Vorzimmer	\N	\N	\N
+668	Sadena Meti	\N	\N	\N
+669	MRCALAXY	\N	\N	\N
+670	Alien Time Agent, Seraf & Waldo	\N	\N	\N
+671	Section8	\N	\N	\N
+672	a corporate sucka' no longa'	\N	\N	\N
+673	Mbuna	\N	\N	\N
+674	Nathan Dorfman	\N	nathan@senate.org	\N
+675	found by Seraf	\N	\N	\N
+676	Crash 24601	\N	\N	\N
+677	PorT666 and ChaosMakeR InC.	\N	\N	\N
+678	A.M.	\N	\N	\N
+679	Mr. Opossum	\N	\N	\N
+680	Champ77	\N	\N	\N
+681	MiLtRoNi	\N	\N	\N
+682	Met-Enkeph	\N	\N	\N
+683	Fidel Castro	\N	\N	\N
+684	Agent Steal		agentsteal@usa.net	
+685	PhranSyS Drak3	\N	\N	\N
+686	TtJ	\N	\N	\N
+687	semiobeing	\N	\N	\N
+688	ChezeHead	\N	\N	\N
+689	Napa-Candidate	\N	\N	\N
+690	Big Brother	\N	\N	\N
+691	Sciri	\N	sciri@L0phT.com	\N
+692	Phiber Optik	\N	\N	\N
+693	tersIan	\N	\N	\N
+694	Dave Mathews	\N	\N	\N
+695	Seraf	\N	seraf@2600.com	\N
+696	VaxBuster	\N	\N	\N
+697	N-Tolerant	\N	\N	\N
+698	Syringe	\N	\N	\N
+699	Ryan	\N	ryan@2600.com	\N
+700	blueski-mask and the wrapper	\N	\N	\N
+701	Bernie S.	Ed Cummings	\N	I've assumed BernieS and Bernie S. are the same author.
+702	InVerse [MoS]	\N	\N	\N
+703	GT	\N	\N	\N
+704	Chocolate Phoetus	\N	\N	\N
+705	DETHMaster	\N	\N	\N
+706	F. Leader	\N	\N	\N
+707	Threc	\N	threc@li.net	\N
+708	Hans Gegen	\N	\N	\N
+709	Dennis Fiery	\N	\N	\N
+710	Justin Petersen	\N	\N	aka Agent Steal
+711	Noam Chomski	\N	\N	NYMPHO New York Metropolitan Phreak Hack Organization
+712	Equant	\N	\N	\N
+713	Billsf	\N	\N	\N
+715	Local Loop	\N	\N	\N
+716	Schlork	\N	\N	\N
+717	Frequency Man			(FreqMan)
+718	Secret Squirrel	\N	\N	\N
+719	Ted Perver	\N	\N	\N
+720	Bernz	\N	\N	\N
+721	rdpzza	\N	\N	\N
+722	Scott Skinner	\N	\N	\N
+723	Keyser Soze	\N	\N	\N
+724	D-Day	\N	\N	\N
+725	Douglas Berdeaux	\N	douglas@weaknetlabs.com	\N
+726	Tim Kulp	\N	\N	(cloak13)
+727	Bryce Verdier	\N	\N	\N
+728	Faz and caphrim007	\N	\N	\N
+729	J. P. Armstrong	\N	jp@hackmiami.org	\N
+730	hostileapostle	\N	\N	\N
+731	Johannes Grenzfurthner	\N	\N	\N
+732	Metaranha	\N	\N	\N
+733	Mister Cool	\N	\N	\N
+734	GhostRydr	\N	\N	\N
+735	Sam Bowne		sbowne@ccsf.edu	
+736	Bavs	\N	\N	\N
+737	John Bayne	\N	stephan@scandinode.com	\N
+738	VXO	\N	\N	\N
+739	GantMan	\N	\N	\N
+740	Steve Rives	\N	\N	\N
+741	Golem of Sprague	\N	\N	\N
+742	Active Matrix	\N	\N	\N
+743	Chillin' Bit Boy	\N	\N	\N
+744	PsychoWeasel	\N	\N	\N
+745	Kris	\N	\N	\N
+746	DayEight	\N	\N	\N
+747	maldoror			I've assumed Maldoror and maldoror are the same author.
+748	Baxlyder	\N	\N	\N
+749	JS	\N	\N	\N
+750	Jason Fairlane	\N	jfair@2600.com	\N
+751	Comhack International	\N	\N	\N
+752	Frog	\N	\N	\N
+753	Dr. Kolos	\N	\N	\N
+754	TheCrow	\N	thecrow@iconn.net	\N
+755	Mister Galaxy	\N	MRGALAXY@AOL.COM	\N
+756	Mr. Natural	\N	\N	\N
+757	Simple Nomad	\N	\N	\N
+758	TDi	\N	\N	\N
+759	Rebel	\N	\N	\N
+760	No comment and Crash Test Idiot	\N	\N	\N
+761	Big Lou	\N	\N	\N
+762	RedBoxChiliPepper	\N	\N	\N
+763	Loogie	\N	\N	\N
+764	Clark W. Griswold	\N	\N	\N
+765	Ice	\N	\N	\N
+766	~Me	\N	\N	\N
+767	Mike Larsen	\N	\N	\N
+768	Blue Whale	\N	\N	\N
+769	Gregory Gilliss	\N	\N	\N
+770	Dr. Delam	\N	\N	\N
+771	Veg	\N	\N	\N
+772	Case	\N	\N	\N
+773	Dr. No	\N	\N	\N
+774	The Shepherd	\N	\N	\N
+775	Impending Dhoom	\N	\N	\N
+776	Bootleg	\N	\N	\N
+777	The Majik Man	\N	\N	\N
+778	Trap	\N	\N	\N
+779	Commander Crash	\N	\N	\N
+780	The Roach	\N	\N	\N
+781	Swarthy	\N	\N	\N
+782	Hudson	\N	\N	\N
+783	Dastar Com	\N	\N	\N
+784	Tio Mate Jones	\N	\N	\N
+785	Roger Harrison	\N	\N	\N
+786	Darlo Okasi	\N	\N	\N
+787	Bisect Skull Gas	\N	\N	\N
+788	Adam Young	\N	\N	\N
+789	Helen Gone	\N	\N	\N
+790	Ice of Spidex	\N	\N	\N
+791	Mr. Galaxy	\N	\N	\N
+792	Ray Nonte	\N	\N	\N
+793	Mantis King	\N	\N	\N
+794	VOM	\N	\N	\N
+795	Prowler	\N	\N	\N
+796	Kitsune	\N	\N	\N
+797	Enigma	\N	\N	\N
+798	Danny Burstein	\N	dannyb@panix.com	\N
+799	Michael Wilson	\N	\N	\N
+800	Code-Cafe	\N	\N	\N
+801	Les Inconnu	\N	\N	\N
+802	Mr. Bungle	\N	\N	\N
+803	Voyager	\N	\N	\N
+804	Sonic Life	\N	\N	\N
+805	The Roving Eye	\N	\N	\N
+806	Paranoia	\N	\N	\N
+807	Wonko the Inane	\N	\N	\N
+808	Autolycus	\N	\N	\N
+809	Palindrome	\N	\N	\N
+810	EighT BaLL	\N	\N	\N
+811	Toxic Avenger	\N	\N	\N
+812	Q	\N	\N	\N
+813	The Camelback Juggler	\N	\N	\N
+814	Floyd Lloyd	\N	\N	\N
+815	snes	\N	\N	\N
+816	Packet Rat	\N	\N	\N
+817	Shidoshi	\N	\N	\N
+818	Kevin Crow	\N	\N	\N
+819	DeVillage Fool	\N	\N	\N
+820	Leonardo Brandson	\N	\N	\N
+821	Paul Bergsman	\N	\N	\N
+822	Parity Check	\N	\N	\N
+823	Xam Killroy	\N	\N	\N
+824	Kevin Daniel	\N	\N	\N
+825	MuscleHead	\N	\N	\N
+826	Roberto Verzola	\N	\N	\N
+827	Cap'n Dave	\N	\N	\N
+828	Mr. Upsetter	\N	\N	\N
+829	GateDancer and Shrike	\N	\N	\N
+830	Michael E. Marotta	\N	\N	\N
+831	Simson L. Garfinkel	\N	\N	\N
+832	Veghead	\N	\N	\N
+833	Remote Control	\N	\N	\N
+834	910	\N	\N	\N
+835	Tech Rat	\N	\N	\N
+836	The Bard	\N	\N	\N
+837	Walter S. Jaffee	\N	\N	\N
+838	FyberLyte	\N	\N	\N
+839	The Judicator of D.C.	\N	\N	\N
+840	W. Ritchie Benedict	\N	\N	\N
+841	Peter Rabbit	\N	\N	\N
+842	Hyperborean Menance	\N	\N	\N
+843	Orb	\N	\N	\N
+844	U.R. Source	\N	\N	\N
+845	Hakim	\N	\N	\N
+846	Drewl/Salivate	\N	\N	\N
+847	Cruise-CTRL	\N	\N	\N
+848	Stephen J. Resz	\N	\N	\N
+849	Dr. Bloodmoney	\N	\N	\N
+850	Judas Gerard	\N	\N	\N
+851	Echo	\N	\N	\N
+852	Crisp G.R.A.S.P.	\N	\N	\N
+853	The 999	\N	\N	\N
+854	Romula Velcro	\N	\N	\N
+855	Charlie Zee	\N	\N	\N
+856	The Phoenix	\N	\N	\N
+857	Dr. Clayton Phorester	\N	\N	\N
+858	Paco Xander Nathan	\N	\N	\N
+859	Dr. Williams	\N	\N	\N
+860	Bayonet	\N	\N	\N
+861	The Dark Knight	\N	\N	\N
+862	NeurAlien	\N	\N	\N
+863	GCMS MechWarriors	\N	\N	\N
+864	Roving Eye	\N	\N	\N
+865	Cray-Z Phreaker	\N	\N	\N
+866	Swinging Man	\N	\N	\N
+867	Count Zero	\N	\N	\N
+868	Infiltrator	\N	\N	\N
+869	The Devil's Advocate	\N	\N	\N
+870	Al Capone	\N	\N	\N
+871	New York Telephone Company	\N	\N	\N
+872	Phord Prefect	\N	\N	\N
+873	The Masked Avocado	\N	\N	\N
+874	The Fed	\N	\N	\N
+875	Night Ranger	\N	\N	\N
+876	Paranoid Panda	\N	\N	\N
+877	Frosty of the GCMS	\N	\N	\N
+878	Mad Scientist	\N	\N	\N
+879	Keyboard Jockey	\N	\N	\N
+880	The Monk	\N	\N	\N
+881	Midnight Caller	\N	\N	\N
+882	Alien X	\N	\N	\N
+883	Felipe Rodriquez and Rop Goggrij	\N	\N	\N
+884	Dust	\N	\N	\N
+885	Esper	\N	\N	\N
+886	Marshall Plann	\N	\N	\N
+887	Colonel Walter E. Kurtz	\N	\N	\N
+888	Craig Neidorf	\N	\N	\N
+889	PW	\N	\N	\N
+890	Chris Hibbert	\N	\N	\N
+891	The Dead Cow and NB	\N	\N	\N
+892	Condor Woodstein	\N	\N	\N
+893	DC	\N	\N	\N
+894	Dr. Abuse	\N	\N	\N
+895	MCI Mouse	\N	\N	\N
+896	Net Runner	\N	\N	\N
+897	The Paranoid Panda	\N	\N	\N
+898	The Infidel	\N	\N	\N
+899	Kevin	\N	\N	\N
+900	New Hack City	\N	\N	\N
+901	Jake "The Snake"	\N	\N	\N
+902	Lord Thunder	\N	\N	\N
+903	Noah Clayton	\N	\N	\N
+904	1000 Spiderwebs of Might	\N	\N	\N
+905	Crazed Luddite & Murdering Thug	\N	\N	\N
+906	Gordon Meyer and Jim Thomas	\N	\N	\N
+907	Violence	\N	\N	\N
+908	The Plague	\N	\N	\N
+909	The "Q"	\N	\N	\N
+910	Phantom Phreaker and Doom Prophe	\N	\N	\N
+911	B/Square and Mr. Upsetter	\N	\N	\N
+912	Tamlyn Gam	\N	\N	\N
+913	Lurch	\N	\N	\N
+914	Aritstotle	\N	\N	\N
+915	Micro Surgeon			West Coast Phreaks
+916	Larry P.	\N	\N	\N
+917	Peter Bruce	\N	\N	\N
+918	Jeff Gray	\N	\N	\N
+919	Paul Estev	\N	\N	\N
+920	Red Knight	\N	\N	Phreakers/Hackers Underground Network
+921	Scott Statton	\N	\N	@ The Telecom Digest
+922	Bob Page	\N	\N	University of Lowell Computer Science Department.
+923	E. Solomenko	\N	\N	\N
+924	John Drake	\N	\N	\N
+925	Lou Scannon	\N	\N	\N
+926	Phucked Agent 04	\N	\N	\N
+927	The Glitch	\N	\N	\N
+930	Almon Strowger Jr.	\N	\N	(No, not the real one)
+931	Tommy	\N	\N	\N
+932	iphelix	\N	\N	\N
+933	Mr. Curious / DoPi	\N	\N	\N
+934	Annalee Newitz	\N	\N	\N
+935	dolst	\N	\N	\N
+936	Lilith	\N	\N	\N
+937	SigFLUP	\N	pantsbutt@gmail.com	\N
+938	L00dHum	\N	\N	\N
+939	mr_cow	\N	\N	\N
+940	Desert_Fox and 6|21|3|11	\N	\N	\N
+941	Ross M. Greenberg	\N	\N	\N
+942	J.R. "Bob" Dobbs	\N	\N	\N
+943	The Rancid Grapefuit	\N	\N	\N
+944	Thunder Seven	\N	\N	\N
+945	VM Guru	\N	\N	\N
+946	Captain Zap	\N	\N	\N
+947	Lex Luthor			and The Legion of Doom/Hackers
+948	Dave Taylor	\N	\N	\N
+949	Hal from Rome	\N	\N	\N
+950	The Disk Jockey	\N	\N	\N
+951	The LNA Master	\N	\N	\N
+952	Mr. Icom	\N	\N	\N
+953	Staff	\N	\N	\N
+954	Mac+	\N	\N	\N
+955	The Greek	\N	\N	\N
+956	Hank	\N	Hank@Taunivm.Bitnet	\N
+957	Wintermute	\N	\N	\N
+958	Al Fresco	\N	\N	\N
+959	Dan Murphy	\N	\N	\N
+960	Mel Beckman	\N	\N	\N
+961	Rex Valve	\N	\N	\N
+962	nynex phreak	\N	\N	\N
+963	Thee Joker	\N	\N	\N
+964	Texas Toad	\N	\N	\N
+965	No Severence	\N	\N	\N
+966	The Veteran Cosmic Rocker	\N	\N	\N
+967	Mike Yuhas	\N	\N	\N
+968	The Marauder			and The Legion of Doom\
+Phoneline Phantoms
+969	Dan Foley	\N	\N	\N
+970	Mainstream America	\N	\N	\N
+971	The Videosmith	\N	\N	\N
+972	John Freeman	\N	\N	\N
+973	The Lineman	\N	\N	\N
+974	Legion of Hackers	\N	\N	\N
+975	Roland Dutton	\N	\N	\N
+976	Mike Agranoff	\N	\N	\N
+977	The Hobbit	\N	\N	\N
+978	Bill From RNOC			Legion of Doom
+979	Sir William	\N	\N	\N
+980	Lord Phreaker	\N	\N	\N
+982	The Mole	\N	\N	\N
+984	Bruce Alston	\N	\N	\N
+985	John Anderson	\N	\N	\N
+986	MAD!	\N	\N	\N
+987	The Dragyn	\N	\N	\N
+988	The Kid & Co.	\N	\N	\N
+989	Baalzebub	\N	\N	\N
+990	Chester Holmes	\N	\N	\N
+991	The Alaskan  Phreak	\N	\N	\N
+992	The Researcher	\N	\N	\N
+993	Ford Prefect	\N	\N	\N
+994	Silent Switchman	\N	\N	\N
+995	The Shadow	\N	\N	\N
+996	Jim Wood	\N	\N	\N
+997	Howard	\N	\N	\N
+998	Forest Ranger	\N	\N	\N
+999	The Knights of Shadow	\N	\N	\N
+1000	Orson Buggy	\N	\N	\N
+1001	AX MURDERER	\N	\N	\N
+1002	Paul G. Estev	\N	\N	\N
+1003	Bioc Agent 003	\N	\N	\N
+1004	Bob Gamma	\N	\N	\N
+1005	The CGI Guy	\N	\N	\N
+1006	Firemonger	\N	\N	\N
+1007	Mike Salerno	\N	\N	\N
+1008	Paul D. Lehrman	\N	\N	\N
+1009	Electric Moon	\N	\N	\N
+1010	Mark Bluebox	\N	\N	\N
+1011	Gorgeous_G	\N	\N	\N
+1012	kawarimono		kawarimono@bigpond.com	
+1013	Da New Ment0r			of PhoeniX.RisinG.GrouP
+1014	Keeng Tusk	\N	\N	\N
+1015	Lnkd.com?2600	\N	\N	\N
+1016	The Third Man	\N	\N	\N
+1017	pantos			I've assumed Pantos and pantos are the same author.
+1018	Decora	\N	\N	\N
+1019	fobg	\N	\N	\N
+1020	11001001	\N	\N	\N
+1021	Tzu Tzu Metals	\N	\N	\N
+1023	Minishark	\N	\N	\N
+1024	EvilGold	\N	\N	\N
+1025	Ron Overdrive	\N	\N	\N
+1026	BitRobber		BitRobber@gmail.com	
+1027	alleyrat	\N	\N	\N
+1028	Pan		2600feedback@sensoryresearch.net	Pan is a connoisseur of interactive computing, science and education. He lives somewhere.
+1029	The Funkster Deluxe		funk@forethought.net	
+1030	Twisted Uterus		twisteduterus@gmail.com	
+1031	ZoDiaC13	\N	\N	\N
+1032	excessive | offnetwork	\N	\N	\N
+1033	Brian Detweiler	\N	\N	\N
+1034	p4nt05	\N	\N	\N
+1035	The Skog	\N	\N	\N
+1036	t0sspint	\N	\N	\N
+1037	ternarybit		austindcc@gmail.com	
+1038	Non-Sequential	\N	\N	\N
+1039	Jared DeWitt	\N	\N	\N
+1040	Yan Tan Tethera	\N	\N	\N
+1041	Kim Moser	\N	\N	\N
+1042	Wavesonics	\N	\N	\N
+1043	R. Toby Richards	\N	\N	\N
+1044	Oddacon T. Ripper			Assume Oddacon T Ripper and Oddacon T. Ripper are the same author.
+1045	Farhan Al-Muradabadi	\N	\N	\N
+1046	Digicon	\N	\N	\N
+1047	MiracleMax	\N	\N	\N
+1048	Sacha Moufarrege	\N	\N	\N
+1049	Anthony	\N	\N	\N
+1050	xorcist		xorcist@gmx.net	
+1051	therippa	\N	\N	\N
+1052	Azazel	\N	\N	\N
+1053	kliq	\N	\N	\N
+1054	Ry0ki	\N	\N	\N
+1055	John W5EME	\N	\N	\N
+1056	spynuclear		spynuclear@yahoo.com	
+1057	ScatteredFrog	\N	\N	\N
+1058	Strawberry Akhenaten	\N	\N	\N
+1059	Triscal Islington	\N	\N	\N
+1060	DarX	\N	\N	\N
+1061	BY3M@N	\N	\N	\N
+1062	Sandwich	\N	\N	\N
+1063	windpunk			I've assumed Windpunk and windpunk are the same author.
+1064	Purkey	\N	\N	\N
+1065	The Guy Who Was In Craig Neidorf's Spanish Class And Had No Idea			
+1066	Sheep Slapper		sheep.slapper@gmail.com	
+1067	Geo Spoof		geospoof@gmail.com	
+1068	Oakcool	\N	\N	\N
+1069	Lifeguard	\N	\N	\N
+1070	Max Vendor	\N	\N	\N
+1071	K3ntucky	\N	\N	\N
+1072	Armando Pantoja	\N	\N	\N
+1073	Israel	\N	\N	\N
+1074	Katherine Cook	\N	\N	\N
+1075	Triad@Efnet	\N	\N	\N
+1076	Michael Morin	\N	\N	\N
+1077	aestetix	\N	\N	\N
+1078	DGM	\N	\N	\N
+1079	Rolf	\N	\N	\N
+1080	Micah Lee	\N	\N	\N
+1081	riemann	\N	\N	\N
+1082	Asim Zaman	\N	\N	\N
+1083	kr	\N	\N	\N
+1084	mrcaffeine		mrcaffeine@network0.org	
+1085	Pipefish		pipefish@anonymousspeech.com\
+email@pipefish.me	
+1086	b3ard	\N	\N	\N
+1087	th3linguist		th3linguist@googlemail.com	
+1088	KC	\N	\N	\N
+1089	Beyond	\N	\N	\N
+1090	Malf0rm3dx & Megalos	\N	\N	\N
+1091	pnorton	\N	\N	\N
+1093	twopointfour		twopointfour@riseup.net	
+1094	Suborbital		suboorbital@gmail.com	
+1095	Malvineous	\N	\N	\N
+1096	A Sayler	\N	\N	\N
+1097	Moral Grey Area Cat	\N	\N	\N
+1098	Johnny Fusion			=11811=
+1099	Bruce Sutherland			(z3r043x)
+1100	Terrible Doe	\N	\N	\N
+1101	P9a3	\N	\N	\N
+1102	General Disarray		G3neral.Disarray@gmail.com	
+1103	flippy	\N	\N	\N
+1104	Josiah McGurty	\N	\N	\N
+1105	papill0n	\N	\N	\N
+1106	Master Chen		infoinject@gmail.com	
+1107	Graig Stephenson		cstephen907@gmail.com	
+1108	bluelander		bluelander@lavabit.com	
+1109	raphidae		raphidae@EFNet	
+1110	Ashes	\N	\N	\N
+1111	Alex Nocenti			aka MrPockets
+1113	goldcove	\N	\N	\N
+1114	bTrack3r2003	\N	\N	\N
+1117	Tiffany Strauchs Rad	\N	\N	\N
+1119	Snugglepuff		snugglepuff@operamail.com	
+1120	PTKitty	\N	\N	\N
+1121	Ninja_of_Comp	\N	\N	\N
+1122	Seeker7		seeker8306@gmail.com	
+1123	lg0p89	\N	\N	\N
+1130	Pat D.	\N	\N	\N
+1131	Joshua Dick		josh@joshdick.net	
+1132	Tim K	\N	\N	\N
+1133	Austin Lott	\N	\N	\N
+1134	StarckTruth	\N	\N	\N
+1135	tcstool		tcstool@gmail.com	
+1136	Wananapaoa Uncle	\N	\N	\N
+1137	Jacob	\N	\N	\N
+1138	Gregory Porter		greg.e.porter@gmail.com	backfromthemovies.blogspot.com
+1139	Lone.Geek	\N	\N	\N
+1140	gosein	\N	\N	\N
+1141	Douglas Spink		wrinko@hushmail.com	
+1142	Donald Carter		donny.carter76@gmail.com	
+1143	DMUX	\N	\N	\N
+1144	Paul Abramson	\N	\N	\N
+1145	Awake31337	\N	\N	\N
+1146	Piyter Hurd	\N	\N	\N
+1147	MS3	\N	\N	\N
+1148	DocSlow	\N	\N	\N
+1149	Daniel Ayoub		daniel@ayoub.it	
+1150	D351	\N	\N	\N
+1151	Chip Ninja	\N	\N	\N
+1152	jk31214	\N	\N	\N
+1153	Merl	\N	\N	\N
+1154	Teague Newman	\N	\N	\N
+1155	JIOMNKA	\N	\N	\N
+1156	ellG147	\N	\N	\N
+1157	Cap'n Zilog		capnzilog@moshimail.com	
+1158	10cke	\N	\N	\N
+1159	Everett Vinzant	\N	\N	\N
+1160	OMK	\N	\N	\N
+1161	Andy Kaiser	\N	\N	\N
+1162	[Name Withheld]	\N	\N	\N
+1163	Aaron Grothe		ajgrothe@yahoo.com	
+1164	markb	\N	\N	\N
+1165	UAVman aka DeathNinja McSex	\N	\N	\N
+1166	Phredd		fredm70@gmail.com	
+1167	C P	\N	\N	\N
+1168	Dimitri	\N	\N	\N
+1169	Josephus Alexander	\N	\N	\N
+1170	Andy Phillips		andyphillips99@gmail.com	
+1171	Doug Sibley	\N	\N	\N
+1172	Pasikrata	\N	\N	\N
+1173	Mr.Icom (Ticom)		ticom.new.england@gmail.com	
+1174	R. Stevens and A. Blum	\N	\N	\N
+1175	David Morgan	\N	\N	\N
+1176	Sarlacii	\N	\N	\N
+1177	Tahu363	\N	\N	\N
+1178	Malandraj3m	\N	\N	\N
+1179	"ain'tDigitalDATTruth"			
+1181	Hal Wigoda		hal.wigoda@gmail.com	
+1182	OWA	\N	\N	\N
+1183	chap0		contact.chap0@gmail.com	
+1184	Synystr	\N	\N	\N
+1185	SPitBalls	\N	\N	\N
+1187	Kevin Morris	\N	\N	\N
+1188	mcandre	\N	\N	\N
+1189	xnite		xnite@xnite.org	
+1190	Ryan Daley	\N	\N	\N
+1191	D.B. LeConte-Spink	\N	\N	\N
+1192	GoodHart	Mike Keller		
+1193	Rob T Firefly			<a href="http://robvincent.net">Reviewer website</a>
+1194	^SUBv	\N	\N	\N
+1195	W.D. Woods	\N	\N	\N
+1196	lanrat	\N	\N	\N
+1197	TJ	\N	\N	\N
+1198	Shikhin Sethi		draumer.shikhin@gmail.com	
+1199	Shea   Silverman		shea@sheasilverman.com	
+1200	G  Dorking	\N	\N	\N
+1201	Pierre LC	\N	\N	\N
+1202	Cybermouse	\N	\N	\N
+1203	B4tm@n	\N	\N	\N
+1204	Bad Bobby's Basement Bandits			
+1205	Hristo (Izo) Gueorguiev	\N	\N	\N
+1206	Sh0kwave	\N	\N	\N
+1207	DarkAudax	\N	\N	\N
+1208	TJ Loposser	\N	\N	\N
+1209	Donald Blake	\N	\N	\N
+1210	elib7ronic		tim@elibronic.ca	
+1211	Eightkay	\N	\N	\N
+1212	Chris Lane		chris@chris-allen-lane.com	twitter.com/chrisallenlane
+1213	Frank Buss		fb@frank-buss.de	
+1214	Ronin	\N	\N	\N
+1215	Uriah Christensen	\N	\N	\N
+1216	Rick Conlee		rick.conlee@gmail.com	
+1217	Brandon	\N	\N	\N
+1218	Antonio Ortega Jr.	\N	\N	\N
+1219	]{nightVision	\N	\N	\N
+1220	Patric Schmitz	\N	\N	\N
+1221	Zellie Y. Thomas	\N	\N	\N
+1222	Brainwaste	\N	\N	\N
+1223	Tyler Behling	\N	\N	\N
+1224	l0cke	\N	\N	\N
+1225	0rbytal		0rbytal@burntmail.com	
+1226	Klaatu	\N	\N	\N
+1227	Scott Arciszewski	\N	\N	\N
+1228	John Thibault	\N	\N	\N
+1229	Samuel A. Bancroft		SamuelBancroft@gmx.com	
+1230	R. B.	\N	\N	\N
+1231	Andy G (@vxhex)	\N	\N	\N
+1232	King Flathead	\N	\N	\N
+1233	Clutching Jester	\N	\N	\N
+1234	Matt Davis (enferex)		mattdavis9@gmail.com	
+1235	Alva Ray	\N	\N	\N
+1236	Freaky	\N	\N	\N
+1237	sam	\N	\N	\N
+1238	r00tNinjas: 0rbytal & blerbl		0rbytal@burntmail.com\
+theblerbl@gmail.com	
+1239	Robert B. Schofield	\N	\N	\N
+1240	Brett Stevens	\N	\N	\N
+1241	Spacedawg	\N	\N	\N
+1242	Michael Post	\N	\N	\N
+1243	Jim L	\N	\N	\N
+1244	Tyler Frisbee	\N	\N	\N
+1245	eyenot	\N	\N	\N
+1246	ook			Ook
+1247	Toilet Fixer 555C	\N	\N	\N
+1248	Jason Sherman	\N	\N	\N
+1249	Darwin	\N	\N	\N
+1250	water + Lasix = #1	\N	\N	\N
+1251	Edster @ 2600 Dublin	\N	\N	\N
+1252	Kevin R. Coombes		kevin.r.coombes@gmail.com	
+1253	James Kracht	\N	\N	\N
+1254	DreamsForMortar	\N	\N	\N
+1255	Ishan Raval	\N	\N	\N
+1256	Vera Ranieri	\N	\N	\N
+1257	Dave D Rave	\N	\N	\N
+1258	Yuval tisf Nativ and Tom Zahov	\N	\N	\N
+1259	Kim Crawley			Twitter: @kim_crawley
+1260	Peter C. Gravelle		peter.c.gravelle+2600@gmail.com	
+1261	DKN	\N	\N	\N
+1262	EndlessFapping	\N	\N	\N
+1263	Shadow E. Figure	\N	\N	\N
+1264	GerbilByte	\N	\N	\N
+1265	Prisoner #6	\N	\N	\N
+1266	David Crowe		David.Crowe@cnp-wireless.com	
+1267	nachash		nachash@observers.net	
+1268	Overall	\N	\N	\N
+1269	Derek Kurth		dkurth@gmail.com	
+1270	Mike		mike@tofet.net	
+1271	metaknight	\N	\N	\N
+1272	Maven	\N	\N	\N
+1273	Brian Van Stedum		brianvanstedum@gmail.com	
+1274	Buanzo	Arturo Busleiman	buanzo@buanzo.com.ar	
+1275	secuid0	\N	\N	\N
+1276	Parker Higgins	\N	\N	\N
+1277	Removed Per Authors Request	\N	\N	\N
+1278	Jerry	\N	\N	\N
+1279	Jon Schipp			<a href="http://jonshipp.com">Author website</a>
+1280	E Squared	\N	\N	\N
+1281	TFE Buy a.k.a. The Man	\N	\N	\N
+1282	Eve S. Gregory	\N	\N	\N
+1283	the xorcist		xorcist@sigaint.org	
+1284	Pic0o	\N	\N	\N
+1285	The Slakker	\N	\N	\N
+1286	Cooper Quintin	\N	\N	\N
+1287	wino_admin	\N	\N	\N
+1288	Ilyke Maasterd	\N	\N	\N
+1289	J. Savidan	\N	\N	\N
+1290	mmx3	\N	\N	\N
+1291	musashi42	\N	\N	\N
+1292	2dedd54f25ae2730225e6f1b8968fda5			Full Nome De Plume: 2dedd54f25ae2730225e6f1b8968fda52f0831ce
+1293	Agent T.W. Lee			Interzone Intelligence
+1294	Jacob Hoffman-Andrews	\N	\N	\N
+1295	CANNON C.	\N	\N	\N
+1296	LexIcon	\N	\N	\N
+1297	2-6 India	\N	\N	\N
+1298	Ronald Gans	\N	\N	\N
+1299	Erobos (Simmons)	\N	\N	\N
+1300	Kevin Patterson	\N	\N	\N
+1301	NerveGas Jr.	\N	\N	\N
+1302	Super Ells	\N	\N	\N
+1303	RAMGarden	\N	\N	\N
+1304	Monican	\N	\N	\N
+1305	Dave Maass	\N	\N	\N
+1306	Steffen Fritz		sfnfrz2600@gmail.com	
+1307	Michael Lee Nirenberg		restraining.order.ltd@gmail.com	
+1308	Charlton Trezevant		ct@ctis.me	
+1309	Evan D'Elia			
+1310	R.B.	\N	\N	\N
+1311	B. Boehler	\N	\N	\N
+1312	Baudsurfer/Red Sector Inc.	\N	\N	\N
+1313	Dent		dentedfun@gmail.com\
+dentedfun@protonmail.ch	
+1314	Michael L. Kelley Jr.	\N	\N	\N
+1315	Ghost Exodus	\N	\N	\N
+1316	revx		revx@omnomzom.com	
+1317	Rafael Santiago		voidbrainvoid@gmail.com	
+1318	Stephen Comeau	\N	\N	\N
+1319	Jack D Ripper	\N	\N	\N
+1320	Ben Kenobi		benkenobi@sdf.org	Per 33:3 p.41 benkenobi@ruggedinbox.com service gone.
+1321	Elliot Harmon	\N	\N	\N
+1322	The Knight Owl	\N	\N	\N
+1323	Marshall Edwards	\N	\N	\N
+1324	Deflagrati0n	\N	\N	\N
+1325	Keith	\N	\N	\N
+1326	InsideJob	\N	\N	\N
+1327	-Me	\N	\N	\N
+1328	King V	\N	\N	\N
+1329	Daelphinux	\N	\N	\N
+1330	fooCount1	\N	\N	\N
+1331	Chris, AB3YS	\N	\N	\N
+1332	Vuk Ivanovic		vuk.ivanovic9000@gmail.com	
+1333	Mallory Knodel et al			Sacha van Geffen, Stefania Milan, and Camille Francois.
+1334	IceQUICK	\N	\N	\N
+1335	Chuck Easttom		chuck@chuckeasttom.com	website: www.ChuckEastom.com
+1336	Mike Dank		famicoman@gmail.com	
+1337	Scott Everard	\N	\N	\N
+1338	SideFx	\N	\N	\N
+1339	Garrett Mickley	\N	\N	\N
+1340	Anne	\N	\N	\N
+1341	bartitsu59	\N	\N	\N
+1342	Richard Vardit	\N	\N	\N
+1343	Tau_Zer0	\N	\N	\N
+1344	lol-md4		lol-md4@riseup.net	
+1345	Chris Rucker			Data Scientist
+1346	Rodrigo Ruiz and Rogerio Winter		rodrigosruiz@outlook.com\
+rogwinter@gmail.com	
+1347	Byeman	\N	\N	\N
+1348	Wyatt Lee	\N	\N	\N
+1349	Brenden Hyde	\N	\N	\N
+1350	Samuel Hofius	\N	\N	\N
+1351	Erica Portnoy and Elliot Harmon	\N	\N	\N
+1352	Secure Panda		this.is.a.secure.panda@gmail.com	
+1353	Kyle Bradshaw	\N	\N	\N
+1354	Sydney Greenstreet	\N	\N	\N
+1355	Dr. G	\N	\N	\N
+1356	Victor	\N	\N	\N
+1357	Ckjbgames	\N	\N	\N
+1358	David Libertas	\N	\N	\N
+1359	Nick	\N	\N	\N
+1360	StMerry	\N	\N	\N
+1361	Jack Beltane	\N	\N	\N
+1362	redstarx	\N	\N	\N
+1363	casi	\N	\N	\N
+1364	Filip Kalebo			aka flipchan
+1365	Cezary Jaronczyk		Cjjconsultant4@gmail.com\
+	<a href="http://cjj-consultant.ca">Authors website</a>
+1366	Gennie Gebhart	\N	\N	\N
+1367	GI_Jack	\N	\N	\N
+1368	M0ebiusStrip	\N	\N	\N
+1369	Nordog	\N	\N	\N
+1370	p4bI0		2.6k@uzy.me	
+1371	Anthony Russell			Twitter: @DotNetRussell
+1372	Jameson Hampton	\N	\N	\N
+1373	Hristo I. Gueorguiev			web site: hristogueorguiev.com
+1374	Br@d	\N	\N	\N
+1375	Buckminister Emptier	\N	\N	\N
+1376	Kernal Seiden	\N	\N	\N
+1377	Soraya Okuda and Elliot Harmon	\N	\N	\N
+1378	idk	\N	\N	\N
+1379	ladyada and fill		ladyada@alum.mit.edu\
+fill@2600.com	
+1380	Jeffrey H. MacLachlan	\N	\N	\N
+1381	Infra Read	\N	\N	\N
+1382	Jared J. Estes	\N	\N	\N
+1383	Dave Jericho	\N	\N	\N
+1384	Josephus	\N	\N	\N
+1385	TheGeek	\N	\N	\N
+1386	John Skilbeck	\N	\N	\N
+1387	B. Ramsey	\N	\N	\N
+1388	Qrag		qragrqsha@tznvy.pbz\
+qragrqsha@cebgbaznvy.pu	
+1389	James Fell		james.fell@tartaruslabs.com	
+1390	deadbeat0	\N	\N	\N
+1391	th0tnet	\N	\N	\N
+1392	Emma Stamm	\N	\N	\N
+1393	Alan Sondheim	\N	\N	\N
+1394	BirdPerson	\N	\N	\N
+1395	Andova Begarin	\N	\N	\N
+1396	Snocone	\N	\N	\N
+1397	Emily Saunders	\N	\N	\N
+1398	Gazza	\N	\N	\N
+1399	Ricki Burke	\N	\N	\N
+1400	David Ruiz	\N	\N	\N
+1401	tyrus568	\N	\N	\N
+1402	GI Jack	\N	\N	\N
+1403	Doc Slow	\N	\N	\N
+1404	Alexander Urbelis		alex@blackstone-law.com	f/k/a Neon Samurai
+1405	XtendedWhere	\N	\N	\N
+1406	Ted Benson	\N	\N	\N
+1407	davemitchell	\N	\N	\N
+1408	Marc Lighter	\N	\N	\N
+1409	Ron Porter		ron@jadero.com	
+1410	James Hunter	\N	\N	\N
+1411	Jason Kelley	\N	\N	\N
+1412	Huntech	\N	\N	\N
+1413	Karan Saini	\N	\N	\N
+1414	J. J. Styles		jjstyles0001@gmail.com	aka 0ptiKaL I1usioN
+1415	MrGhostValley	\N	\N	\N
+1416	Corey Kahler	\N	\N	\N
+1417	Christy Ramsey	\N	\N	\N
+1418	Michaleen Garda	\N	\N	\N
+1419	Quidnarious Gooch	\N	\N	\N
+1420	John Q. Sample	\N	\N	\N
+1421	haplesscheese	\N	\N	\N
+1422	Frizzank	\N	\N	\N
+1423	Connor Kennedy	\N	\N	\N
+1424	lol-md5		lol-md5@riseup.net	
+1425	David Savage Lightman	\N	\N	\N
+1426	Jason Loggins	\N	\N	\N
+1427	Major Mule	\N	\N	\N
+1428	paulml	\N	\N	\N
+1429	ndf	\N	\N	\N
+1430	Aditya K Sood and Rohit Bansal	\N	\N	\N
+1431	Mevyc		mevycfla@gmail.com	
+1432	Marc Ronell	\N	\N	\N
+1433	Bobby Joe Snyder	\N	\N	\N
+1434		\N	\N	\N
+1435	Sum Ynggai	\N	\N	\N
+1436	Michael Ravnitzky	\N	\N	\N
+1437	Sentient	\N	\N	\N
+1438	Columbo	\N	\N	\N

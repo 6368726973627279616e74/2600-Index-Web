@@ -1,0 +1,78 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><font color="#990000">&lt;?php</font>
+
+<i><font color="#9A1900">/*</font></i>
+<i><font color="#9A1900">  getAuthors.php</font></i>
+
+<i><font color="#9A1900">  Author:      wrepp</font></i>
+<i><font color="#9A1900">  Date:        10/13/2008</font></i>
+<i><font color="#9A1900">  Description: get list of authors for auto-suggest.</font></i>
+<i><font color="#9A1900">  Notes:       no html should be put into this file! only return html from the code below!</font></i>
+<i><font color="#9A1900">*/</font></i>
+
+  <font color="#009900">$path</font> <font color="#990000">=</font> <font color="#FF0000">"../"</font><font color="#990000">;</font>
+
+  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"db.php"</font><font color="#990000">);</font>
+
+<i><font color="#9A1900">/* mysql */</font></i>
+  <font color="#009900">$conn</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_connect</font></b> <font color="#990000">(</font><font color="#009900">$dbhost</font><font color="#990000">,</font> <font color="#009900">$dbuser</font><font color="#990000">,</font> <font color="#009900">$dbpass</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><font color="#FF0000">'Error connecting to mysql'</font><font color="#990000">);</font>
+  <b><font color="#000000">mysqli_select_db</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$dbname</font><font color="#990000">);</font>
+
+  <font color="#009900">$input</font> <font color="#990000">=</font> <b><font color="#000000">strtolower</font></b> <font color="#990000">(</font><font color="#009900">$_GET</font><font color="#990000">[</font><font color="#FF0000">'input'</font><font color="#990000">]);</font>
+  <font color="#009900">$len</font> <font color="#990000">=</font> <b><font color="#000000">strlen</font></b> <font color="#990000">(</font><font color="#009900">$input</font><font color="#990000">);</font>
+
+  <font color="#009900">$aResults</font> <font color="#990000">=</font> <b><font color="#0000FF">array</font></b> <font color="#990000">();</font>
+
+  <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$len</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT * "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Authors "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE NomDePlume LIKE '"</font> <font color="#990000">.</font> <font color="#009900">$input</font> <font color="#990000">.</font> <font color="#FF0000">"%' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY NomDePlume;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <b><font color="#0000FF">while</font></b> <font color="#990000">(</font><font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">))</font>  <font color="#FF0000">{</font>
+      <font color="#009900">$aResults</font><font color="#990000">[]</font> <font color="#990000">=</font> <b><font color="#0000FF">array</font></b><font color="#990000">(</font><font color="#FF0000">"id"</font><font color="#990000">=&gt;</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AuthorsID'</font><font color="#990000">],</font> <font color="#FF0000">"value"</font><font color="#990000">=&gt;</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'NomDePlume'</font><font color="#990000">],</font> <font color="#FF0000">"info"</font><font color="#990000">=&gt;</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Name'</font><font color="#990000">]);</font>
+    <font color="#FF0000">}</font>
+  <font color="#FF0000">}</font>
+
+  <b><font color="#000000">header</font></b> <font color="#990000">(</font><font color="#FF0000">"Expires: Mon, 26 Jul 1997 05:00:00 GMT"</font><font color="#990000">);</font> <i><font color="#9A1900">// Date in the past</font></i>
+  <b><font color="#000000">header</font></b> <font color="#990000">(</font><font color="#FF0000">"Last-Modified: "</font> <font color="#990000">.</font> <b><font color="#000000">gmdate</font></b><font color="#990000">(</font><font color="#FF0000">"D, d M Y H:i:s"</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">" GMT"</font><font color="#990000">);</font> <i><font color="#9A1900">// always modified</font></i>
+  <b><font color="#000000">header</font></b> <font color="#990000">(</font><font color="#FF0000">"Cache-Control: no-cache, must-revalidate"</font><font color="#990000">);</font> <i><font color="#9A1900">// HTTP/1.1</font></i>
+  <b><font color="#000000">header</font></b> <font color="#990000">(</font><font color="#FF0000">"Pragma: no-cache"</font><font color="#990000">);</font> <i><font color="#9A1900">// HTTP/1.0</font></i>
+
+
+
+	<b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#0000FF">isset</font></b><font color="#990000">(</font><font color="#009900">$_REQUEST</font><font color="#990000">[</font><font color="#FF0000">'json'</font><font color="#990000">]))</font>
+	<font color="#FF0000">{</font>
+		<b><font color="#000000">header</font></b><font color="#990000">(</font><font color="#FF0000">"Content-Type: application/json"</font><font color="#990000">);</font>
+	
+		<b><font color="#0000FF">echo</font></b> <font color="#FF0000">"{\"results\": ["</font><font color="#990000">;</font>
+		<font color="#009900">$arr</font> <font color="#990000">=</font> <b><font color="#0000FF">array</font></b><font color="#990000">();</font>
+		<b><font color="#0000FF">for</font></b> <font color="#990000">(</font><font color="#009900">$i</font><font color="#990000">=</font><font color="#993399">0</font><font color="#990000">;</font><font color="#009900">$i</font><font color="#990000">&lt;</font><b><font color="#000000">count</font></b><font color="#990000">(</font><font color="#009900">$aResults</font><font color="#990000">);</font><font color="#009900">$i</font><font color="#990000">++)</font>
+		<font color="#FF0000">{</font>
+			<font color="#009900">$arr</font><font color="#990000">[]</font> <font color="#990000">=</font> <font color="#FF0000">"{\"id\": \""</font><font color="#990000">.</font><font color="#009900">$aResults</font><font color="#990000">[</font><font color="#009900">$i</font><font color="#990000">][</font><font color="#FF0000">'id'</font><font color="#990000">].</font><font color="#FF0000">"\", \"value\": \""</font><font color="#990000">.</font><font color="#009900">$aResults</font><font color="#990000">[</font><font color="#009900">$i</font><font color="#990000">][</font><font color="#FF0000">'value'</font><font color="#990000">].</font><font color="#FF0000">"\", \"info\": \"\"}"</font><font color="#990000">;</font>
+		<font color="#FF0000">}</font>
+		<b><font color="#0000FF">echo</font></b> <b><font color="#000000">implode</font></b><font color="#990000">(</font><font color="#FF0000">", "</font><font color="#990000">,</font> <font color="#009900">$arr</font><font color="#990000">);</font>
+		<b><font color="#0000FF">echo</font></b> <font color="#FF0000">"]}"</font><font color="#990000">;</font>
+	<font color="#FF0000">}</font>
+	<b><font color="#0000FF">else</font></b>
+	<font color="#FF0000">{</font>
+		<b><font color="#000000">header</font></b><font color="#990000">(</font><font color="#FF0000">"Content-Type: text/xml"</font><font color="#990000">);</font>
+
+		<b><font color="#0000FF">echo</font></b> <font color="#FF0000">"&lt;?xml version=\"1.0\" encoding=\"utf-8\" ?&gt;&lt;results&gt;"</font><font color="#990000">;</font>
+		<b><font color="#0000FF">for</font></b> <font color="#990000">(</font><font color="#009900">$i</font><font color="#990000">=</font><font color="#993399">0</font><font color="#990000">;</font><font color="#009900">$i</font><font color="#990000">&lt;</font><b><font color="#000000">count</font></b><font color="#990000">(</font><font color="#009900">$aResults</font><font color="#990000">);</font><font color="#009900">$i</font><font color="#990000">++)</font>
+		<font color="#FF0000">{</font>
+			<b><font color="#0000FF">echo</font></b> <font color="#FF0000">"&lt;rs id=\""</font><font color="#990000">.</font><font color="#009900">$aResults</font><font color="#990000">[</font><font color="#009900">$i</font><font color="#990000">][</font><font color="#FF0000">'id'</font><font color="#990000">].</font><font color="#FF0000">"\" info=\""</font><font color="#990000">.</font><font color="#009900">$aResults</font><font color="#990000">[</font><font color="#009900">$i</font><font color="#990000">][</font><font color="#FF0000">'info'</font><font color="#990000">].</font><font color="#FF0000">"\"&gt;"</font><font color="#990000">.</font><font color="#009900">$aResults</font><font color="#990000">[</font><font color="#009900">$i</font><font color="#990000">][</font><font color="#FF0000">'value'</font><font color="#990000">].</font><font color="#FF0000">"&lt;/rs&gt;"</font><font color="#990000">;</font>
+		<font color="#FF0000">}</font>
+		<b><font color="#0000FF">echo</font></b> <font color="#FF0000">"&lt;/results&gt;"</font><font color="#990000">;</font>
+	<font color="#FF0000">}</font>
+
+<i><font color="#9A1900">/* wrap it up */</font></i>
+  <b><font color="#000000">mysqli_close</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">);</font>
+
+<font color="#990000">?&gt;</font>
+</tt></pre>

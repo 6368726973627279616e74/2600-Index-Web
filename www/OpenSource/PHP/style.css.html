@@ -1,0 +1,76 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">/*</font></i>
+<i><font color="#9A1900">  style.css</font></i>
+
+<i><font color="#9A1900">  Author:      wrepp</font></i>
+<i><font color="#9A1900">  Date:        10/13/2008</font></i>
+<i><font color="#9A1900">  Description: style sheet for 2600 index web site</font></i>
+<i><font color="#9A1900">  Notes:</font></i>
+<i><font color="#9A1900">*/</font></i>
+
+
+<font color="#993399">.section</font>  <font color="#FF0000">{</font>
+  <font color="#0000FF">font-size:</font> <i><font color="#009900">1em</font></i>;
+  <font color="#0000FF">font-weight:</font><i><font color="#009900">bold</font></i>;
+  <font color="#0000FF">font-family:</font><i><font color="#009900">arial</font></i>, <i><font color="#009900">times</font></i> <i><font color="#009900">new</font></i> <i><font color="#009900">roman</font></i>, <i><font color="#009900">serif</font></i>;
+<font color="#FF0000">}</font>
+
+<font color="#993399">.red</font>  <font color="#FF0000">{</font>
+  <font color="#0000FF">color:</font> <font color="#FF0000">#FF0000</font>;
+<font color="#FF0000">}</font>
+<font color="#993399">.green</font> <font color="#FF0000">{</font>
+  <font color="#0000FF">color:</font> <i><font color="#009900">green</font></i>;
+<font color="#FF0000">}</font>
+
+<font color="#993399">.note</font> <font color="#FF0000">{</font>
+  <font color="#0000FF">font-size:</font> <i><font color="#009900">0.8em</font></i>;
+  <font color="#0000FF">font-style:</font><i><font color="#009900">italic</font></i>;
+<font color="#FF0000">}</font>
+
+html <font color="#FF0000">{</font>
+<font color="#0000FF">height:</font><i><font color="#009900">100%</font></i>; 
+<font color="#0000FF">max-height:</font><i><font color="#009900">100%</font></i>; 
+<font color="#0000FF">padding:</font><i><font color="#009900">0</font></i>;
+<font color="#0000FF">margin:</font><i><font color="#009900">0</font></i>; 
+<font color="#0000FF">border:</font><i><font color="#009900">0</font></i>; 
+<font color="#0000FF">background:</font><font color="#FF0000">#fff</font>; 
+<font color="#0000FF">font-size:</font><i><font color="#009900">76%</font></i>; 
+<font color="#0000FF">font-family:</font><i><font color="#009900">georgia</font></i>, <i><font color="#009900">palatino</font></i> <i><font color="#009900">linotype</font></i>, <i><font color="#009900">times</font></i> <i><font color="#009900">new</font></i> <i><font color="#009900">roman</font></i>, <i><font color="#009900">serif</font></i>;
+<i><font color="#9A1900">/* hide overflow:hidden from IE5/Mac */</font></i> 
+<i><font color="#9A1900">/* \*/</font></i> 
+<font color="#0000FF">overflow:</font> <i><font color="#009900">hidden</font></i>; 
+<i><font color="#9A1900">/* */</font></i> 
+<font color="#FF0000">}</font>
+
+body <font color="#FF0000">{</font><font color="#0000FF">height:</font><i><font color="#009900">100%</font></i>; <font color="#0000FF">max-height:</font><i><font color="#009900">100%</font></i>; <font color="#0000FF">overflow:</font><i><font color="#009900">hidden</font></i>; <font color="#0000FF">padding:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">margin:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">border:</font><i><font color="#009900">0</font></i>;<font color="#FF0000">}</font>
+
+<i><font color="#9A1900">/* z-index was 3 for content, not sure why but doesn't work with AutoSuggest */</font></i>
+<font color="#993399">#content</font> <font color="#FF0000">{</font><font color="#0000FF">overflow:</font><i><font color="#009900">auto</font></i>; <font color="#0000FF">position:</font><i><font color="#009900">absolute</font></i>; <font color="#0000FF">z-index:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">top:</font><i><font color="#009900">70px</font></i>; <font color="#0000FF">bottom:</font><i><font color="#009900">50px</font></i>; <font color="#0000FF">left:</font><i><font color="#009900">200px</font></i>; <font color="#0000FF">right:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">background:</font><font color="#FF0000">#eee</font>;<font color="#FF0000">}</font>
+
+<font color="#990000">*</font> html <font color="#993399">#content</font> <font color="#FF0000">{</font><font color="#0000FF">top:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">left:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">right:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">bottom:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">height:</font><i><font color="#009900">100%</font></i>; <font color="#0000FF">max-height:</font><i><font color="#009900">100%</font></i>; <font color="#0000FF">width:</font><i><font color="#009900">100%</font></i>; <font color="#0000FF">overflow:</font><i><font color="#009900">auto</font></i>; <font color="#0000FF">position:</font><i><font color="#009900">absolute</font></i>; <font color="#0000FF">z-index:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">border-top:</font><i><font color="#009900">100px</font></i> <i><font color="#009900">solid</font></i> <font color="#FF0000">#fff</font>; <font color="#0000FF">border-bottom:</font><i><font color="#009900">50px</font></i> <i><font color="#009900">solid</font></i> <font color="#FF0000">#fff</font>; <font color="#0000FF">border-left:</font><i><font color="#009900">200px</font></i> <i><font color="#009900">solid</font></i> <font color="#FF0000">#fff</font>;<font color="#FF0000">}</font>
+
+<font color="#993399">#head</font> <font color="#FF0000">{</font><font color="#0000FF">position:</font><i><font color="#009900">absolute</font></i>; <font color="#0000FF">margin:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">top:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">left:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">display:</font><i><font color="#009900">block</font></i>; <font color="#0000FF">width:</font><i><font color="#009900">100%</font></i>; <font color="#0000FF">height:</font><i><font color="#009900">70px</font></i>; <font color="#0000FF">background:</font><font color="#FF0000">#000</font>; <font color="#0000FF">background-position:</font><i><font color="#009900">0</font></i> <i><font color="#009900">0</font></i>; <font color="#0000FF">background-repeat:</font><i><font color="#009900">no-repeat</font></i>; <font color="#0000FF">font-size:</font><i><font color="#009900">4em</font></i>; <font color="#0000FF">z-index:</font><i><font color="#009900">5</font></i>; <font color="#0000FF">color:</font><font color="#FF0000">#fff</font>;<font color="#FF0000">}</font>
+
+
+<font color="#993399">#foot</font> <font color="#FF0000">{</font><font color="#0000FF">position:</font><i><font color="#009900">absolute</font></i>; <font color="#0000FF">margin:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">bottom:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">left:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">display:</font><i><font color="#009900">block</font></i>; <font color="#0000FF">width:</font><i><font color="#009900">100%</font></i>; <font color="#0000FF">height:</font><i><font color="#009900">50px</font></i>; <font color="#0000FF">font-size:</font><i><font color="#009900">1em</font></i>; <font color="#0000FF">z-index:</font><i><font color="#009900">5</font></i>; <font color="#0000FF">overflow:</font><i><font color="#009900">hidden</font></i>; <font color="#0000FF">background:</font><i><font color="#009900">rgb</font></i>(<i><font color="#009900">76</font></i>,<i><font color="#009900">76</font></i>,<i><font color="#009900">76</font></i>); <font color="#0000FF">color:</font><font color="#FF0000">#fff</font>;<font color="#FF0000">}</font>
+
+<font color="#993399">#left</font> <font color="#FF0000">{</font><font color="#0000FF">position:</font><i><font color="#009900">absolute</font></i>; <font color="#0000FF">left:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">top:</font><i><font color="#009900">70px</font></i>; <font color="#0000FF">bottom:</font><i><font color="#009900">50px</font></i>; <font color="#0000FF">width:</font><i><font color="#009900">200px</font></i>; <font color="#0000FF">background:</font><i><font color="#009900">rgb</font></i>(<i><font color="#009900">76</font></i>,<i><font color="#009900">76</font></i>,<i><font color="#009900">76</font></i>); <font color="#0000FF">font-size:</font><i><font color="#009900">1.2em</font></i>; <font color="#0000FF">z-index:</font><i><font color="#009900">4</font></i>; <font color="#0000FF">overflow:</font><i><font color="#009900">auto</font></i>; <font color="#0000FF">background-repeat:</font><i><font color="#009900">no-repeat</font></i>;<font color="#FF0000">}</font>
+
+<font color="#990000">*</font> html <font color="#993399">#left</font> <font color="#FF0000">{</font><font color="#0000FF">height:</font><i><font color="#009900">100%</font></i>; <font color="#0000FF">top:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">bottom:</font><i><font color="#009900">0</font></i>; <font color="#0000FF">border-top:</font><i><font color="#009900">100px</font></i> <i><font color="#009900">solid</font></i> <font color="#FF0000">#fff</font>; <font color="#0000FF">border-bottom:</font><i><font color="#009900">50px</font></i> <i><font color="#009900">solid</font></i> <font color="#FF0000">#fff</font>; <font color="#0000FF">color:</font><font color="#FF0000">#fff</font>;<font color="#FF0000">}</font>
+
+<font color="#993399">#content</font> p <font color="#FF0000">{</font><font color="#0000FF">padding:</font><i><font color="#009900">10px</font></i>;<font color="#FF0000">}</font>
+<font color="#993399">.bold</font> <font color="#FF0000">{</font><font color="#0000FF">font-size:</font><i><font color="#009900">1.2em</font></i>; <font color="#0000FF">font-weight:</font><i><font color="#009900">bold</font></i>;<font color="#FF0000">}</font>
+
+dd <font color="#FF0000">{</font><font color="#0000FF">display:</font><i><font color="#009900">none</font></i>;<font color="#FF0000">}</font>
+a<font color="#993399">.nav</font><font color="#990000">,</font> a<font color="#993399">.nav</font><font color="#990000">:</font>visited <font color="#FF0000">{</font><font color="#0000FF">margin-left:</font><i><font color="#009900">40px</font></i>; <font color="#0000FF">display:</font><i><font color="#009900">block</font></i>; <font color="#0000FF">width:</font><i><font color="#009900">125px</font></i>; <font color="#0000FF">height:</font><i><font color="#009900">25px</font></i>; <font color="#0000FF">background:</font><font color="#FF0000">#aaa</font>; <font color="#0000FF">color:</font><font color="#FF0000">#eee</font>; <font color="#0000FF">border:</font><i><font color="#009900">1px</font></i> <i><font color="#009900">solid</font></i> <font color="#FF0000">#000</font>; <font color="#0000FF">text-decoration:</font><i><font color="#009900">none</font></i>; <font color="#0000FF">text-align:</font><i><font color="#009900">center</font></i>; <font color="#0000FF">line-height:</font><i><font color="#009900">25px</font></i>;<font color="#FF0000">}</font>
+a<font color="#993399">.nav</font><font color="#990000">:</font>hover <font color="#FF0000">{</font><font color="#0000FF">background:</font><font color="#FF0000">#000</font>; <font color="#0000FF">color:</font><font color="#FF0000">#fff</font>;<font color="#FF0000">}</font>
+
+<font color="#993399">#issueinfo</font> <font color="#FF0000">{</font>
+	<font color="#0000FF">position:</font> <i><font color="#009900">absolute</font></i>;
+	<font color="#0000FF">right:</font> <i><font color="#009900">0</font></i>;
+	<font color="#0000FF">width:</font> <i><font color="#009900">150px</font></i>;
+<font color="#FF0000">}</font>
+</tt></pre>

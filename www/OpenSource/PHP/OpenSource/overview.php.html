@@ -1,0 +1,204 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">  overview.php</font></i>
+
+<i><font color="#9A1900">  Author:      wrepp</font></i>
+<i><font color="#9A1900">  Date:        01/05/2010</font></i>
+<i><font color="#9A1900">  Description: overview documentation for 2600 index project.</font></i>
+<i><font color="#9A1900">  Notes:       until I come up with something better.</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+
+<b><font color="#000080">&lt;!DOCTYPE</font></b> <font color="#009900">HTML</font> <font color="#009900">PUBLIC</font> <font color="#FF0000">"-//W3C//DTD HTML 4.01 Transitional//EN"</font>
+<font color="#FF0000">"http://www.w3.org/TR/html4/loose.dtd"</font><b><font color="#000080">&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+  <font color="#009900">$path</font> <font color="#990000">=</font> <font color="#FF0000">"../"</font><font color="#990000">;</font>
+
+  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"db.php"</font><font color="#990000">);</font>
+
+<i><font color="#9A1900">/* mysql */</font></i>
+  <font color="#009900">$conn</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_connect</font></b> <font color="#990000">(</font><font color="#009900">$dbhost</font><font color="#990000">,</font> <font color="#009900">$dbuser</font><font color="#990000">,</font> <font color="#009900">$dbpass</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><font color="#FF0000">'Error connecting to mysql'</font><font color="#990000">);</font>
+  <b><font color="#000000">mysqli_select_db</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$dbname</font><font color="#990000">);</font>
+  
+<font color="#990000">?&gt;</font>
+
+<b><font color="#0000FF">&lt;html&gt;</font></b>
+  <b><font color="#0000FF">&lt;head&gt;</font></b>
+  <b><font color="#0000FF">&lt;meta</font></b> <font color="#009900">http-equiv</font><font color="#990000">=</font><font color="#FF0000">"Content-type"</font> <font color="#009900">content</font><font color="#990000">=</font><font color="#FF0000">"text/html;charset=UTF-8"</font><b><font color="#0000FF">&gt;</font></b>  
+  <b><font color="#0000FF">&lt;title&gt;</font></b>Open Source<b><font color="#0000FF">&lt;/title&gt;</font></b>
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"header.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/head&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;body&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"page.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"content"</font><b><font color="#0000FF">&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Overview<b><font color="#0000FF">&lt;/p&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p&gt;</font></b>
+     The 2600 index web site has a php/html/css user interface, a mysql database containing all of the issue/article information, a standalone Java program that gets the initial issue and article title information from the 2600 store web site and scripts used to update the public web site. It has two parts - a public internet facing web site accessable to anyone and a private web site run on an internal intranet used to enter 2600 indexing information and maintain the web site. This page is a preliminary document only created to show my intention of open sourcing this project, it is far from complete and will probably evolve into something completely different. My main focus now is completing the data entry.
+    <b><font color="#0000FF">&lt;/p&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Public<b><font color="#0000FF">&lt;/p&gt;</font></b>
+    <b><font color="#0000FF">&lt;ul&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>
+        Main
+        <b><font color="#0000FF">&lt;ul&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Home <b><font color="#0000FF">&lt;br&gt;</font></b>  (index.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Articles <b><font color="#0000FF">&lt;br&gt;</font></b>  (article.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Search <b><font color="#0000FF">&lt;br&gt;</font></b>  (search.php)
+          <b><font color="#0000FF">&lt;br&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Status <b><font color="#0000FF">&lt;br&gt;</font></b>  (status.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Best of 2600  <b><font color="#0000FF">&lt;br&gt;</font></b> ( BestOf2600Book.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Keywords <b><font color="#0000FF">&lt;br&gt;</font></b>  (keywords.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Links <b><font color="#0000FF">&lt;br&gt;</font></b>  (links.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+        <b><font color="#0000FF">&lt;/li&gt;</font></b>
+      <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>
+        Open Source
+        <b><font color="#0000FF">&lt;ul&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Overview <b><font color="#0000FF">&lt;br&gt;</font></b>  (overview.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            SQL <b><font color="#0000FF">&lt;br&gt;</font></b>  (directoryListing.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            PHP <b><font color="#0000FF">&lt;br&gt;</font></b>  (directoryListing.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Data <b><font color="#0000FF">&lt;br&gt;</font></b>  (directoryListing.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+        <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+      <b><font color="#0000FF">&lt;/li&gt;</font></b>
+    <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Private<b><font color="#0000FF">&lt;/p&gt;</font></b>
+    
+    <b><font color="#0000FF">&lt;ul&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>
+        Reports
+        <b><font color="#0000FF">&lt;ul&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Article/Keyword <b><font color="#0000FF">&lt;br&gt;</font></b> List articles that don't have any keywords assigned to it.  (ArticlesWithNoKeywords.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Keyword/Article <b><font color="#0000FF">&lt;br&gt;</font></b> List keywords that aren't assigned to any articles.  (KeywordsWithNoArticles.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Links <b><font color="#0000FF">&lt;br&gt;</font></b> List links by option/status. (Links.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Missing Data <b><font color="#0000FF">&lt;br&gt;</font></b> List articles missing Author/Synopsis/Page. (MissingData.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+        <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+      <b><font color="#0000FF">&lt;/li&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>
+        Util
+        <b><font color="#0000FF">&lt;ul&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Assign Articles <b><font color="#0000FF">&lt;br&gt;</font></b> (AssignArticles.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Validate Links <b><font color="#0000FF">&lt;br&gt;</font></b> (validateLink.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            wget Links <b><font color="#0000FF">&lt;br&gt;</font></b> (wgetLinks.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Write Stats <b><font color="#0000FF">&lt;br&gt;</font></b> (writeStats.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Write 2600 Book <b><font color="#0000FF">&lt;br&gt;</font></b> (writeBestOf2600Book.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Add Issue <b><font color="#0000FF">&lt;br&gt;</font></b> (addIssue.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Build Open Source <b><font color="#0000FF">&lt;br&gt;</font></b> (buildOpenSource.php)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+        <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+      <b><font color="#0000FF">&lt;/li&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>
+        Table Editors
+        <b><font color="#0000FF">&lt;ul&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Addendums
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Articles
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Authors
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Issues
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Keywords
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            KeywordXref
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            Links
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+        <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+      <b><font color="#0000FF">&lt;/li&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>
+        Java
+        <b><font color="#0000FF">&lt;ul&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?=$path?&gt;OpenSource/Load2600Issue.java.html"</font> <font color="#009900">target</font><font color="#990000">=</font><font color="#FF0000">_blank</font><b><font color="#0000FF">&gt;</font></b>**!!outdated - original no longer works!!** View old Load 2600 Issue (in new tab)<b><font color="#0000FF">&lt;/a&gt;</font></b> <b><font color="#0000FF">&lt;br&gt;</font></b> (Load2600Issue.java)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+        <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+      <b><font color="#0000FF">&lt;/li&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>
+        Python
+        <b><font color="#0000FF">&lt;ul&gt;</font></b>
+          <b><font color="#0000FF">&lt;li&gt;</font></b>
+            <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"&lt;?=$path?&gt;OpenSource/2600.py.html"</font> <font color="#009900">target</font><font color="#990000">=</font><font color="#FF0000">_blank</font><b><font color="#0000FF">&gt;</font></b>View new load 2600 issue (in new tab)<b><font color="#0000FF">&lt;/a&gt;</font></b> <b><font color="#0000FF">&lt;br&gt;</font></b> (2600.py)
+          <b><font color="#0000FF">&lt;/li&gt;</font></b>
+        <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+      <b><font color="#0000FF">&lt;/li&gt;</font></b>
+    <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Tools<b><font color="#0000FF">&lt;/p&gt;</font></b>
+    
+    <b><font color="#0000FF">&lt;ul&gt;</font></b>
+    <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#FF0000">"tools.html"</font><font color="#990000">;</font> <font color="#990000">?&gt;</font>
+    <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"note"</font><b><font color="#0000FF">&gt;</font></b>Note: this is from the development server, the production server is most likely different and many of the tools aren't used there.<b><font color="#0000FF">&lt;/p&gt;</font></b>
+    
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+  <b><font color="#000000">mysqli_close</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">);</font>
+<font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"foot"</font><b><font color="#0000FF">&gt;</font></b>
+    <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"footer.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;/body&gt;</font></b>
+<b><font color="#0000FF">&lt;/html&gt;</font></b>
+</tt></pre>

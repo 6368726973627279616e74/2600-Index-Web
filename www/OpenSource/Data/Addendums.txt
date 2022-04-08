@@ -1,0 +1,13 @@
+1	1267	See Autumn 2008 [25:3] page 43 in letters section.
+2	1247	See Autumn 2008 [25:3] page 43 in the letters section.
+3	1350	See Summer 2009 [26:2] page 44 in letters section.
+4	486	See 'More Socket Programming for Fun and Profit' page 15 for errata and updates. <a href='http://localhost/2600/article.php?i=45&a=525'>(..)</a>
+5	391	See Spring 1997 [14:1] page 46 for the AskSam Password Table.
+6	207	See Autumn 1993 [10:3] page 37 for the corrected circuit diagram.
+7	128	See 'simplex/usps update' page 21 for corrections in Winter 1991 [8:4]. <a href='http://localhost/2600/article.php?i=16&a=137'>(..)</a>
+8	123	See 'simplex/usps update' page 21 for corrections in Winter 1991 [8:4]. <a href='http://localhost/2600/article.php?i=16&a=137'>(..)</a>
+9	1552	See November 1987 [4:11] page 22 for the correction.
+10	1607	See October 1987 [4:10] page 18 for the correction.
+11	1950	See Winter 2010 [27:4] page 43 in the letters section.
+12	1979	See Spring 2011 (28:1) in Letters page 38 for a correction to step 6.
+13	2341	See Spring 2015 [32:1] page 41 in the letters section.

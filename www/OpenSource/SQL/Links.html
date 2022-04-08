@@ -1,0 +1,72 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">-- MySQL dump 10.13  Distrib 5.5.47, for debian-linux-gnu (x86_64)</font></i>
+<i><font color="#9A1900">--</font></i>
+<i><font color="#9A1900">-- Host: localhost    Database: 2600</font></i>
+<i><font color="#9A1900">-- ------------------------------------------------------</font></i>
+<i><font color="#9A1900">-- Server version	5.5.47-0+deb8u1</font></i>
+
+<i><font color="#9A1900">/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40101 SET NAMES utf8 */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40103 SET TIME_ZONE='+00:00' */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='' */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */</font></i><font color="#990000">;</font>
+
+<i><font color="#9A1900">--</font></i>
+<i><font color="#9A1900">-- Table structure for table `Links`</font></i>
+<i><font color="#9A1900">--</font></i>
+
+<b><font color="#0000FF">DROP</font></b> <b><font color="#0000FF">TABLE</font></b> <b><font color="#0000FF">IF</font></b> <b><font color="#0000FF">EXISTS</font></b> <font color="#FF0000">`Links`</font><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40101 SET @saved_cs_client     = @@character_set_client */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40101 SET character_set_client = utf8 */</font></i><font color="#990000">;</font>
+<b><font color="#0000FF">CREATE</font></b> <b><font color="#0000FF">TABLE</font></b> <font color="#FF0000">`Links`</font> <font color="#990000">(</font>
+  <font color="#FF0000">`LinksID`</font> <font color="#009900">int</font><font color="#990000">(</font><font color="#993399">11</font><font color="#990000">)</font> <b><font color="#0000FF">NOT</font></b> <b><font color="#0000FF">NULL</font></b> <b><font color="#0000FF">AUTO_INCREMENT</font></b> COMMENT <font color="#FF0000">'Automatic unique record id.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`ArticlesID`</font> <font color="#009900">int</font><font color="#990000">(</font><font color="#993399">11</font><font color="#990000">)</font> <b><font color="#0000FF">NOT</font></b> <b><font color="#0000FF">NULL</font></b> COMMENT <font color="#FF0000">'Link to article.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`Link`</font> <font color="#009900">varchar</font><font color="#990000">(</font><font color="#993399">256</font><font color="#990000">)</font> <b><font color="#0000FF">NOT</font></b> <b><font color="#0000FF">NULL</font></b> COMMENT <font color="#FF0000">'Link url.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`Description`</font> <font color="#009900">varchar</font><font color="#990000">(</font><font color="#993399">64</font><font color="#990000">)</font> <b><font color="#0000FF">DEFAULT</font></b> <b><font color="#0000FF">NULL</font></b> COMMENT <font color="#FF0000">'Short description for display.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`Notes`</font> <font color="#009900">varchar</font><font color="#990000">(</font><font color="#993399">2048</font><font color="#990000">)</font> <b><font color="#0000FF">DEFAULT</font></b> <b><font color="#0000FF">NULL</font></b> COMMENT <font color="#FF0000">'Link notes and/or comments.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`Status`</font> <font color="#009900">char</font><font color="#990000">(</font><font color="#993399">3</font><font color="#990000">)</font> <b><font color="#0000FF">NOT</font></b> <b><font color="#0000FF">NULL</font></b> <b><font color="#0000FF">DEFAULT</font></b> <font color="#FF0000">'?'</font> COMMENT <font color="#FF0000">'Links status, Ok, Err or ?=unknown.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`Validated`</font> <font color="#009900">datetime</font> <b><font color="#0000FF">DEFAULT</font></b> <b><font color="#0000FF">NULL</font></b> COMMENT <font color="#FF0000">'Date/time stamp link was last validated.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`Updated`</font> <font color="#009900">char</font><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">)</font> <b><font color="#0000FF">NOT</font></b> <b><font color="#0000FF">NULL</font></b> <b><font color="#0000FF">DEFAULT</font></b> <font color="#FF0000">'N'</font> COMMENT <font color="#FF0000">'Link updated? Y=yes, N=no.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`LocalCopy`</font> <font color="#009900">char</font><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">)</font> <b><font color="#0000FF">NOT</font></b> <b><font color="#0000FF">NULL</font></b> <b><font color="#0000FF">DEFAULT</font></b> <font color="#FF0000">'N'</font> COMMENT <font color="#FF0000">'Local copy? Y=yes, N=no.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`LocalCopyDate`</font> <font color="#009900">datetime</font> <b><font color="#0000FF">DEFAULT</font></b> <b><font color="#0000FF">NULL</font></b> COMMENT <font color="#FF0000">'Date/time stamp local copy was made using wget.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`Type`</font> <font color="#009900">char</font><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">)</font> <b><font color="#0000FF">NOT</font></b> <b><font color="#0000FF">NULL</font></b> <b><font color="#0000FF">DEFAULT</font></b> <font color="#FF0000">'O'</font> COMMENT <font color="#FF0000">'Link type, O=original article, A=addendum, I=added when indexing.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`OriginalLink`</font> <font color="#009900">varchar</font><font color="#990000">(</font><font color="#993399">256</font><font color="#990000">)</font> <b><font color="#0000FF">NOT</font></b> <b><font color="#0000FF">NULL</font></b> COMMENT <font color="#FF0000">'Original link url.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`ArchiveLink`</font> <font color="#009900">varchar</font><font color="#990000">(</font><font color="#993399">256</font><font color="#990000">)</font> <b><font color="#0000FF">DEFAULT</font></b> <b><font color="#0000FF">NULL</font></b> COMMENT <font color="#FF0000">'Archive.org link url.'</font><font color="#990000">,</font>
+  <font color="#FF0000">`CurlOutput`</font> <font color="#009900">varchar</font><font color="#990000">(</font><font color="#993399">4096</font><font color="#990000">)</font> <b><font color="#0000FF">DEFAULT</font></b> <b><font color="#0000FF">NULL</font></b> COMMENT <font color="#FF0000">'Curl command output from validation.'</font><font color="#990000">,</font>
+  <b><font color="#0000FF">PRIMARY</font></b> <b><font color="#0000FF">KEY</font></b> <font color="#990000">(</font><font color="#FF0000">`LinksID`</font><font color="#990000">)</font>
+<font color="#990000">)</font> ENGINE<font color="#990000">=</font>InnoDB <b><font color="#0000FF">AUTO_INCREMENT</font></b><font color="#990000">=</font><font color="#993399">2876</font> <b><font color="#0000FF">DEFAULT</font></b> CHARSET<font color="#990000">=</font>latin1 COMMENT<font color="#990000">=</font><font color="#FF0000">'Article links if any.'</font><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40101 SET character_set_client = @saved_cs_client */</font></i><font color="#990000">;</font>
+
+<i><font color="#9A1900">/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */</font></i><font color="#990000">;</font>
+
+<i><font color="#9A1900">/*!40101 SET SQL_MODE=@OLD_SQL_MODE */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */</font></i><font color="#990000">;</font>
+<i><font color="#9A1900">/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */</font></i><font color="#990000">;</font>
+
+<i><font color="#9A1900">-- Dump completed on 2018-10-18 15:10:41</font></i>
+<i><font color="#9A1900">/*!50003 SET @saved_cs_client      = @@character_set_client */</font></i> <font color="#990000">;</font>
+<i><font color="#9A1900">/*!50003 SET @saved_cs_results     = @@character_set_results */</font></i> <font color="#990000">;</font>
+<i><font color="#9A1900">/*!50003 SET @saved_col_connection = @@collation_connection */</font></i> <font color="#990000">;</font>
+<i><font color="#9A1900">/*!50003 SET character_set_client  = utf8 */</font></i> <font color="#990000">;</font>
+<i><font color="#9A1900">/*!50003 SET character_set_results = utf8 */</font></i> <font color="#990000">;</font>
+<i><font color="#9A1900">/*!50003 SET collation_connection  = utf8_general_ci */</font></i> <font color="#990000">;</font>
+<i><font color="#9A1900">/*!50003 SET @saved_sql_mode       = @@sql_mode */</font></i> <font color="#990000">;</font>
+<i><font color="#9A1900">/*!50003 SET sql_mode              = '' */</font></i> <font color="#990000">;</font>
+DELIMITER <font color="#990000">;;</font>
+<i><font color="#9A1900">/*!50003 CREATE*/</font></i> <i><font color="#9A1900">/*!50017 DEFINER=`root`@`localhost`*/</font></i> <i><font color="#9A1900">/*!50003 TRIGGER trg_Links_Updated BEFORE UPDATE ON `Links`</font></i>
+<i><font color="#9A1900">FOR EACH ROW SET</font></i>
+<i><font color="#9A1900">NEW.Updated = (CASE WHEN NEW.Link = NEW.OriginalLink THEN 'N' ELSE 'Y' END) */</font></i><font color="#990000">;;</font>
+DELIMITER <font color="#990000">;</font>
+<i><font color="#9A1900">/*!50003 SET sql_mode              = @saved_sql_mode */</font></i> <font color="#990000">;</font>
+<i><font color="#9A1900">/*!50003 SET character_set_client  = @saved_cs_client */</font></i> <font color="#990000">;</font>
+<i><font color="#9A1900">/*!50003 SET character_set_results = @saved_cs_results */</font></i> <font color="#990000">;</font>
+<i><font color="#9A1900">/*!50003 SET collation_connection  = @saved_col_connection */</font></i> <font color="#990000">;</font>
+</tt></pre>

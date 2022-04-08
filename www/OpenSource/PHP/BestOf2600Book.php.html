@@ -1,0 +1,84 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">  status.php</font></i>
+
+<i><font color="#9A1900">  Author:      wrepp</font></i>
+<i><font color="#9A1900">  Date:        01/09/2010</font></i>
+<i><font color="#9A1900">  Description: Best of 2600 Book information for 2600 index web site</font></i>
+<i><font color="#9A1900">  Notes:</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+
+<b><font color="#000080">&lt;!DOCTYPE</font></b> <font color="#009900">HTML</font> <font color="#009900">PUBLIC</font> <font color="#FF0000">"-//W3C//DTD HTML 4.01 Transitional//EN"</font>
+<font color="#FF0000">"http://www.w3.org/TR/html4/loose.dtd"</font><b><font color="#000080">&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+
+<i><font color="#9A1900">/* database info */</font></i>
+  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"db.php"</font><font color="#990000">);</font>
+
+<i><font color="#9A1900">/* mysql */</font></i>
+  <font color="#009900">$conn</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_connect</font></b> <font color="#990000">(</font><font color="#009900">$dbhost</font><font color="#990000">,</font> <font color="#009900">$dbuser</font><font color="#990000">,</font> <font color="#009900">$dbpass</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><font color="#FF0000">'Error connecting to mysql'</font><font color="#990000">);</font>
+  <b><font color="#000000">mysqli_select_db</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$dbname</font><font color="#990000">);</font>
+  
+<i><font color="#9A1900">/* query parameters */</font></i>
+  <font color="#009900">$o</font> <font color="#990000">=</font> @<font color="#009900">$_GET</font><font color="#990000">[</font><font color="#FF0000">"o"</font><font color="#990000">];</font>
+  <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$o</font> <font color="#990000">==</font> <font color="#FF0000">""</font><font color="#990000">)</font>  <font color="#009900">$o</font> <font color="#990000">=</font> <font color="#FF0000">"byDate"</font><font color="#990000">;</font>
+
+<font color="#990000">?&gt;</font>
+
+<b><font color="#0000FF">&lt;html&gt;</font></b>
+  <b><font color="#0000FF">&lt;head&gt;</font></b>
+  <b><font color="#0000FF">&lt;meta</font></b> <font color="#009900">http-equiv</font><font color="#990000">=</font><font color="#FF0000">"Content-type"</font> <font color="#009900">content</font><font color="#990000">=</font><font color="#FF0000">"text/html;charset=UTF-8"</font><b><font color="#0000FF">&gt;</font></b>  
+  <b><font color="#0000FF">&lt;title&gt;</font></b>2600 Index Status<b><font color="#0000FF">&lt;/title&gt;</font></b>
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"header.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/head&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;body&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"page.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"content"</font><b><font color="#0000FF">&gt;</font></b>
+    
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Best of 2600 Book<b><font color="#0000FF">&lt;/p&gt;</font></b>
+    
+    <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"#Chapters"</font><b><font color="#0000FF">&gt;</font></b>see Chapters<b><font color="#0000FF">&lt;/a&gt;&lt;br&gt;</font></b>
+    <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"#Articles"</font><b><font color="#0000FF">&gt;</font></b>see Articles<b><font color="#0000FF">&lt;/a&gt;&lt;br&gt;</font></b>
+    
+    <b><font color="#0000FF">&lt;h3&gt;</font></b>Notes<b><font color="#0000FF">&lt;/h3&gt;</font></b>
+    Complete articles are not always included in the book. See Summer 1987 [14:2] the News Summary/News Items <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">'article.php?i=38&amp;amp;a=424'</font><b><font color="#0000FF">&gt;</font></b>..<b><font color="#0000FF">&lt;/a&gt;</font></b>, Spring 1998 News Update/News Items [14:1] <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">'article.php?i=41&amp;amp;a=466'</font><b><font color="#0000FF">&gt;</font></b>..<b><font color="#0000FF">&lt;/a&gt;</font></b>, Spring 1991 What's Up?/EFF Lawsuit [8:1] <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">'article.php?i=13&amp;amp;a=104'</font><b><font color="#0000FF">&gt;</font></b>..<b><font color="#0000FF">&lt;/a&gt;</font></b>, Spring 1998 [15:1] Message Sent/Our Financial State <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">'article.php?i=41&amp;amp;a=450'</font><b><font color="#0000FF">&gt;</font></b>..<b><font color="#0000FF">&lt;/a&gt;</font></b>, Winter 1998 [15:4] The Victor Spoiled/Mitnick Update <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">'article.php?i=44&amp;amp;a=501'</font><b><font color="#0000FF">&gt;</font></b>..<b><font color="#0000FF">&lt;/a&gt;</font></b>, News Items Summer 1995 [14:2] <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">'article.php?i=30&amp;amp;a=311'</font><b><font color="#0000FF">&gt;</font></b>..<b><font color="#0000FF">&lt;/a&gt;</font></b>, Autumn 1998 [15:3] Progress <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">'article.php?i=44&amp;amp;a=484'</font><b><font color="#0000FF">&gt;</font></b>..<b><font color="#0000FF">&lt;/a&gt;</font></b>
+    <b><font color="#0000FF">&lt;br&gt;</font></b>
+    <b><font color="#0000FF">&lt;br&gt;</font></b>
+<font color="#990000">&lt;?php</font>
+    <b><font color="#0000FF">echo</font></b> <font color="#FF0000">"&lt;h3&gt;Stats&lt;/h3&gt;"</font><font color="#990000">;</font>
+    <b><font color="#000080">include</font></b> <font color="#FF0000">"BestOf2600Book_Stats.html"</font><font color="#990000">;</font>
+
+    <b><font color="#0000FF">echo</font></b> <font color="#FF0000">'&lt;h3 id="Chapters" name="Chapters"&gt;Chapters&lt;/h3&gt;'</font><font color="#990000">;</font>
+    <b><font color="#000080">include</font></b> <font color="#FF0000">"BestOf2600Book_Index.html"</font><font color="#990000">;</font>
+
+    <b><font color="#0000FF">echo</font></b> <font color="#FF0000">'&lt;h3 id="Articles" name="Articles"&gt;Articles&lt;/h3&gt;'</font><font color="#990000">;</font>
+    <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$o</font> <font color="#990000">==</font> <font color="#FF0000">"byDate"</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+      <b><font color="#0000FF">echo</font></b> <font color="#FF0000">'&lt;a href="BestOf2600Book.php?o=byPage"&gt;Sort by Page&lt;/a&gt;'</font><font color="#990000">;</font>
+      <b><font color="#000080">include</font></b> <font color="#FF0000">"BestOf2600Book_byDate.html"</font><font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+    <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$o</font> <font color="#990000">==</font> <font color="#FF0000">"byPage"</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+      <b><font color="#0000FF">echo</font></b> <font color="#FF0000">'&lt;a href="BestOf2600Book.php?o=byDate"&gt;Sort by Date&lt;/a&gt;'</font><font color="#990000">;</font>
+      <b><font color="#000080">include</font></b> <font color="#FF0000">"BestOf2600Book_byPage.html"</font><font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+<font color="#990000">?&gt;</font>
+    
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+  <b><font color="#000000">mysqli_close</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">);</font>
+<font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"foot"</font><b><font color="#0000FF">&gt;</font></b>
+    <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"footer.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;/body&gt;</font></b>
+<b><font color="#0000FF">&lt;/html&gt;</font></b>
+</tt></pre>

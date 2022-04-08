@@ -1,0 +1,18 @@
+1	1	1	Stories and Adventures	3
+2	1	2	The Last Days of Ma Bell	21
+3	1	3	New Toys to Play With	65
+4	1	4	The Early Days of the Net	119
+5	1	5	Corporate History	157
+6	1	6	Raids	179
+7	1	7	The Hacker Philosophy	207
+8	2	8	Pop Culture and the Hacker World	233
+9	2	9	The Computer Revolution	277
+10	2	10	Learning to Hack Other Things	313
+11	2	11	More Hacker Stories and Adventures	381
+12	2	12	The Changing of the Telephone	421
+13	2	13	Hackers and the Law	491
+14	3	14	The Lawsuits	573
+15	3	15	Still More Hacker Stories	601
+16	3	16	A New Era of Telephony	651
+17	3	17	Retail Hacking	691
+18	3	18	Toys of the 21st Century	731

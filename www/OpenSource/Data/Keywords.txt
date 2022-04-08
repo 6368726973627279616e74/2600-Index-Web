@@ -1,0 +1,180 @@
+1	Editorial	An article that expresses the opinion of the editor, editorial board, or publisher.	http://en.wikipedia.org/wiki/Editorial
+2	Letters	Letter to the editor, sent to 2600 about issues of concern to the readers.	http://en.wikipedia.org/wiki/Letters_to_the_editor
+3	Virus	Computer virus, a computer program that can copy itself and infect a computer without permission or knowledge of the user.	http://en.wikipedia.org/wiki/Computer_virus
+4	Exploit	A piece of software, a chunk of data, or sequence of commands that take advantage of a bug, glitch or vulnerability in order to cause unintended or unanticipated behavior to occur on computer software, hardware, or something electronic (usually computerized). This frequently includes such things as violently gaining control of a computer system or allowing privilege escalation or a denial of service attack.	http://en.wikipedia.org/wiki/Exploit_(computer_security)
+5	Hack	A clever or quick fix to a computer program problem, or to a clumsy or inelegant solution to a problem. The term is also used to refer to a modification of a program or device to give the user access to features that were otherwise unavailable. The general media also uses this term to describe the act of illegally breaking into a computer, better described as cracking.	http://en.wikipedia.org/wiki/Hack_(technology)
+6	Phreaking	A slang term coined to describe the activity of a subculture of people who study, experiment with, or explore telecommunication systems.	http://en.wikipedia.org/wiki/Phreaking
+7	Tor	The Onion Router\
+(anonymity network)\
+http://www.torproject.org/	http://en.wikipedia.org/wiki/Tor_(anonymity_network)
+8	Pen Testing	Penetration testing, a method of evaluating the security of a computer system or network by simulating an attack by a malicious user.	http://en.wikipedia.org/wiki/Pen_testing
+9	Ripping	The process of copying audio or video content to a hard disk or other media.	http://en.wikipedia.org/wiki/Ripping
+10	MP3	MPEG-1 Audio Layer 3, a digital audio encoding format using a form of lossy data compression.	http://en.wikipedia.org/wiki/Mp3
+11	SEO	Search engine optimization is the process of improving the volume and quality of traffic to a web site from search engines via "natural" ("organic" or "algorithmic") search results.	http://en.wikipedia.org/wiki/Search_engine_optimization
+12	Hackerspace	A hackerspace or hackspace (from Hacker and Space) is a real (as opposed to virtual) place where people with common interests, usually in science, technology, or digital or electronic art can meet, socialise and collaborate.	http://en.wikipedia.org/wiki/Hackerspace
+13	Fiction	The telling of stories which aren't real.	http://en.wikipedia.org/wiki/Fiction
+14	Port Scanning	Searching network host(s) for open port(s).	http://en.wikipedia.org/wiki/Port_scanning
+15	OS fingerprinting	Process of determining the operating system (OS)/server software used by a remote system.	http://en.wikipedia.org/wiki/OS_fingerprinting
+16	Remote Scripting	A technology which allows scripts running inside a browser to exchange information with a server.	http://en.wikipedia.org/wiki/Remote_Scripting
+17	Scripting	A programming language that controls a software application.	http://en.wikipedia.org/wiki/Scripting
+18	Disguise	To alter the appearance or hide the identity of someone/thing.	\N
+19	Cellphone	Also called a mobile phone and handphone, is an electronic device used for mobile telecommunications (mobile telephony, text messaging or data transmission) over a cellular network of specialized base stations known as cell sites.	http://en.wikipedia.org/wiki/Mobile_phone
+20	Forensics	A branch of forensic science pertaining to legal evidence found in computers and digital storage mediums.	http://en.wikipedia.org/wiki/Computer_forensics
+21	WEP	Wired Equivalent Privacy is a deprecated algorithm to secure IEEE 802.11 wireless networks.	http://en.wikipedia.org/wiki/Wired_Equivalent_Privacy
+22	Wireless Networks	Refers to any type of computer network that is wireless, typically using radio waves.	http://en.wikipedia.org/wiki/Wireless_networks
+23	DNS	Domain Name System, Internet system to translate names into IP addresses.	http://en.wikipedia.org/wiki/Domain_Name_System
+24	Firewall	Hardware/software designed to prevent unauthorized electronic access to a networked computer system.	http://en.wikipedia.org/wiki/Firewall
+25	Google	An American public corporation, earning revenue from advertising related to its Internet search, e-mail, online mapping, office productivity, social networking, and video sharing services. They also track people's internet use and blatantly disregard personal privacy!	http://en.wikipedia.org/wiki/Google
+26	800 number	A special telephone number, in that the called party is charged the cost of the calls by the telephone carrier, instead of the calling party.	http://en.wikipedia.org/wiki/800_numbers
+27	Cyberspace	The online world of computer networks and especially the Internet.	http://en.wikipedia.org/wiki/Cyberspace
+28	Music	The art of ordering tones or sounds in succession, in combination, and in temporal relationships to produce a composition having unity and continuity.	http://en.wikipedia.org/wiki/Music
+29	Network	A group of interconnected computers.	http://en.wikipedia.org/wiki/Computer_network
+30	ISP	Internet service provider - a company which offers their customers access to the Internet.	http://en.wikipedia.org/wiki/ISP
+31	Linux	A Unix-like computer operating system family which uses the Linux kernel and the GNU system utilities and libraries.	http://en.wikipedia.org/wiki/Linux
+32	Social Engineering	The art of manipulating people into performing actions or divulging confidential information.	http://en.wikipedia.org/wiki/Social_engineering_(security)
+33	History	A record or narrative description of past events.	http://en.wikipedia.org/wiki/History
+34	Security Tools	Computer programs useful for maintaining/assessing security on computers and networks.	http://sectools.org/
+35	Mind-Body	The interrelationship between physical and mental health.	http://en.wikipedia.org/wiki/Mind-body_connection
+36	Graffiti	Images or lettering scratched, scrawled, painted or marked in any manner on property.	http://en.wikipedia.org/wiki/Graffiti
+37	Lock Picking	The art of unlocking a lock by analyzing and manipulating the components of the lock device, without the original key.	http://en.wikipedia.org/wiki/Lock_Picking
+38	Honeypot	A trap set to detect or deflect attempts at unauthorized use of information systems.	http://en.wikipedia.org/wiki/Honeypot_(computing)
+39	Password Cracking	The process of discovering the plaintext of an encrypted computer password.	http://en.wikipedia.org/wiki/Password_cracking
+40	Javascript	A scripting language widely used for client-side web development.	http://en.wikipedia.org/wiki/Javascript
+41	Computer Security	The protection of information from theft or corruption, or the preservation of availability.	http://en.wikipedia.org/wiki/Computer_Security
+42	VoIP	Voice Over Internet Protocol - the transmission technologies for delivery of voice communications over the Internet.	http://en.wikipedia.org/wiki/Voip
+43	Telecommunications	The assisted transmission of signals over a distance for the purpose of communication.	http://en.wikipedia.org/wiki/Telecommunications
+44	Passwords	A secret word or string of characters that is used for authentication, to prove identity or gain access to a resource.	http://en.wikipedia.org/wiki/Passwords
+45	RFID	Radio-Frequency IDentification - an automatic identification method, relying on storing and remotely retrieving data using devices called RFID tags or transponders.	http://en.wikipedia.org/wiki/Rfid
+46	Barcode	A bar code is an optical machine-readable representation of data.	http://en.wikipedia.org/wiki/Barcode
+47	April Fools' Day	A day marked by the commission of hoaxes and other practical jokes of varying sophistication on friends, family members, enemies and neighbors.	http://en.wikipedia.org/wiki/April_Fools%27_Day
+48	Privacy	The ability of an individual or group to seclude themselves or information about themselves and thereby reveal themselves selectively.	http://en.wikipedia.org/wiki/Privacy
+49	Proxy	A computer system or an application program that services the requests of its clients by forwarding requests to other servers.	http://en.wikipedia.org/wiki/Proxy_server
+50	Stacking	A gang signal made with the hands.	http://en.wikipedia.org/wiki/Gang_signal
+51	Alias	An assumed name (pseudonym).	\N
+52	Surveillance	Monitoring the behavior of people, objects or processes.	http://en.wikipedia.org/wiki/Surveillance
+53	Wikipedia	The free encyclopedia that anyone can edit.	http://en.wikipedia.org/wiki/Wikipedia
+54	Warez	Refers primarily to copyrighted works traded in violation of copyright law.	http://en.wikipedia.org/wiki/Warez
+55	Darknet	A private virtual network where users connect only to people they trust.	http://en.wikipedia.org/wiki/Darknet_(file_sharing)
+56	Satellite TV/radio	Television/radio delivered by the means of communications satellites.	http://en.wikipedia.org/wiki/Satellite_television\
+http://en.wikipedia.org/wiki/Satellite_radio
+57	Encryption	The process of transforming information (referred to as plaintext) using an algorithm (called cipher) to make it unreadable to anyone except those possessing special knowledge, usually referred to as a key.	http://en.wikipedia.org/wiki/Encryption
+58	Electronic Voting	Is a term encompassing several different types of voting, embracing both electronic means of casting a vote and electronic means of counting votes.	http://en.wikipedia.org/wiki/Electronic_voting
+59	Facebook	A popular, free-access social networking website.	http://en.wikipedia.org/wiki/Facebook
+60	Paypal	An e-commerce business allowing payments and money transfers to be made through the Internet. They are a bunch of crooks whose service sucks!	http://en.wikipedia.org/wiki/Paypal
+61	DRM	Digital rights management - technologies which provide access control for digital media.	http://en.wikipedia.org/wiki/Digital_rights_management
+62	Drugs	Any chemical substance that, when absorbed into the body of a living organism, alters normal bodily function.	http://en.wikipedia.org/wiki/Drugs
+63	IDS	Intrusion Detection System - software and/or hardware designed to detect unwanted attempts at accessing, manipulating, and/or disabling of computer systems, mainly through a network.	http://en.wikipedia.org/wiki/Intrusion_detection_system
+64	Web Filtering	Software designed and optimized for controlling what content is permitted to a reader.	http://en.wikipedia.org/wiki/Web_filtering
+65	Multiboot	The act of installing multiple operating systems on a computer, and being able to choose which one to boot.	http://en.wikipedia.org/wiki/Multiboot
+66	Net Neutrality	A network that is free of restrictions on content, sites, or platforms, on the kinds of equipment that may be attached, and on the modes of communication allowed, as well as one where communication is not unreasonably degraded by other communication streams.	http://en.wikipedia.org/wiki/Net_Neutrality
+67	Election	A decision-making process by which a population chooses an individual to hold formal office.	http://en.wikipedia.org/wiki/Election
+68	craigslist	A central network of online communities, featuring free online classified advertisements and forums on various topics.	http://en.wikipedia.org/wiki/CraigsList
+69	Anonymity	The quality or state of being anonymous; anonymousness.	http://en.wikipedia.org/wiki/Anonymity
+70	Dumpster Diving	The practice of sifting through commercial or residential trash to find items that have been discarded by their owners, but which may be useful to the Dumpster diver.	http://en.wikipedia.org/wiki/Dumpster_Diving
+71	Quantum computing	A device for computation that makes direct use of quantum mechanical phenomena, such as superposition and entanglement, to perform operations on data.	http://en.wikipedia.org/wiki/Quantum_computing
+72	News	The reporting of current information on television and radio, and in newspapers and magazines.	http://en.wikipedia.org/wiki/News
+73	Business Intelligence	(BI) refers to skills, knowledge, technologies, applications, quality, risks, security issues and practices used to help a business to acquire a better understanding of the market behavior and business context.	http://en.wikipedia.org/wiki/Business_Intelligence
+74	Computer Programming	The process of writing, testing, debugging/troubleshooting, and maintaining the source code of computer programs.	http://en.wikipedia.org/wiki/Computer_Programming
+75	File Sharing	The providing and receiving of digital files over a network, usually following the peer-to-peer (P2P) model, where the files are stored on and served by personal computers of the users.	http://en.wikipedia.org/wiki/File_Sharing
+76	2600	The Hacker Quarterly magazine.	http://en.wikipedia.org/wiki/2600:_The_Hacker_Quarterly
+77	Bit Bucket	Jargon for where lost computerized data has gone - used here as a miscellaneous category.	http://en.wikipedia.org/wiki/Bit_bucket
+78	SSH	Secure Shell is a network protocol that allows data to be exchanged using a secure channel between two networked devices.	http://en.wikipedia.org/wiki/Secure_Shell
+79	Obfuscation	Deliberately obfuscate code to conceal its purpose, to deter reverse engineering, or as a puzzle or recreational challenge for readers.	http://en.wikipedia.org/wiki/Obfuscation
+80	Internet	A global system of interconnected computer networks that interchange data by packet switching using the standardized Internet Protocol Suite (TCP/IP).	http://en.wikipedia.org/wiki/Internet
+81	Help Desk	An information and assistance resource that troubleshoots problems with computers or similar products.	http://en.wikipedia.org/wiki/Help_Desk
+82	iPod	A brand of portable media players designed and marketed by Apple Inc.	http://en.wikipedia.org/wiki/IPod
+83	Access Control	The ability to permit or deny the use of a particular resource by a particular entity.	http://en.wikipedia.org/wiki/Access_Control
+84	Application Software	Any tool that functions and is operated by means of a computer, with the purpose of supporting or improving the software user's work.	http://en.wikipedia.org/wiki/Application_software
+85	TLS	Tansport Layer Security Protocol and its predecessor, Secure Sockets Layer (SSL), are cryptographic protocols that provide security and data integrity for communications over TCP/IP networks such as the Internet.	http://en.wikipedia.org/wiki/Transport_Layer_Security
+86	SSL	Secure Sockets Layer - see TLS - Transport Layer Security.	http://en.wikipedia.org/wiki/Transport_Layer_Security
+87	Man-in-the-middle	A form of active eavesdropping in which the attacker makes independent connections with the victims and relays messages between them, making them believe that they are talking directly to each other over a private connection when in fact the entire conversation is controlled by the attacker.	http://en.wikipedia.org/wiki/Man-in-the-middle
+88	Law	A system of rules, enforced through a set of institutions, used as an instrument to underpin civil obedience, politics, economics and society.	http://en.wikipedia.org/wiki/Law
+89	RF	Radio frequency - a frequency or rate of oscillation within the range of about 3 Hz to 300 GHz.	http://en.wikipedia.org/wiki/Radio_frequency
+90	ATM	Automated teller machine is a computerized telecommunications device that provides the customers of a financial institution with access to financial transactions in a public space without the need for a human clerk or bank teller.	http://en.wikipedia.org/wiki/Automated_teller_machine
+91	WPA	Wi-Fi Protected Access is a certification program administered by the Wi-Fi Alliance to indicate compliance with the security protocol created by the Wi-Fi Alliance to secure wireless computer networks.	http://en.wikipedia.org/wiki/Wi-Fi_Protected_Access
+92	Communication	The process to impart information from a sender to a receiver with the use of a medium.	http://en.wikipedia.org/wiki/Communication
+93	Technology	Usage and knowledge of tools and crafts, and how it affects an animal species' ability to control and adapt to its environment.	http://en.wikipedia.org/wiki/Technology
+94	Hacktivism	The use of computers and computer networks as a means of protest to promote political ends or the nonviolent use of illegal or legally ambiguous digital tools in pursuit of political ends.	http://en.wikipedia.org/wiki/Hacktivism
+95	Identity Theft	A term used to refer to fraud that involves someone pretending to be someone else in order to steal money or get other benefits.	http://en.wikipedia.org/wiki/Identity_Theft
+96	Politics	The process by which groups of people make decisions.	http://en.wikipedia.org/wiki/Politics
+97	Cross-site Scripting	(XSS) is a type of computer security vulnerability typically found in web applications which allow code injection by malicious web users into the web pages viewed by other users.	http://en.wikipedia.org/wiki/Cross-site_Scripting
+99	Hacker	One who discovers and implements a hack.	http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)
+100	Caller ID	A telephone service, available on POTS lines, that transmits a caller's number to the called party's telephone equipment during the ringing signal, or when the call is being set up but before the call is answered.	http://en.wikipedia.org/wiki/Caller_id
+101	Physical Security	Measures that prevent or deter attackers from accessing a facility, resource, or information stored on physical media.	http://en.wikipedia.org/wiki/Physical_security
+102	Spyware	Computer software that is installed surreptitiously on a personal computer to intercept or take partial control over the user's interaction with the computer, without the user's informed consent.	http://en.wikipedia.org/wiki/Spyware
+103	Steganography	The art and science of writing hidden messages in such a way that no-one apart from the sender and intended recipient even realizes there is a hidden message, a form of security through obscurity.	http://en.wikipedia.org/wiki/Steganography
+104	MAC address	Media Access Control address is a quasi-unique identifier assigned to most network adapters or network interface cards (NICs) by the manufacturer for identification.	http://en.wikipedia.org/wiki/MAC_address
+105	Remote access	Refers to remote desktop, remote terminal (like telnet) or any type of remote application (including remote browser).	http://en.wikipedia.org/wiki/Remote_desktop_software
+106	TCP/IP	Transmission Control Protocol (TCP) and/or Internet Protocol (IP), the set of communications protocols used for the Internet and other similar networks.	http://en.wikipedia.org/wiki/TCP/IP
+107	AIM	AOL Instant Messenger (AIM) is an instant messaging and presence computer program which uses the proprietary OSCAR instant messaging protocol and the TOC protocol to allow registered users to communicate in real time.	http://en.wikipedia.org/wiki/AOL_Instant_Messenger
+108	IP phone	Uses Voice over IP technologies to allow telephone calls to be made over an IP network.	http://en.wikipedia.org/wiki/IP_Phone
+109	WAP	Wireless Application Protocol is an open international standard for application layer network communications in a wireless communication environment.	http://en.wikipedia.org/wiki/Wireless_Application_Protocol
+110	Spam	The abuse of electronic messaging systems to send unsolicited bulk messages indiscriminately.	http://en.wikipedia.org/wiki/Spam_(electronic)
+111	Magnetic stripe card	A type of card capable of storing data by modifying the magnetism of tiny iron-based magnetic particles on a band of magnetic material on the card.	http://en.wikipedia.org/wiki/Magnetic_stripe_card
+112	Locksmithing	The science and art of making and defeating locks.	http://en.wikipedia.org/wiki/Locksmithing
+113	Copyright infringement	The unauthorized use of material that is covered by copyright law, in a manner that violates one of the copyright owner's exclusive rights.	http://en.wikipedia.org/wiki/Copyright_infringement
+114	Hacker Happenings	Conferences or events of interest to hackers.	\N
+115	Certificate Authority	A certificate authority or certification authority (CA) is an entity that issues digital certificates for use by other parties.	http://en.wikipedia.org/wiki/Certificate_authority
+116	RPC	Remote procedure call, a network protocol that allows a computer program running on one host to cause code to be executed on another host.	http://en.wikipedia.org/wiki/Remote_procedure_call
+117	Video game console	An interactive entertainment computer or electronic device that produces a video display signal which can be used with a display device (a television, monitor, etc.) to display a video game.	http://en.wikipedia.org/wiki/Video_game_console
+118	DoS	Denial-of-service attack is an attempt to make a computer resource unavailable to its intended users.	http://en.wikipedia.org/wiki/DoS
+119	Biometrics	Methods for uniquely recognizing humans based upon one or more intrinsic physical or behavioral traits.	http://en.wikipedia.org/wiki/Biometrics
+120	Keystroke logging	Often called keylogging, is the practice of noting (or logging) the keys struck on a keyboard, typically in a covert manner so that the person using the keyboard is unaware that their actions are being monitored.	http://en.wikipedia.org/wiki/Keystroke_logging
+121	DHCP	Dynamic Host Configuration Protocol is a network application protocol used by devices (DHCP clients) to obtain configuration information for operation in an Internet Protocol network.	http://en.wikipedia.org/wiki/Dhcp
+122	Telemarketing	A method of direct marketing in which a salesperson solicits to prospective customers to buy products or services over the phone.	http://en.wikipedia.org/wiki/Telemarketing
+123	Book Review	A form of literary criticism in which a book is analyzed based on content, style, and merit.	http://en.wikipedia.org/wiki/Book_Review
+124	AppleTalk	A proprietary suite of protocols developed by Apple Inc for networking computers.	http://en.wikipedia.org/wiki/AppleTalk
+125	Pirate radio	Refers to illegal or unregulated radio transmissions.	http://en.wikipedia.org/wiki/Pirate_radio
+126	Reconnaissance	(also scouting) is a military and medical term denoting exploration conducted to gain information.	http://en.wikipedia.org/wiki/Reconnaissance
+127	ARP	Address Resolution Protocol (ARP) is the method for finding a host's link layer (hardware) address when only its Internet Layer (IP) or some other Network Layer address is known.	http://en.wikipedia.org/wiki/Address_Resolution_Protocol
+128	Cybercrime	Generally refers to criminal activity where a computer or network is the source, tool, target, or place of a crime.	http://en.wikipedia.org/wiki/Cybercrime
+129	PKI	Public Key Infrastructure is a set of hardware, software, people, policies, and procedures needed to create, manage, store, distribute, and revoke digital certificates.	http://en.wikipedia.org/wiki/Public_key_infrastructure
+130	Cryptography	(or cryptology) is the practice and study of hiding information.	http://en.wikipedia.org/wiki/Cryptography
+131	Big Brother	General term to describe any overly-inquisitive or overly-controlling authority figure or attempts by government to increase surveillance.	http://en.wikipedia.org/wiki/Big_Brother_(Nineteen_Eighty-Four)
+132	Hardware specific	Refers to a specific piece or pieces of hardware.	\N
+133	Hacking tool	A program/hardware designed to assist with hacking,	http://en.wikipedia.org/wiki/Hacking_tool
+134	email	Electronic mail is a method of exchanging digital messages using a store-and-forward model in which e-mail computer server systems accept, forward, deliver and store messages on behalf of users.	http://en.wikipedia.org/wiki/Email
+135	Software cracking	The modification of software to remove protection methods: copy protection, trial/demo version, serial number, hardware key, date checks, CD check or software annoyances like nag screens and adware.	http://en.wikipedia.org/wiki/Software_cracking
+136	Mischief	A vexatious or annoying action, or, conduct or activity that playfully causes petty annoyance. 	http://en.wikipedia.org/wiki/Mischief
+137	Software specific	Refers to a specific version or versions of software.	\N
+138	UNIX	A computer operating system originally developed in 1969 by AT&T  at Bell Labs. Today's Unix systems are split into various branches, developed over time by AT&T as well as various commercial vendors and non-profit organizations.	http://en.wikipedia.org/wiki/Unix
+139	Movie Review	The analysis and evaluation of films.	http://en.wikipedia.org/wiki/Movie_review
+140	War Dialing	A technique of using a modem to automatically scan a list of telephone numbers for computers, BBS systems and fax machines.	http://en.wikipedia.org/wiki/War_dialing
+141	BBS	A Bulletin Board System is a computer system running software that allows users to connect and log in to the system using a terminal program. Once logged in, a user can perform functions such as uploading and downloading software and data, reading news and bulletins, and exchanging messages with other users, either through electronic mail or in public message boards. 	http://en.wikipedia.org/wiki/Bulletin_Board_System
+142	Interview	A conversation between two or more people (the interviewer and the interviewee) where questions are asked by the interviewer to obtain information from the interviewee.	http://en.wikipedia.org/wiki/Interview
+143	Operating System	An interface between hardware and user which is responsible for the management and coordination of activities and the sharing of the resources of a computer, that acts as a host for computing applications run on the machine.	http://en.wikipedia.org/wiki/Operating_system
+144	Rootkit	A software system that consists of one or more programs designed to obscure the fact that a system has been compromised.	http://en.wikipedia.org/wiki/Root_kit
+145	Point of Sale	(POS) the hardware and software used for checkouts, the equivalent of an electronic cash register.	http://en.wikipedia.org/wiki/Point_of_sale
+146	Computer Worm	A self-replicating computer program. It uses a network to send copies of itself to other nodes (computers on the network).	http://en.wikipedia.org/wiki/Computer_worm
+147	ARPANET	Advanced Research Projects Agency Network, created by the Defense Advanced Research Projects Agency (DARPA) of the United States Department of Defense, was the world's first operational packet switching network, and the predecessor of the contemporary global Internet.	http://en.wikipedia.org/wiki/Arpanet
+148	Bluetooth	A proprietary open wireless technology standard for exchanging data over short distances.	http://en.wikipedia.org/wiki/Bluetooth
+149	Phishing	The criminally fraudulent process of attempting to acquire sensitive information such as usernames, passwords and credit card details by masquerading as a trustworthy entity in an electronic communication. 	https://secure.wikimedia.org/wikipedia/en/wiki/Phishing
+150	IPv6	A version of the Internet Protocol that is designed to succeed Internet Protocol version 4 (IPv4) because it has a vastly larger address space.	https://secure.wikimedia.org/wikipedia/en/wiki/Ipv6
+151	Robotics	The engineering science and technology of robots, and their design, manufacture, application, and structural disposition.	https://secure.wikimedia.org/wikipedia/en/wiki/Robotics
+152	Geolocation	The identification of the real-world geographic location of an object, such as a radar, mobile phone or an Internet-connected computer terminal.	https://secure.wikimedia.org/wikipedia/en/wiki/Geolocation
+153	E-Book	An electronic book is a text and image-based publication in digital form produced on, published by, and readable on computers or other digital devices.	https://secure.wikimedia.org/wikipedia/en/wiki/E-book
+154	Electronic Money	Also known as e-currency, e-money, electronic cash, electronic currency, digital money, digital cash, digital currency, cyber currency - refers to money or scrip which is only exchanged electronically.	https://secure.wikimedia.org/wikipedia/en/wiki/Electronic_money
+155	Hardware Hacking	Includes building, rebuilding, modifying (modding), and creating electronic hardware, either to make it better, faster, to give it added features or to make it do something it was never intended to do.	https://secure.wikimedia.org/wikipedia/en/wiki/Hardware_hacking
+156	Cyberwar	Politically motivated hacking to conduct sabotage and espionage, a form of information warfare.	https://secure.wikimedia.org/wikipedia/en/wiki/Cyberwar
+157	Home Automation	Centralized control of lighting, HVAC, appliances, and other systems, to provide improved convenience, comfort, energy efficiency and security.	https://en.wikipedia.org/wiki/Home_automation
+158	Virtualization	Virtualization (or virtualisation) is the simulation of the software and/or hardware upon which other software runs.	http://en.wikipedia.org/wiki/Virtualization
+159	Web Crawler (spider)		https://en.wikipedia.org/wiki/Web_crawler
+160	VPN	Virtual Private Network	https://en.wikipedia.org/wiki/Vpn
+161	Twitter	An online social networking service and microblogging service that enables its users to send and read text-based messages of up to 140 characters, known as 'tweets'.	https://en.wikipedia.org/wiki/Twitter
+162	Raspberry Pi	A credit-card-sized single-board computer developed in the UK by the Raspberry Pi Foundation with the intention of promoting the teaching of basic computer science in schools.	https://en.wikipedia.org/wiki/Raspberry_Pi
+163	Bitcoin	A cryptocurrency where the creation and transfer of bitcoins is based on an open-source cryptographic protocol that is independent of any central authority.	https://en.wikipedia.org/wiki/Bitcoin
+164	Cloud computing	Colloquial expression used to describe a variety of different types of computing concepts that involve a large number of computers connected through a real-time communication network such as the Internet	https://en.wikipedia.org/wiki/Cloud_computing
+165	Pivoting	Use of a compromised system to attack other systems.	https://en.wikipedia.org/wiki/Exploit_%28computer_security%29#Pivoting
+166	Android	An operating system based on the Linux kernel and designed primarily for touchscreen mobile devices such as smartphones and tablet computers. Initially developed by Android, Inc., which was purchased by Google.	https://en.wikipedia.org/wiki/Android_%28operating_system%29
+167	Wardriving	Wardriving is the act of searching for Wi-Fi wireless networks by a person in a moving vehicle, using a portable computer, smartphone or personal digital assistant (PDA).	https://en.wikipedia.org/wiki/Wardriving
+168	HTML5	HTML5 is a core technology markup language of the Internet used for structuring and presenting content for the World Wide Web.	https://en.wikipedia.org/wiki/HTML5
+169	Malware	Malware, short for malicious software, is any software used to disrupt computer operation, gather sensitive information, or gain access to private computer systems	https://en.wikipedia.org/wiki/Malware
+170	WARC	Web ARChive format	https://en.wikipedia.org/wiki/Web_ARChive
+171	Meshnet	A mesh network is a network topology in which each node relays data for the network. All mesh nodes cooperate in the distribution of data in the network.	https://en.wikipedia.org/wiki/Meshnet
+172	Internet Leak	An Internet leak occurs when a party's confidential information is released to the public on the Internet.	https://en.wikipedia.org/wiki/Internet_leak
+173	Historical Document	Historical documents are original documents that contain important historical information about a person, place, or event.	https://en.wikipedia.org/wiki/Historical_document
+174	Communications satellite	A communications satellite is an artificial satellite that relays and amplifies radio telecommunications signals via a transponder.	https://en.wikipedia.org/wiki/Communications_satellite
+175	Two-factor authentication.	A method of confirming a user's claimed identity by utilizing a combination of two different components (also known as 2FA).	https://en.wikipedia.org/wiki/2_factor_authentication
+176	I2P	The Invisible Internet Project (I2P) is an anonymous network layer that allows for censorship-resistant, peer to peer communication.	https://en.wikipedia.org/wiki/I2P
+177	Botnet	A number of Internet-connected devices, each of which is running one or more bots.	https://en.wikipedia.org/wiki/Botnet
+178	Whistleblower	A person who exposes any kind of information or activity that is deemed illegal, unethical, or not correct within an organization that is either private or public.	https://en.wikipedia.org/wiki/Whistleblower

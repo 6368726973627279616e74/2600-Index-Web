@@ -1,0 +1,187 @@
+<!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">#!/usr/bin/python</font></i>
+
+<i><font color="#9A1900"># 2600.py</font></i>
+<i><font color="#9A1900"># </font></i>
+<i><font color="#9A1900"># 10/19/2015</font></i>
+<i><font color="#9A1900"># w.r.e.c.</font></i>
+
+<i><font color="#9A1900"># install python-BeautifulSoup</font></i>
+<b><font color="#000080">from</font></b> BeautifulSoup <b><font color="#000080">import</font></b> BeautifulSoup
+<i><font color="#9A1900"># install python-mysqldb</font></i>
+<b><font color="#000080">import</font></b> MySQLdb
+<b><font color="#000080">from</font></b> urllib2 <b><font color="#000080">import</font></b> urlopen
+<b><font color="#000080">import</font></b> cStringIO
+<b><font color="#000080">from</font></b> PIL <b><font color="#000080">import</font></b> Image
+<b><font color="#000080">import</font></b> socket
+<b><font color="#000080">import</font></b> subprocess
+
+<b><font color="#000080">import</font></b> sys
+<b><font color="#000080">import</font></b> pprint
+
+
+<i><font color="#9A1900"># parameters</font></i>
+<b><font color="#0000FF">if</font></b> <b><font color="#000000">len</font></b> <font color="#990000">(</font>sys<font color="#990000">.</font>argv<font color="#990000">)</font> <font color="#990000">&lt;</font> <font color="#993399">3</font><font color="#990000">:</font>
+  <b><font color="#0000FF">print</font></b> <font color="#FF0000">"parameters required: Period Year {optional Update}"</font>
+  <b><font color="#0000FF">print</font></b> <font color="#FF0000">"  (Period=Spring/Summer/Autumn/Winter)"</font>
+  sys<font color="#990000">.</font><b><font color="#000000">exit</font></b> <font color="#990000">(</font><font color="#993399">0</font><font color="#990000">)</font>
+
+Period <font color="#990000">=</font> sys<font color="#990000">.</font>argv <font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
+<b><font color="#0000FF">print</font></b> <font color="#FF0000">"Period="</font><font color="#990000">,</font> Period
+<b><font color="#0000FF">if</font></b> Period <font color="#990000">==</font> <font color="#FF0000">"Spring"</font><font color="#990000">:</font>
+  Quarter <font color="#990000">=</font> <font color="#FF0000">"1"</font>
+<b><font color="#0000FF">elif</font></b> Period <font color="#990000">==</font> <font color="#FF0000">"Summer"</font><font color="#990000">:</font>
+  Quarter <font color="#990000">=</font> <font color="#FF0000">"2"</font>
+<b><font color="#0000FF">elif</font></b> Period <font color="#990000">==</font> <font color="#FF0000">"Autumn"</font><font color="#990000">:</font>
+  Quarter <font color="#990000">=</font> <font color="#FF0000">"3"</font>
+<b><font color="#0000FF">elif</font></b> Period <font color="#990000">==</font> <font color="#FF0000">"Winter"</font><font color="#990000">:</font>
+  Quarter <font color="#990000">=</font> <font color="#FF0000">"4"</font>
+<b><font color="#0000FF">else</font></b><font color="#990000">:</font>
+  <b><font color="#0000FF">print</font></b> <font color="#FF0000">"invalid period: "</font> <font color="#990000">+</font> Period
+  sys<font color="#990000">.</font><b><font color="#000000">exit</font></b> <font color="#990000">(</font><font color="#993399">0</font><font color="#990000">)</font>
+<b><font color="#0000FF">print</font></b> <font color="#FF0000">"Quarter="</font><font color="#990000">,</font> Quarter
+
+Year <font color="#990000">=</font> sys<font color="#990000">.</font>argv <font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
+<b><font color="#0000FF">print</font></b> <font color="#FF0000">"Year="</font><font color="#990000">,</font> Year
+Volume <font color="#990000">=</font> <b><font color="#000000">str</font></b> <font color="#990000">(</font><b><font color="#000000">int</font></b> <font color="#990000">(</font>Year<font color="#990000">)</font> <font color="#990000">-</font> <font color="#993399">1983</font><font color="#990000">)</font>
+<b><font color="#0000FF">print</font></b> <font color="#FF0000">"Volume="</font><font color="#990000">,</font> Volume
+
+Update <font color="#990000">=</font> False
+<b><font color="#0000FF">if</font></b> <b><font color="#000000">len</font></b> <font color="#990000">(</font>sys<font color="#990000">.</font>argv<font color="#990000">)</font> <font color="#990000">==</font> <font color="#993399">4</font><font color="#990000">:</font>
+  <b><font color="#0000FF">if</font></b> sys<font color="#990000">.</font>argv <font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#FF0000">"Update"</font><font color="#990000">:</font>
+    Update <font color="#990000">=</font> True
+<b><font color="#0000FF">print</font></b> <font color="#FF0000">"Update="</font><font color="#990000">,</font> Update
+
+
+<i><font color="#9A1900"># build parameters</font></i>
+Filename <font color="#990000">=</font> Period <font color="#990000">+</font> Year <font color="#990000">+</font> <font color="#FF0000">".gif"</font>
+
+<i><font color="#9A1900">#url = "http://store.2600.com/collections/2010-2015/products/autumn-2015"</font></i>
+<b><font color="#0000FF">if</font></b> <b><font color="#000000">int</font></b> <font color="#990000">(</font>Year<font color="#990000">)</font> <font color="#990000">&gt;=</font> <font color="#993399">2010</font> <b><font color="#0000FF">and</font></b> <b><font color="#000000">int</font></b> <font color="#990000">(</font>Year<font color="#990000">)</font> <font color="#990000">&lt;=</font> <font color="#993399">2015</font><font color="#990000">:</font>
+  Range <font color="#990000">=</font> <font color="#FF0000">"2010-2015"</font>
+<b><font color="#0000FF">elif</font></b> <b><font color="#000000">int</font></b> <font color="#990000">(</font>Year<font color="#990000">)</font> <font color="#990000">&gt;=</font> <font color="#993399">2015</font> <b><font color="#0000FF">and</font></b> <b><font color="#000000">int</font></b> <font color="#990000">(</font>Year<font color="#990000">)</font> <font color="#990000">&lt;=</font> <font color="#993399">2020</font><font color="#990000">:</font>
+  Range <font color="#990000">=</font> <font color="#FF0000">"2016-2020"</font>
+<b><font color="#0000FF">else</font></b><font color="#990000">:</font>
+  <b><font color="#0000FF">print</font></b> <font color="#FF0000">"invalid year: "</font> <font color="#990000">+</font> Year
+  sys<font color="#990000">.</font><b><font color="#000000">exit</font></b> <font color="#990000">(</font><font color="#993399">0</font><font color="#990000">)</font>
+  
+url <font color="#990000">=</font> <font color="#FF0000">"http://store.2600.com/collections/"</font> <font color="#990000">+</font> Range <font color="#990000">+</font> <font color="#FF0000">"/products/"</font> <font color="#990000">+</font> Period<font color="#990000">.</font><b><font color="#000000">lower</font></b> <font color="#990000">()</font> <font color="#990000">+</font> <font color="#FF0000">"-"</font> <font color="#990000">+</font> Year
+<i><font color="#9A1900">#if (int (Year) == 2015 and Period == "Winter"):</font></i>
+<i><font color="#9A1900">#  url = "https://store.2600.com/collections/back-issues/products/winter-2015-2016"</font></i>
+<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>Period <font color="#990000">==</font> <font color="#FF0000">"Winter"</font><font color="#990000">):</font>
+ url <font color="#990000">+=</font> <font color="#FF0000">"-"</font> <font color="#990000">+</font> <b><font color="#000000">str</font></b> <font color="#990000">(</font><b><font color="#000000">int</font></b> <font color="#990000">(</font>Year<font color="#990000">)+</font><font color="#993399">1</font><font color="#990000">)</font>
+
+<b><font color="#0000FF">print</font></b> url
+
+
+<i><font color="#9A1900"># get 2600 store web page</font></i>
+socket<font color="#990000">.</font><b><font color="#000000">setdefaulttimeout</font></b> <font color="#990000">(</font><font color="#993399">30</font><font color="#990000">)</font>
+<b><font color="#0000FF">try</font></b><font color="#990000">:</font>
+  html <font color="#990000">=</font> <b><font color="#000000">urlopen</font></b> <font color="#990000">(</font>url<font color="#990000">).</font><b><font color="#000000">read</font></b><font color="#990000">()</font>
+<b><font color="#0000FF">except</font></b> Exception<font color="#990000">,</font> e<font color="#990000">:</font>
+  <b><font color="#0000FF">print</font></b> <font color="#FF0000">"urlopen: "</font><font color="#990000">,</font> e
+  sys<font color="#990000">.</font><b><font color="#000000">exit</font></b> <font color="#990000">(</font><font color="#993399">0</font><font color="#990000">)</font>
+
+soup <font color="#990000">=</font>  <b><font color="#000000">BeautifulSoup</font></b> <font color="#990000">(</font>html<font color="#990000">)</font>
+td <font color="#990000">=</font> soup<font color="#990000">.</font><b><font color="#000000">find</font></b> <font color="#990000">(</font>id<font color="#990000">=</font><font color="#FF0000">"productPhotoImg"</font><font color="#990000">)</font>
+
+<i><font color="#9A1900">#print td</font></i>
+<i><font color="#9A1900">#pprint.pprint (td)</font></i>
+
+text <font color="#990000">=</font> <b><font color="#000000">str</font></b> <font color="#990000">(</font>td<font color="#990000">)</font>
+<b><font color="#0000FF">print</font></b> text
+
+i <font color="#990000">=</font> text<font color="#990000">.</font><b><font color="#000000">find</font></b> <font color="#990000">(</font><font color="#FF0000">"src="</font><font color="#990000">)</font>
+<i><font color="#9A1900">#j = text.find ("alt=")</font></i>
+<i><font color="#9A1900">#url = "http:" + text[i+5:j-2]</font></i>
+j <font color="#990000">=</font> text<font color="#990000">.</font><b><font color="#000000">find</font></b> <font color="#990000">(</font><font color="#FF0000">"?v="</font><font color="#990000">)</font>
+url <font color="#990000">=</font> <font color="#FF0000">"http:"</font> <font color="#990000">+</font> text<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">5</font><font color="#990000">:</font>j<font color="#990000">]</font>
+<b><font color="#0000FF">print</font></b> url
+
+
+<i><font color="#9A1900">#https://stackoverflow.com/questions/7391945/how-do-i-read-image-data-from-a-url-in-python</font></i>
+<i><font color="#9A1900">#https://stackoverflow.com/questions/4025545/problem-writing-image-file-in-python-with-pil</font></i>
+<i><font color="#9A1900">#url = "http://cdn.shopify.com/s/files/1/0837/3445/products/32-3_Cover_large.jpg"</font></i>
+file <font color="#990000">=</font> cStringIO<font color="#990000">.</font><b><font color="#000000">StringIO</font></b> <font color="#990000">(</font><b><font color="#000000">urlopen</font></b> <font color="#990000">(</font>url<font color="#990000">).</font><b><font color="#000000">read</font></b><font color="#990000">())</font>
+img <font color="#990000">=</font> Image<font color="#990000">.</font><b><font color="#000000">open</font></b> <font color="#990000">(</font>file<font color="#990000">)</font>
+img<font color="#990000">.</font><b><font color="#000000">save</font></b> <font color="#990000">(</font>Period <font color="#990000">+</font> Year <font color="#990000">+</font> <font color="#FF0000">".jpg"</font><font color="#990000">)</font>
+
+cmd <font color="#990000">=</font> <font color="#FF0000">"convert -resize 112x180 "</font> <font color="#990000">+</font> Period <font color="#990000">+</font> Year <font color="#990000">+</font> <font color="#FF0000">".jpg "</font> <font color="#990000">+</font> Period <font color="#990000">+</font> Year <font color="#990000">+</font> <font color="#FF0000">".gif"</font>
+<b><font color="#0000FF">print</font></b> cmd
+p <font color="#990000">=</font> subprocess<font color="#990000">.</font><b><font color="#000000">Popen</font></b> <font color="#990000">(</font>cmd<font color="#990000">,</font> shell<font color="#990000">=</font>True<font color="#990000">)</font>
+retval <font color="#990000">=</font> p<font color="#990000">.</font><b><font color="#000000">wait</font></b> <font color="#990000">()</font>
+<b><font color="#0000FF">print</font></b> <font color="#FF0000">"retval="</font> <font color="#990000">+</font> <b><font color="#000000">str</font></b> <font color="#990000">(</font>retval<font color="#990000">)</font>
+
+<i><font color="#9A1900">#/* open db */</font></i>
+conn <font color="#990000">=</font> MySQLdb<font color="#990000">.</font><b><font color="#000000">connect</font></b> <font color="#990000">(</font>host <font color="#990000">=</font> <font color="#FF0000">"localhost"</font><font color="#990000">,</font> user <font color="#990000">=</font> <font color="#FF0000">"App2600"</font><font color="#990000">,</font> passwd <font color="#990000">=</font> <font color="#FF0000">"A2p6p0"</font><font color="#990000">,</font> db <font color="#990000">=</font> <font color="#FF0000">"2600"</font><font color="#990000">)</font>
+<i><font color="#9A1900">#conn = MySQLdb.connect (host = "localhost", user = "root", passwd = "1.root_2", db = "2600")</font></i>
+cursor <font color="#990000">=</font> conn<font color="#990000">.</font><b><font color="#000000">cursor</font></b> <font color="#990000">()</font>
+
+
+<i><font color="#9A1900"># does issue exist?</font></i>
+sql <font color="#990000">=</font> <font color="#FF0000">"SELECT * FROM Issues WHERE Period = '"</font> <font color="#990000">+</font> Period <font color="#990000">+</font> <font color="#FF0000">"' AND IssueYear = "</font> <font color="#990000">+</font> Year <font color="#990000">+</font> <font color="#FF0000">";"</font>
+<b><font color="#0000FF">print</font></b> sql
+cursor<font color="#990000">.</font><b><font color="#000000">execute</font></b> <font color="#990000">(</font>sql<font color="#990000">)</font>
+
+<b><font color="#0000FF">if</font></b> cursor<font color="#990000">.</font>rowcount <font color="#990000">&gt;</font> <font color="#993399">0</font><font color="#990000">:</font>
+  row <font color="#990000">=</font> cursor<font color="#990000">.</font><b><font color="#000000">fetchone</font></b> <font color="#990000">()</font>
+  IssuesID <font color="#990000">=</font> <b><font color="#000000">str</font></b> <font color="#990000">(</font>row<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">])</font>
+  <b><font color="#0000FF">print</font></b> IssuesID
+<b><font color="#0000FF">else</font></b><font color="#990000">:</font>
+  sql  <font color="#990000">=</font> <font color="#FF0000">"INSERT INTO Issues (Period, IssueYear, CoverLink, BackCoverLink, Quarter, Volume, Pages) "</font>
+  sql <font color="#990000">+=</font> <font color="#FF0000">"VALUES ('"</font> <font color="#990000">+</font> Period <font color="#990000">+</font> <font color="#FF0000">"',"</font> <font color="#990000">+</font> Year <font color="#990000">+</font> <font color="#FF0000">",'FrontCoverImages/"</font> <font color="#990000">+</font> Filename <font color="#990000">+</font> <font color="#FF0000">"',"</font>
+  sql <font color="#990000">+=</font>          <font color="#FF0000">"'BackCoverImages/"</font> <font color="#990000">+</font> Filename <font color="#990000">+</font> <font color="#FF0000">"',"</font> <font color="#990000">+</font> Quarter <font color="#990000">+</font> <font color="#FF0000">","</font> <font color="#990000">+</font> Volume <font color="#990000">+</font> <font color="#FF0000">",68);"</font>
+  <b><font color="#0000FF">print</font></b> sql
+  cursor<font color="#990000">.</font><b><font color="#000000">execute</font></b> <font color="#990000">(</font>sql<font color="#990000">)</font>
+  IssuesID <font color="#990000">=</font> <b><font color="#000000">str</font></b> <font color="#990000">(</font>cursor<font color="#990000">.</font>lastrowid<font color="#990000">)</font>
+  <b><font color="#0000FF">print</font></b> <font color="#FF0000">"IssuesID="</font><font color="#990000">,</font> IssuesID
+  <b><font color="#0000FF">if</font></b> IssuesID <font color="#990000">==</font> <font color="#993399">0</font><font color="#990000">:</font>
+    conn<font color="#990000">.</font><b><font color="#000000">rollback</font></b> <font color="#990000">()</font>
+    sys<font color="#990000">.</font><b><font color="#000000">exit</font></b> <font color="#990000">(</font><font color="#993399">1</font><font color="#990000">)</font>
+  <b><font color="#0000FF">else</font></b><font color="#990000">:</font>
+    <b><font color="#0000FF">if</font></b> Update<font color="#990000">:</font>
+      conn<font color="#990000">.</font><b><font color="#000000">commit</font></b> <font color="#990000">()</font>
+      <b><font color="#0000FF">print</font></b> <font color="#FF0000">"commit"</font>
+
+
+<i><font color="#9A1900">#td = soup.find (class="product-description rte")</font></i>
+<i><font color="#9A1900">#pprint.pprint (td)</font></i>
+<b><font color="#0000FF">print</font></b>
+tds <font color="#990000">=</font> soup<font color="#990000">.</font><b><font color="#000000">findAll</font></b> <font color="#990000">(</font><font color="#FF0000">"li"</font><font color="#990000">)</font>
+
+<b><font color="#0000FF">for</font></b> td <b><font color="#0000FF">in</font></b> tds<font color="#990000">:</font>
+  text <font color="#990000">=</font> <b><font color="#000000">str</font></b> <font color="#990000">(</font>td<font color="#990000">)</font>
+  i <font color="#990000">=</font> text<font color="#990000">.</font><b><font color="#000000">find</font></b> <font color="#990000">(</font><font color="#FF0000">"span"</font><font color="#990000">)</font>
+  <b><font color="#0000FF">if</font></b> i <font color="#990000">&lt;</font> <font color="#993399">1</font><font color="#990000">:</font>
+    i <font color="#990000">=</font> text<font color="#990000">.</font><b><font color="#000000">find</font></b> <font color="#990000">(</font><font color="#FF0000">"href"</font><font color="#990000">)</font>
+    <b><font color="#0000FF">if</font></b> i <font color="#990000">&lt;</font> <font color="#993399">1</font><font color="#990000">:</font>
+      i <font color="#990000">=</font> text<font color="#990000">.</font><b><font color="#000000">find</font></b> <font color="#990000">(</font><font color="#FF0000">"&amp;copy"</font><font color="#990000">)</font>
+      <b><font color="#0000FF">if</font></b> i <font color="#990000">&lt;</font> <font color="#993399">1</font><font color="#990000">:</font>
+        <i><font color="#9A1900">#print text</font></i>
+        tmp <font color="#990000">=</font> text<font color="#990000">.</font><b><font color="#000000">replace</font></b> <font color="#990000">(</font><font color="#FF0000">"&lt;li&gt;"</font><font color="#990000">,</font><font color="#FF0000">""</font><font color="#990000">)</font>
+        Title <font color="#990000">=</font> tmp<font color="#990000">.</font><b><font color="#000000">replace</font></b> <font color="#990000">(</font><font color="#FF0000">"&lt;/li&gt;"</font><font color="#990000">,</font><font color="#FF0000">""</font><font color="#990000">)</font>
+        <b><font color="#0000FF">print</font></b> Title
+        <i><font color="#9A1900">#print "===="</font></i>
+        sql  <font color="#990000">=</font> <font color="#FF0000">"INSERT INTO Articles (IssuesID, AuthorsID, Title, Synopsis) "</font>
+        <i><font color="#9A1900">##sql += "VALUES (" + IssuesID + ",1,'" + Title + "','');"</font></i>
+        sql <font color="#990000">+=</font> <font color="#FF0000">"VALUES ("</font> <font color="#990000">+</font> IssuesID <font color="#990000">+</font> <font color="#FF0000">",1,%s,'');"</font>
+        <b><font color="#0000FF">print</font></b> sql
+        <i><font color="#9A1900">##cursor.execute (sql)</font></i>
+        <b><font color="#0000FF">try</font></b><font color="#990000">:</font>
+          cursor<font color="#990000">.</font><b><font color="#000000">execute</font></b> <font color="#990000">(</font>sql<font color="#990000">,</font> <font color="#990000">[</font>Title<font color="#990000">])</font>
+        <b><font color="#0000FF">except</font></b> conn<font color="#990000">.</font>Error as error<font color="#990000">:</font>
+          <b><font color="#0000FF">if</font></b> error<font color="#990000">.</font>args<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">1062</font><font color="#990000">:</font>
+            <b><font color="#0000FF">print</font></b> <font color="#990000">(</font><font color="#FF0000">"Error: {}"</font><font color="#990000">,</font> <b><font color="#000000">format</font></b> <font color="#990000">(</font>error<font color="#990000">))</font>
+
+<b><font color="#0000FF">if</font></b> Update<font color="#990000">:</font>
+  conn<font color="#990000">.</font><b><font color="#000000">commit</font></b> <font color="#990000">()</font>
+  <b><font color="#0000FF">print</font></b> <font color="#FF0000">"commit"</font>
+
+
+<i><font color="#9A1900"># /* done */</font></i>
+cursor<font color="#990000">.</font><b><font color="#000000">close</font></b> <font color="#990000">()</font>
+conn<font color="#990000">.</font><b><font color="#000000">close</font></b> <font color="#990000">()</font>
+</tt></pre>

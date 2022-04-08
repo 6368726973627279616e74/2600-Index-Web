@@ -1,0 +1,136 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">  directoryListing.php</font></i>
+
+<i><font color="#9A1900">  Author:      wrepp</font></i>
+<i><font color="#9A1900">  Date:        12/31/2009</font></i>
+<i><font color="#9A1900">  Description: directory for Source files/data of 2600 index web site</font></i>
+<i><font color="#9A1900">  Notes:       until I come up with something better.</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+
+<b><font color="#000080">&lt;!DOCTYPE</font></b> <font color="#009900">HTML</font> <font color="#009900">PUBLIC</font> <font color="#FF0000">"-//W3C//DTD HTML 4.01 Transitional//EN"</font>
+<font color="#FF0000">"http://www.w3.org/TR/html4/loose.dtd"</font><b><font color="#000080">&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+  <font color="#009900">$path</font> <font color="#990000">=</font> <font color="#FF0000">"../"</font><font color="#990000">;</font>
+
+  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"db.php"</font><font color="#990000">);</font>
+
+<i><font color="#9A1900">/* mysql */</font></i>
+  <font color="#009900">$conn</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_connect</font></b> <font color="#990000">(</font><font color="#009900">$dbhost</font><font color="#990000">,</font> <font color="#009900">$dbuser</font><font color="#990000">,</font> <font color="#009900">$dbpass</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><font color="#FF0000">'Error connecting to mysql'</font><font color="#990000">);</font>
+  <b><font color="#000000">mysqli_select_db</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$dbname</font><font color="#990000">);</font>
+  
+<i><font color="#9A1900">/* query parameters */</font></i>
+  <font color="#009900">$o</font> <font color="#990000">=</font> @<font color="#009900">$_GET</font><font color="#990000">[</font><font color="#FF0000">"o"</font><font color="#990000">];</font>
+  
+<font color="#990000">?&gt;</font>
+
+<b><font color="#0000FF">&lt;html&gt;</font></b>
+  <b><font color="#0000FF">&lt;head&gt;</font></b>
+  <b><font color="#0000FF">&lt;meta</font></b> <font color="#009900">http-equiv</font><font color="#990000">=</font><font color="#FF0000">"Content-type"</font> <font color="#009900">content</font><font color="#990000">=</font><font color="#FF0000">"text/html;charset=UTF-8"</font><b><font color="#0000FF">&gt;</font></b>  
+  <b><font color="#0000FF">&lt;title&gt;</font></b>Open Source - &lt;?php echo $o ?&gt;<b><font color="#0000FF">&lt;/title&gt;</font></b>
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"header.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/head&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;body&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"page.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"content"</font><b><font color="#0000FF">&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Open Source - <font color="#990000">&lt;?php</font> <b><font color="#0000FF">echo</font></b> <font color="#009900">$o</font> <font color="#990000">?&gt;</font><b><font color="#0000FF">&lt;/p&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p&gt;</font></b>
+     My intent is to open source this entire web site. This page here is just an experiment whose only purpose was to make the data available now in case any one might find it useful. The Data and SQL are just mysqldumps, the PHP is source text exported to html. My first priority is entering the data so it may be some time before I clean this up and figure out a better way of presenting it.
+    <b><font color="#0000FF">&lt;/p&gt;</font></b>
+    
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Files<b><font color="#0000FF">&lt;/p&gt;</font></b>
+    
+    <b><font color="#0000FF">&lt;table</font></b> <font color="#009900">width</font><font color="#990000">=</font><font color="#FF0000">"50%"</font> <font color="#009900">cellspacing</font><font color="#990000">=</font><font color="#FF0000">"1px"</font> <font color="#009900">cellpadding</font><font color="#990000">=</font><font color="#FF0000">"2px"</font><b><font color="#0000FF">&gt;</font></b>
+      <b><font color="#0000FF">&lt;thead&gt;</font></b>
+        <b><font color="#0000FF">&lt;tr</font></b> <font color="#009900">bgcolor</font><font color="#990000">=</font><font color="#FF0000">"LIGHTGREY"</font><b><font color="#0000FF">&gt;</font></b>
+          <b><font color="#0000FF">&lt;td&gt;</font></b>
+            View (in new tab)
+          <b><font color="#0000FF">&lt;/td&gt;</font></b>
+          <b><font color="#0000FF">&lt;td&gt;</font></b>
+            Download (Save Link As..)
+          <b><font color="#0000FF">&lt;/td&gt;</font></b>
+        <b><font color="#0000FF">&lt;/tr&gt;</font></b>
+      <b><font color="#0000FF">&lt;/thead&gt;</font></b>
+<font color="#990000">&lt;?php</font>
+    <i><font color="#9A1900">#$dir = getcwd ();</font></i>
+    <i><font color="#9A1900">#echo $dir . "&lt;br&gt;";</font></i>
+    
+    <font color="#009900">$dh</font> <font color="#990000">=</font> <b><font color="#000000">opendir</font></b> <font color="#990000">(</font><font color="#009900">$o</font><font color="#990000">);</font>
+    <font color="#009900">$files</font> <font color="#990000">=</font> <b><font color="#0000FF">array</font></b> <font color="#990000">();</font>
+    <font color="#009900">$dirs</font> <font color="#990000">=</font> <b><font color="#0000FF">array</font></b> <font color="#990000">();</font>
+
+    <b><font color="#0000FF">while</font></b> <font color="#990000">(</font><font color="#009900">$file</font> <font color="#990000">=</font> <b><font color="#000000">readdir</font></b> <font color="#990000">(</font><font color="#009900">$dh</font><font color="#990000">))</font> <font color="#FF0000">{</font>
+
+    <i><font color="#9A1900">/* save directories seperately */</font></i>
+      <font color="#009900">$dir</font> <font color="#990000">=</font> <font color="#009900">$o</font> <font color="#990000">.</font> <font color="#FF0000">"/"</font> <font color="#990000">.</font> <font color="#009900">$file</font><font color="#990000">;</font>
+      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#000000">is_dir</font></b> <font color="#990000">(</font><font color="#009900">$dir</font><font color="#990000">))</font>  <font color="#FF0000">{</font>
+        <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$file</font> <font color="#990000">!=</font> <font color="#FF0000">"."</font> <font color="#990000">&amp;&amp;</font> <font color="#009900">$file</font> <font color="#990000">!=</font> <font color="#FF0000">".."</font><font color="#990000">)</font>  <font color="#009900">$dirs</font><font color="#990000">[]</font> <font color="#990000">=</font> <font color="#009900">$file</font><font color="#990000">;</font>
+      <font color="#FF0000">}</font>
+      <b><font color="#0000FF">else</font></b>  <font color="#FF0000">{</font>
+        <font color="#009900">$files</font><font color="#990000">[]</font> <font color="#990000">=</font> <font color="#009900">$file</font><font color="#990000">;</font>
+      <font color="#FF0000">}</font>
+    <font color="#FF0000">}</font>  <i><font color="#9A1900">// while</font></i>
+    <b><font color="#000000">closedir</font></b> <font color="#990000">(</font><font color="#009900">$dh</font><font color="#990000">);</font>
+    
+    <i><font color="#9A1900">#chdir ($dir);</font></i>
+    <i><font color="#9A1900">#echo getcwd () . "&lt;br&gt;";</font></i>
+    
+  <i><font color="#9A1900">/* display in sorted order */</font></i>
+    <b><font color="#000000">sort</font></b> <font color="#990000">(</font><font color="#009900">$files</font><font color="#990000">);</font>
+    
+    <font color="#009900">$inbr</font> <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+    <b><font color="#0000FF">foreach</font></b> <font color="#990000">(</font><font color="#009900">$files</font> <b><font color="#0000FF">as</font></b> <font color="#009900">$file</font><font color="#990000">)</font> <font color="#FF0000">{</font>
+      <i><font color="#9A1900">#echo $inbr . ", " . $inbr % 2 . "&lt;br&gt;";</font></i>
+      
+      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">==</font> <font color="#993399">0</font> <font color="#990000">||</font> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">2</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#993399">0</font><font color="#990000">)</font> <font color="#FF0000">{</font>
+        <b><font color="#0000FF">if</font></b> <font color="#990000">((</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">4</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#993399">0</font> <font color="#990000">||</font> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">4</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#993399">1</font><font color="#990000">)</font>  <b><font color="#0000FF">echo</font></b> <font color="#FF0000">'&lt;tr bgcolor="HONEYDEW"&gt;'</font><font color="#990000">;</font>
+        <b><font color="#0000FF">else</font></b>  <b><font color="#0000FF">echo</font></b> <font color="#FF0000">'&lt;tr bgcolor="PALEGREEN"&gt;'</font><font color="#990000">;</font>
+      <font color="#FF0000">}</font>
+<font color="#990000">?&gt;</font>
+        <b><font color="#0000FF">&lt;td&gt;</font></b>
+          <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">&lt;?php echo $o . "/"</font> . $<font color="#009900">file</font> ?<b><font color="#0000FF">&gt;</font></b> target=_blank&gt;<font color="#990000">&lt;?php</font> <b><font color="#0000FF">echo</font></b> <font color="#009900">$file</font> <font color="#990000">?&gt;</font><b><font color="#0000FF">&lt;/a&gt;</font></b>
+        <b><font color="#0000FF">&lt;/td&gt;</font></b>
+<font color="#990000">&lt;?php</font>
+      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">!=</font> <font color="#993399">0</font> <font color="#990000">&amp;&amp;</font> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">2</font><font color="#990000">)</font> <font color="#990000">==</font> <font color="#993399">1</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+        <b><font color="#0000FF">echo</font></b> <font color="#FF0000">"&lt;/tr&gt;"</font><font color="#990000">;</font>
+      <font color="#FF0000">}</font>
+      <font color="#009900">$inbr</font><font color="#990000">++;</font>
+    <font color="#FF0000">}</font>
+    
+<font color="#990000">?&gt;</font>
+    <b><font color="#0000FF">&lt;/table&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;br&gt;</font></b>
+<font color="#990000">&lt;?php</font>
+    <b><font color="#0000FF">foreach</font></b> <font color="#990000">(</font><font color="#009900">$dirs</font> <b><font color="#0000FF">as</font></b> <font color="#009900">$dir</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+       <b><font color="#0000FF">echo</font></b> <font color="#FF0000">'&lt;a href="directoryListing.php?o='</font> <font color="#990000">.</font> <font color="#009900">$o</font> <font color="#990000">.</font> <font color="#FF0000">"/"</font> <font color="#990000">.</font> <font color="#009900">$dir</font> <font color="#990000">.</font> <font color="#FF0000">'"'</font> <font color="#990000">.</font> <font color="#FF0000">'&gt;'</font> <font color="#990000">.</font> <font color="#009900">$dir</font> <font color="#990000">.</font> <font color="#FF0000">'&lt;/a&gt;&lt;br&gt;'</font><font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+
+    <font color="#009900">$i</font> <font color="#990000">=</font> <b><font color="#000000">strpos</font></b> <font color="#990000">(</font><font color="#009900">$o</font><font color="#990000">,</font> <font color="#FF0000">"/"</font><font color="#990000">);</font>
+    <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$i</font> <font color="#990000">&gt;</font> <font color="#993399">0</font><font color="#990000">)</font> <font color="#FF0000">{</font>
+      <b><font color="#0000FF">echo</font></b> <font color="#FF0000">'&lt;a href="directoryListing.php?o='</font> <font color="#990000">.</font> <b><font color="#000000">substr</font></b> <font color="#990000">(</font><font color="#009900">$o</font><font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">,</font> <font color="#009900">$i</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">'"'</font> <font color="#990000">.</font> <font color="#FF0000">'&gt;back&lt;/a&gt;&lt;br&gt;'</font><font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+<font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+  <b><font color="#000000">mysqli_close</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">);</font>
+<font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"foot"</font><b><font color="#0000FF">&gt;</font></b>
+    <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"footer.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;/body&gt;</font></b>
+<b><font color="#0000FF">&lt;/html&gt;</font></b>
+</tt></pre>

@@ -1,0 +1,363 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">  writeStats.php</font></i>
+
+<i><font color="#9A1900">  Author:      wrepp</font></i>
+<i><font color="#9A1900">  Date:        01/09/2010</font></i>
+<i><font color="#9A1900">  Description: write BestOf2600Book.html for 2600 index web site</font></i>
+<i><font color="#9A1900">  Notes:</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+
+<b><font color="#000080">&lt;!DOCTYPE</font></b> <font color="#009900">HTML</font> <font color="#009900">PUBLIC</font> <font color="#FF0000">"-//W3C//DTD HTML 4.01 Transitional//EN"</font>
+<font color="#FF0000">"http://www.w3.org/TR/html4/loose.dtd"</font><b><font color="#000080">&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+<b><font color="#0000FF">function</font></b> <b><font color="#000000">showIssue</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">)</font> <font color="#FF0000">{</font>
+  <b><font color="#0000FF">return</font></b> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Period'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'IssueYear'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" ["</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Volume'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">":"</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Quarter'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">"]"</font><font color="#990000">;</font>
+<font color="#FF0000">}</font>
+
+<b><font color="#0000FF">function</font></b> <b><font color="#000000">writeBestOf2600Book</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$opt</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+
+  <i><font color="#9A1900">#fwrite ($fh, "&lt;br&gt;\n");</font></i>
+      
+<i><font color="#9A1900">/* articles */</font></i>        
+  <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT IssuesID, ArticlesID, Title, PageTitle, Volume, Quarter, IssueYear, Period, PageIn2600Book "</font> <font color="#990000">.</font>
+          <font color="#FF0000">"FROM vw_ArticleInfo "</font> <font color="#990000">.</font>
+          <font color="#FF0000">"WHERE PageIn2600Book != 0 "</font><font color="#990000">;</font>
+  <i><font color="#9A1900">#echo $opt . "&lt;br&gt;";</font></i>
+  <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$opt</font> <font color="#990000">==</font> <font color="#FF0000">"byDate"</font><font color="#990000">)</font>  <font color="#009900">$sql</font> <font color="#990000">.=</font> <font color="#FF0000">"ORDER BY Volume, Quarter"</font><font color="#990000">;</font>
+  <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$opt</font> <font color="#990000">==</font> <font color="#FF0000">"byPage"</font><font color="#990000">)</font>  <font color="#009900">$sql</font> <font color="#990000">.=</font> <font color="#FF0000">"ORDER BY PageIn2600Book"</font><font color="#990000">;</font>
+  <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+  <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+  
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;\n"</font><font color="#990000">);</font>
+  
+<i><font color="#9A1900">/* display results */</font></i>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'&lt;table name="tblBestOf2600Book" id="tblBestOf2600Book" width="95%" cellspacing="1px" cellpadding="2px" &gt;'</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;thead&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'  &lt;tr bgcolor="lightgrey"&gt;'</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"      Year"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;/td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"      Period"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;/td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"      Issue"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;/td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"      Title (from Index)"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;/td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"      Page Title (if different - used by Best of 2600 Book)"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;/td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"      Page"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;/td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"      .."</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;/td&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/tr&gt;"</font><font color="#990000">);</font>
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/thead&gt;"</font><font color="#990000">);</font>
+
+  <font color="#009900">$inbr</font> <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+  <b><font color="#0000FF">while</font></b> <font color="#990000">(</font><font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">))</font>  <font color="#FF0000">{</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;tr bgcolor="</font><font color="#990000">);</font> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">2</font><font color="#990000">)</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"palegreen"</font><font color="#990000">);</font> <b><font color="#0000FF">else</font></b> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"honeydew"</font><font color="#990000">);</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&gt;\n"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'IssueYear'</font><font color="#990000">]);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Period'</font><font color="#990000">]);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"["</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Volume'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">":"</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Quarter'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">"]"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Title'</font><font color="#990000">]);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'PageTitle'</font><font color="#990000">]);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'PageIn2600Book'</font><font color="#990000">]);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;td&gt;"</font><font color="#990000">);</font>
+<i><font color="#9A1900">// http://localhost/2600/articles.php?i=&lt;IssuesID&gt;&amp;a=&lt;ArticlesID&gt;</font></i>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'    &lt;a href="article.php?i='</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'IssuesID'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">'&amp;a='</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'ArticlesID'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">'"&gt;..&lt;/a&gt;'</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/tr&gt;\n"</font><font color="#990000">);</font>
+    <font color="#009900">$inbr</font><font color="#990000">++;</font>
+  <font color="#FF0000">}</font>
+  
+  <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/table&gt;\n"</font><font color="#990000">);</font>
+
+  <i><font color="#9A1900">#fwrite ($fh, "&lt;br&gt;" . "\n");</font></i>
+    
+<i><font color="#9A1900">/* done */</font></i>
+  <b><font color="#000000">fclose</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">);</font>
+<font color="#FF0000">}</font>  <i><font color="#9A1900">// writeBestOf2600Book</font></i>
+<font color="#990000">?&gt;</font>
+
+<font color="#990000">&lt;?php</font>
+  <font color="#009900">$path</font> <font color="#990000">=</font> <font color="#FF0000">"../"</font><font color="#990000">;</font>
+
+<i><font color="#9A1900">/* database info */</font></i>
+  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"db.php"</font><font color="#990000">);</font>
+
+<i><font color="#9A1900">/* mysql */</font></i>
+  <font color="#009900">$conn</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_connect</font></b> <font color="#990000">(</font><font color="#009900">$dbhost</font><font color="#990000">,</font> <font color="#009900">$dbuser</font><font color="#990000">,</font> <font color="#009900">$dbpass</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><font color="#FF0000">'Error connecting to mysql'</font><font color="#990000">);</font>
+  <b><font color="#000000">mysqli_select_db</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$dbname</font><font color="#990000">);</font>
+<font color="#990000">?&gt;</font>
+
+<b><font color="#0000FF">&lt;html&gt;</font></b>
+  <b><font color="#0000FF">&lt;head&gt;</font></b>
+  <b><font color="#0000FF">&lt;meta</font></b> <font color="#009900">http-equiv</font><font color="#990000">=</font><font color="#FF0000">"Content-type"</font> <font color="#009900">content</font><font color="#990000">=</font><font color="#FF0000">"text/html;charset=UTF-8"</font><b><font color="#0000FF">&gt;</font></b>  
+  <b><font color="#0000FF">&lt;title&gt;</font></b>2600 Index Status<b><font color="#0000FF">&lt;/title&gt;</font></b>
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"header.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/head&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;body&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"page.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"content"</font><b><font color="#0000FF">&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Write Stats<b><font color="#0000FF">&lt;/p&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+  <i><font color="#9A1900">/*************************/</font></i>
+  <i><font color="#9A1900">/* section/chapter index */</font></i>
+    <font color="#009900">$fh</font> <font color="#990000">=</font> <b><font color="#000000">fopen</font></b> <font color="#990000">(</font><font color="#FF0000">"../BestOf2600Book_Index.html"</font><font color="#990000">,</font> <font color="#FF0000">"w"</font><font color="#990000">);</font>
+    
+    <i><font color="#9A1900">#fwrite ($fh, "&lt;br&gt;\n");</font></i>
+
+  <i><font color="#9A1900">/* book sections/chapters */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT s.Number AS 'Section', s.Name as 'SectionName', "</font> <font color="#990000">.</font>
+            <font color="#FF0000">"       c.Number AS 'Chapter', c.Name as 'ChapterName', c.Page "</font> <font color="#990000">.</font>
+            <font color="#FF0000">"FROM Chapters c "</font> <font color="#990000">.</font>
+            <font color="#FF0000">"LEFT JOIN Sections s ON c.SectionsID = s.SectionsID "</font> <font color="#990000">.</font>
+            <font color="#FF0000">"ORDER BY c.Page;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'&lt;table name="tblContents" id="tblContents" width="55%" cellspacing="1px" cellpadding="2px" &gt;'</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;thead&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'  &lt;tr bgcolor="lightgrey"&gt;'</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"      Section"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;/td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"      Chapter"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;/td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"      Page"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"    &lt;/td&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/tr&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/thead&gt;"</font><font color="#990000">);</font>
+    
+    <font color="#009900">$inbr</font> <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+    <font color="#009900">$lastSection</font> <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+    <font color="#009900">$Section</font> <font color="#990000">=</font> <font color="#FF0000">""</font><font color="#990000">;</font>
+    <b><font color="#0000FF">while</font></b> <font color="#990000">(</font><font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">))</font>  <font color="#FF0000">{</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;tr bgcolor="</font><font color="#990000">);</font> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">2</font><font color="#990000">)</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"palegreen"</font><font color="#990000">);</font> <b><font color="#0000FF">else</font></b> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"honeydew"</font><font color="#990000">);</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&gt;\n"</font><font color="#990000">);</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;td&gt;"</font><font color="#990000">);</font>
+      <b><font color="#0000FF">switch</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Section'</font><font color="#990000">])</font>  <font color="#FF0000">{</font>
+        <b><font color="#0000FF">case</font></b> <font color="#993399">1</font> <font color="#990000">:</font>
+          <font color="#009900">$Section</font> <font color="#990000">=</font> <font color="#FF0000">"I"</font><font color="#990000">;</font>
+          <b><font color="#0000FF">break</font></b><font color="#990000">;</font>
+        <b><font color="#0000FF">case</font></b> <font color="#993399">2</font> <font color="#990000">:</font>
+          <font color="#009900">$Section</font> <font color="#990000">=</font> <font color="#FF0000">"II"</font><font color="#990000">;</font>
+          <b><font color="#0000FF">break</font></b><font color="#990000">;</font>
+        <b><font color="#0000FF">case</font></b> <font color="#993399">3</font> <font color="#990000">:</font>
+          <font color="#009900">$Section</font> <font color="#990000">=</font> <font color="#FF0000">"III"</font><font color="#990000">;</font>
+          <b><font color="#0000FF">break</font></b><font color="#990000">;</font>
+      <font color="#FF0000">}</font>      
+      <font color="#009900">$Section</font> <font color="#990000">.=</font> <font color="#FF0000">" - "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'SectionName'</font><font color="#990000">];</font>
+      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$Section</font> <font color="#990000">!=</font> <font color="#009900">$lastSection</font><font color="#990000">)</font>  <font color="#FF0000">{</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$Section</font><font color="#990000">);</font>
+        <font color="#009900">$lastSection</font> <font color="#990000">=</font> <font color="#009900">$Section</font><font color="#990000">;</font>
+      <font color="#FF0000">}</font>
+      <b><font color="#0000FF">else</font></b>  <font color="#FF0000">{</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">" "</font><font color="#990000">);</font>
+      <font color="#FF0000">}</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/td&gt;"</font><font color="#990000">);</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;td&gt;"</font><font color="#990000">);</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Chapter'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">". "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'ChapterName'</font><font color="#990000">]);</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/td&gt;"</font><font color="#990000">);</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;td&gt;"</font><font color="#990000">);</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Page'</font><font color="#990000">]);</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"  &lt;/td&gt;"</font><font color="#990000">);</font>
+      <font color="#009900">$inbr</font><font color="#990000">++;</font>
+    <font color="#FF0000">}</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/table&gt;\n"</font><font color="#990000">);</font>
+    
+    <i><font color="#9A1900">#fwrite ($fh, "&lt;br&gt;\n");</font></i>
+    <b><font color="#000000">fclose</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">);</font>
+
+
+  <i><font color="#9A1900">/**************/</font></i>
+  <i><font color="#9A1900">/* book stats */</font></i>
+    <font color="#009900">$fh</font> <font color="#990000">=</font> <b><font color="#000000">fopen</font></b> <font color="#990000">(</font><font color="#FF0000">"../BestOf2600Book_Stats.html"</font><font color="#990000">,</font> <font color="#FF0000">"w"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"First edition published in 2008.&lt;br&gt;"</font><font color="#990000">);</font>
+    
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"834 pages of articles and commentary, 36 pages in the index (835-871).&lt;br&gt;"</font><font color="#990000">);</font>
+
+  <i><font color="#9A1900">/* number of articles, first/last issue */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM vw_ArticleInfo "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE PageIn2600Book != 0 "</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"Number of articles: "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">",  "</font><font color="#990000">);</font>
+    
+    <i><font color="#9A1900">#fwrite ($fh, "Number of articles: " . $row['Nbr'] . "  (so far - I'm on ");</font></i>
+<i><font color="#9A1900">/*</font></i>
+<i><font color="#9A1900">    $sql = "SELECT MAX(PageIn2600Book) AS 'PageIn2600Book' " .</font></i>
+<i><font color="#9A1900">           "FROM Articles";</font></i>
+<i><font color="#9A1900">    #echo $sql . "&lt;br&gt;";</font></i>
+<i><font color="#9A1900">    $result = mysqli_query ($conn, $sql) or die (mysqli_error ($conn));</font></i>
+<i><font color="#9A1900">    $row = mysqli_fetch_array ($result, MYSQLI_ASSOC);</font></i>
+<i><font color="#9A1900">    </font></i>
+<i><font color="#9A1900">    fwrite ($fh, "page " . $row['PageIn2600Book'] . "  of 831 or " . number_format ((($row['PageIn2600Book'] / 831)*100), 2) . "%) ");</font></i>
+<i><font color="#9A1900">*/</font></i>    
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT Volume, Quarter, IssueYear, Period "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM vw_ArticleInfo "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE PageIn2600Book != 0 "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY Volume ASC, Quarter ASC "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LIMIT 1"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <font color="#009900">$first</font> <font color="#990000">=</font> <b><font color="#000000">showIssue</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT Volume, Quarter, IssueYear, Period "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM vw_ArticleInfo "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE PageIn2600Book != 0 "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY Volume DESC, Quarter DESC "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LIMIT 1"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <font color="#009900">$last</font> <font color="#990000">=</font> <b><font color="#000000">showIssue</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"from "</font> <font color="#990000">.</font> <font color="#009900">$first</font> <font color="#990000">.</font> <font color="#FF0000">" thru "</font> <font color="#990000">.</font> <font color="#009900">$last</font> <font color="#990000">.</font> <font color="#FF0000">"."</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    
+  <i><font color="#9A1900">/* number of authors */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT DISTINCT AuthorsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Articles "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE PageIn2600Book != 0 "</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+    <font color="#009900">$nbr</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_num_rows</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$nbr</font> <font color="#990000">.</font> <font color="#FF0000">" different authors contributed.&lt;br&gt;"</font><font color="#990000">);</font>
+
+  <i><font color="#9A1900">/* top ten authors */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT a.AuthorsID, COUNT(*) AS 'Nbr', au.NomDePlume "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Articles a "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN Authors au ON a.AuthorsID = au.AuthorsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE a.PageIn2600Book != 0 "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"GROUP BY a.AuthorsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY Nbr DESC, au.NomDePlume "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LIMIT 10"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+  <i><font color="#9A1900">/* display results */</font></i>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"Top ten authors by articles written (ties in alphabetical order):"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'&lt;table width="25%" cellspacing="1px" cellpadding="2px" &gt;'</font><font color="#990000">);</font>
+    <b><font color="#0000FF">while</font></b> <font color="#990000">(</font><font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">))</font>  <font color="#FF0000">{</font>
+
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;tr bgcolor="</font><font color="#990000">);</font> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">2</font><font color="#990000">)</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"palegreen"</font><font color="#990000">);</font> <b><font color="#0000FF">else</font></b> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"honeydew"</font><font color="#990000">);</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&gt;"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'NomDePlume'</font><font color="#990000">]);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/tr&gt;"</font><font color="#990000">);</font>
+      <font color="#009900">$inbr</font><font color="#990000">++;</font>
+    <font color="#FF0000">}</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/table&gt;&lt;br&gt;"</font><font color="#990000">);</font>
+
+  <i><font color="#9A1900">/* top ten keywords */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT IFNULL(k.Keyword, 'Not Assigned') AS 'Keyword', COUNT(*) AS 'Nbr' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Articles a "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN KeywordXref kx ON a.ArticlesID = kx.ArticlesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN Keywords k ON kx.KeywordsID = k.KeywordsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE a.PageIn2600Book != 0 "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"GROUP BY kx.KeywordsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY Nbr DESC, k.Keyword "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LIMIT 10;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+  <i><font color="#9A1900">/* display results */</font></i>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"Top ten keywords:"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'&lt;table width="25%" cellspacing="1px" cellpadding="2px" &gt;'</font><font color="#990000">);</font>
+    <b><font color="#0000FF">while</font></b> <font color="#990000">(</font><font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">))</font>  <font color="#FF0000">{</font>
+
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;tr bgcolor="</font><font color="#990000">);</font> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">2</font><font color="#990000">)</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"palegreen"</font><font color="#990000">);</font> <b><font color="#0000FF">else</font></b> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"honeydew"</font><font color="#990000">);</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&gt;"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Keyword'</font><font color="#990000">]);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/tr&gt;"</font><font color="#990000">);</font>
+      <font color="#009900">$inbr</font><font color="#990000">++;</font>
+    <font color="#FF0000">}</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/table&gt;&lt;br&gt;"</font><font color="#990000">);</font>
+
+
+  <i><font color="#9A1900">/* book stats done */</font></i>
+    <i><font color="#9A1900">#fwrite ($fh, "&lt;br&gt;\n");</font></i>
+    <b><font color="#000000">fclose</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">);</font>
+ 
+
+  <i><font color="#9A1900">/*******************************/</font></i>
+  <i><font color="#9A1900">/* article info sorted by date */</font></i>
+    <font color="#009900">$fh</font> <font color="#990000">=</font> <b><font color="#000000">fopen</font></b> <font color="#990000">(</font><font color="#FF0000">"../BestOf2600Book_byDate.html"</font><font color="#990000">,</font> <font color="#FF0000">"w"</font><font color="#990000">);</font>
+    <b><font color="#000000">writeBestOf2600Book</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$conn</font><font color="#990000">,</font> <font color="#FF0000">"byDate"</font><font color="#990000">);</font>
+
+
+  <i><font color="#9A1900">/*******************************/</font></i>
+  <i><font color="#9A1900">/* article info sorted by page */</font></i>
+    <font color="#009900">$fh</font> <font color="#990000">=</font> <b><font color="#000000">fopen</font></b> <font color="#990000">(</font><font color="#FF0000">"../BestOf2600Book_byPage.html"</font><font color="#990000">,</font> <font color="#FF0000">"w"</font><font color="#990000">);</font>
+    <b><font color="#000000">writeBestOf2600Book</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$conn</font><font color="#990000">,</font> <font color="#FF0000">"byPage"</font><font color="#990000">);</font>
+
+
+  <i><font color="#9A1900">/**************/</font></i>
+    <b><font color="#0000FF">echo</font></b> <font color="#FF0000">"&lt;br&gt; Done! &lt;br&gt;&lt;br&gt;"</font><font color="#990000">;</font>
+<font color="#990000">?&gt;</font>
+
+    <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">&lt;?php echo $path ?</font><b><font color="#0000FF">&gt;</font></b>BestOf2600Book_Index.html&gt;BestOf2600Book_Index.html<b><font color="#0000FF">&lt;/a&gt;</font></b>
+    <b><font color="#0000FF">&lt;br&gt;</font></b>
+    <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">&lt;?php echo $path ?</font><b><font color="#0000FF">&gt;</font></b>BestOf2600Book_Stats.html&gt;BestOf2600Book_Stats.html<b><font color="#0000FF">&lt;/a&gt;</font></b>
+    <b><font color="#0000FF">&lt;br&gt;</font></b>
+    <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">&lt;?php echo $path ?</font><b><font color="#0000FF">&gt;</font></b>BestOf2600Book_byDate.html&gt;BestOf2600Book_byDate.html<b><font color="#0000FF">&lt;/a&gt;</font></b>
+    <b><font color="#0000FF">&lt;br&gt;</font></b>
+    <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">&lt;?php echo $path ?</font><b><font color="#0000FF">&gt;</font></b>BestOf2600Book_byPage.html&gt;BestOf2600Book_byPage.html<b><font color="#0000FF">&lt;/a&gt;</font></b>
+    
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+  <b><font color="#000000">mysqli_close</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">);</font>
+<font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"foot"</font><b><font color="#0000FF">&gt;</font></b>
+    <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"footer.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;/body&gt;</font></b>
+<b><font color="#0000FF">&lt;/html&gt;</font></b>
+</tt></pre>

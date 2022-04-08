@@ -1,0 +1,117 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">  status.php</font></i>
+
+<i><font color="#9A1900">  Author:      wrepp</font></i>
+<i><font color="#9A1900">  Date:        10/13/2008</font></i>
+<i><font color="#9A1900">  Description: status page for 2600 index web site</font></i>
+<i><font color="#9A1900">  Notes:       table editors only available if sub-directory found</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+
+<b><font color="#000080">&lt;!DOCTYPE</font></b> <font color="#009900">HTML</font> <font color="#009900">PUBLIC</font> <font color="#FF0000">"-//W3C//DTD HTML 4.01 Transitional//EN"</font>
+<font color="#FF0000">"http://www.w3.org/TR/html4/loose.dtd"</font><b><font color="#000080">&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+<b><font color="#0000FF">function</font></b> <b><font color="#000000">showIssue</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">)</font> <font color="#FF0000">{</font>
+  <b><font color="#0000FF">return</font></b> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Period'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'IssueYear'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" ["</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Volume'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">":"</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Quarter'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">"]"</font><font color="#990000">;</font>
+<font color="#FF0000">}</font>
+
+  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"db.php"</font><font color="#990000">);</font>
+
+<i><font color="#9A1900">/* mysql */</font></i>
+  <font color="#009900">$conn</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_connect</font></b> <font color="#990000">(</font><font color="#009900">$dbhost</font><font color="#990000">,</font> <font color="#009900">$dbuser</font><font color="#990000">,</font> <font color="#009900">$dbpass</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><font color="#FF0000">'Error connecting to mysql'</font><font color="#990000">);</font>
+  <b><font color="#000000">mysqli_select_db</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$dbname</font><font color="#990000">);</font>
+<font color="#990000">?&gt;</font>
+
+<b><font color="#0000FF">&lt;html&gt;</font></b>
+  <b><font color="#0000FF">&lt;head&gt;</font></b>
+  <b><font color="#0000FF">&lt;meta</font></b> <font color="#009900">http-equiv</font><font color="#990000">=</font><font color="#FF0000">"Content-type"</font> <font color="#009900">content</font><font color="#990000">=</font><font color="#FF0000">"text/html;charset=UTF-8"</font><b><font color="#0000FF">&gt;</font></b>  
+  <b><font color="#0000FF">&lt;title&gt;</font></b>2600 Index Status<b><font color="#0000FF">&lt;/title&gt;</font></b>
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"header.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/head&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;body&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"page.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"content"</font><b><font color="#0000FF">&gt;</font></b>
+    <b><font color="#0000FF">&lt;noscript&gt;</font></b>
+    &lt;p class='red'&gt;This page requires Javascript to function properly!!&lt;/p&gt;
+    <b><font color="#0000FF">&lt;/noscript&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;script</font></b> <font color="#009900">language</font><font color="#990000">=</font><font color="#FF0000">"javascript"</font> <font color="#009900">type</font><font color="#990000">=</font><font color="#FF0000">"text/javascript"</font><b><font color="#0000FF">&gt;</font></b>
+    <i><font color="#9A1900">// querystring to POST JavaScript</font></i>
+    <i><font color="#9A1900">// copyright 15th October 2007 by Stephen Chapman</font></i>
+    <i><font color="#9A1900">// permission to use this Javascript on your web page is granted</font></i>
+    <i><font color="#9A1900">// provided that all of the code in this script (including these</font></i>
+    <i><font color="#9A1900">// comments) is used without any alteration</font></i>
+    <i><font color="#9A1900">// see http://javascript.about.com/library/bltopost.htm</font></i>
+    <b><font color="#0000FF">function</font></b> <b><font color="#000000">toPost</font></b><font color="#990000">(</font>getString<font color="#990000">)</font> <font color="#FF0000">{</font>
+      <b><font color="#0000FF">var</font></b> parms <font color="#990000">=</font> getString<font color="#990000">.</font><b><font color="#000000">split</font></b><font color="#990000">(</font><font color="#FF0000">'?'</font><font color="#990000">);</font>
+      <b><font color="#0000FF">var</font></b> newF <font color="#990000">=</font> document<font color="#990000">.</font><b><font color="#000000">createElement</font></b><font color="#990000">(</font><font color="#FF0000">"form"</font><font color="#990000">);</font>
+      newF<font color="#990000">.</font>action <font color="#990000">=</font> parms<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">];</font>
+      newF<font color="#990000">.</font>method <font color="#990000">=</font> <font color="#FF0000">'POST'</font><font color="#990000">;</font>
+      <b><font color="#0000FF">var</font></b> parms <font color="#990000">=</font> parms<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">].</font><b><font color="#000000">split</font></b><font color="#990000">(</font><font color="#FF0000">'&amp;'</font><font color="#990000">);</font>
+      <b><font color="#0000FF">for</font></b> <font color="#990000">(</font><b><font color="#0000FF">var</font></b> i<font color="#990000">=</font><font color="#993399">0</font><font color="#990000">;</font> i<font color="#990000">&lt;</font>parms<font color="#990000">.</font>length<font color="#990000">;</font> i<font color="#990000">++)</font> <font color="#FF0000">{</font>
+        <b><font color="#0000FF">var</font></b> pos <font color="#990000">=</font> parms<font color="#990000">[</font>i<font color="#990000">].</font><b><font color="#000000">indexOf</font></b><font color="#990000">(</font><font color="#FF0000">'='</font><font color="#990000">);</font>
+        <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>pos <font color="#990000">&gt;</font> <font color="#993399">0</font><font color="#990000">)</font> <font color="#FF0000">{</font>
+          <b><font color="#0000FF">var</font></b> key <font color="#990000">=</font> parms<font color="#990000">[</font>i<font color="#990000">].</font><b><font color="#000000">substring</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font>pos<font color="#990000">);</font>
+          <b><font color="#0000FF">var</font></b> val <font color="#990000">=</font> parms<font color="#990000">[</font>i<font color="#990000">].</font><b><font color="#000000">substring</font></b><font color="#990000">(</font>pos<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">);</font>  <i><font color="#9A1900">/*@cc_on @if (@_jscript)  var newH = document.createElement("&lt;input name='"+key+"'&gt;");  @else */</font></i>
+          <b><font color="#0000FF">var</font></b> newH <font color="#990000">=</font> document<font color="#990000">.</font><b><font color="#000000">createElement</font></b><font color="#990000">(</font><font color="#FF0000">"input"</font><font color="#990000">);</font>
+          newH<font color="#990000">.</font>name <font color="#990000">=</font> key<font color="#990000">;</font> <i><font color="#9A1900">/* @end @*/</font></i>
+          newH<font color="#990000">.</font>type <font color="#990000">=</font> <font color="#FF0000">'hidden'</font><font color="#990000">;</font>
+          newH<font color="#990000">.</font>value <font color="#990000">=</font> val<font color="#990000">;</font>
+          newF<font color="#990000">.</font><b><font color="#000000">appendChild</font></b><font color="#990000">(</font>newH<font color="#990000">);</font>
+        <font color="#FF0000">}</font>
+      <font color="#FF0000">}</font>
+      document<font color="#990000">.</font><b><font color="#000000">getElementsByTagName</font></b><font color="#990000">(</font><font color="#FF0000">'body'</font><font color="#990000">)[</font><font color="#993399">0</font><font color="#990000">].</font><b><font color="#000000">appendChild</font></b><font color="#990000">(</font>newF<font color="#990000">);</font>
+      newF<font color="#990000">.</font><b><font color="#000000">submit</font></b><font color="#990000">();</font>
+    <font color="#FF0000">}</font>
+    <b><font color="#0000FF">&lt;/script&gt;</font></b>
+    
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Status<b><font color="#0000FF">&lt;/p&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p&gt;</font></b>
+     This web site is a work in progress, currently I'm going back and cleaning up some things and working on the todo's.<b><font color="#0000FF">&lt;br&gt;</font></b>
+     The current issue will be indexed as soon as possible - please be patient as the initial info (cover jpg, etc) comes from <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">"http://store.2600.com/backissues.html"</font><b><font color="#0000FF">&gt;</font></b>store.2600.com<b><font color="#0000FF">&lt;/a&gt;</font></b> and I also need time to receive, read and write the article information and update the host server.
+    <b><font color="#0000FF">&lt;/p&gt;</font></b>
+
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Todo<b><font color="#0000FF">&lt;/p&gt;</font></b>
+    <b><font color="#0000FF">&lt;ul&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>Update links with errors (new link and/or archive.org).<b><font color="#0000FF">&lt;/li&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>Review articles in bit bucket (add more keywords?).<b><font color="#0000FF">&lt;/li&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>Fix local copy logic of tinyurls.<b><font color="#0000FF">&lt;/li&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>Add support for IPv6 links.<b><font color="#0000FF">&lt;/li&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>Update/finish open source stuff.<b><font color="#0000FF">&lt;/li&gt;</font></b>
+    <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Notes<b><font color="#0000FF">&lt;/p&gt;</font></b>
+    <b><font color="#0000FF">&lt;ul&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>Autumn 1994 issue [11:3] page 48 was the first with pictures of phones on the back.<b><font color="#0000FF">&lt;/li&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>Summer 1995 issue [12:2] page 16 was the first with reference to the www.2600.com web site. ([12:1] page 21 annouced construction)<b><font color="#0000FF">&lt;/li&gt;</font></b>
+      <b><font color="#0000FF">&lt;li&gt;</font></b>Winter 2010 issue [27:4] page 19 was the first electronic subscription edition and Hacker Digest created.<b><font color="#0000FF">&lt;/li&gt;</font></b>
+    <b><font color="#0000FF">&lt;/ul&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Database<b><font color="#0000FF">&lt;/p&gt;</font></b>
+
+    <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#FF0000">"stats.html"</font><font color="#990000">;</font> <font color="#990000">?&gt;</font>
+    
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"note"</font><b><font color="#0000FF">&gt;</font></b>(Note: I add a Letters article to each issue as I index)<b><font color="#0000FF">&lt;/p&gt;</font></b>
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+  <b><font color="#000000">mysqli_close</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">);</font>
+<font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"foot"</font><b><font color="#0000FF">&gt;</font></b>
+    <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#FF0000">"footer.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;/body&gt;</font></b>
+<b><font color="#0000FF">&lt;/html&gt;</font></b>
+</tt></pre>

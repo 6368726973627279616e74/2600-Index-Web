@@ -1,0 +1,682 @@
+<!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><i><font color="#9A1900">&lt;!--</font></i>
+<i><font color="#9A1900">  writeStats.php</font></i>
+
+<i><font color="#9A1900">  Author:      wrepp</font></i>
+<i><font color="#9A1900">  Date:        12/30/2009</font></i>
+<i><font color="#9A1900">  Description: status page for 2600 index web site</font></i>
+<i><font color="#9A1900">  Notes:       started from status.php</font></i>
+<i><font color="#9A1900">--&gt;</font></i>
+
+<b><font color="#000080">&lt;!DOCTYPE</font></b> <font color="#009900">HTML</font> <font color="#009900">PUBLIC</font> <font color="#FF0000">"-//W3C//DTD HTML 4.01 Transitional//EN"</font>
+<font color="#FF0000">"http://www.w3.org/TR/html4/loose.dtd"</font><b><font color="#000080">&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+<b><font color="#0000FF">function</font></b> <b><font color="#000000">showIssue</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">)</font> <font color="#FF0000">{</font>
+  <b><font color="#0000FF">return</font></b> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Period'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'IssueYear'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" ["</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Volume'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">":"</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Quarter'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">"]"</font><font color="#990000">;</font>
+<font color="#FF0000">}</font>
+
+  <font color="#009900">$path</font> <font color="#990000">=</font> <font color="#FF0000">"../"</font><font color="#990000">;</font>
+
+  <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"db.php"</font><font color="#990000">);</font>
+
+<i><font color="#9A1900">/* mysql */</font></i>
+  <font color="#009900">$conn</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_connect</font></b> <font color="#990000">(</font><font color="#009900">$dbhost</font><font color="#990000">,</font> <font color="#009900">$dbuser</font><font color="#990000">,</font> <font color="#009900">$dbpass</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><font color="#FF0000">'Error connecting to mysql'</font><font color="#990000">);</font>
+  <b><font color="#000000">mysqli_select_db</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$dbname</font><font color="#990000">);</font>
+<font color="#990000">?&gt;</font>
+
+<b><font color="#0000FF">&lt;html&gt;</font></b>
+  <b><font color="#0000FF">&lt;head&gt;</font></b>
+  <b><font color="#0000FF">&lt;meta</font></b> <font color="#009900">http-equiv</font><font color="#990000">=</font><font color="#FF0000">"Content-type"</font> <font color="#009900">content</font><font color="#990000">=</font><font color="#FF0000">"text/html;charset=UTF-8"</font><b><font color="#0000FF">&gt;</font></b>  
+  <b><font color="#0000FF">&lt;title&gt;</font></b>2600 Index Status<b><font color="#0000FF">&lt;/title&gt;</font></b>
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"header.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/head&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;body&gt;</font></b>
+
+  <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"page.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"content"</font><b><font color="#0000FF">&gt;</font></b>
+
+    <b><font color="#0000FF">&lt;p</font></b> <font color="#009900">class</font><font color="#990000">=</font><font color="#FF0000">"section"</font><b><font color="#0000FF">&gt;</font></b>Write Stats<b><font color="#0000FF">&lt;/p&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+    <font color="#009900">$fh</font> <font color="#990000">=</font> <b><font color="#000000">fopen</font></b> <font color="#990000">(</font><font color="#FF0000">"../stats.html"</font><font color="#990000">,</font> <font color="#FF0000">"w"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"Status as of : "</font> <font color="#990000">.</font> <b><font color="#000000">date</font></b> <font color="#990000">(</font><font color="#FF0000">"m/d/Y h:i a T"</font><font color="#990000">));</font>
+    
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;From issue "</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT * FROM Issues ORDER BY IssueYear ASC, `Quarter` ASC LIMIT 1;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <b><font color="#000000">showIssue</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">));</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">" thru "</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT * FROM Issues ORDER BY IssueYear DESC, `Quarter` DESC LIMIT 1;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <b><font color="#000000">showIssue</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">));</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' FROM Issues;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <font color="#009900">$nbrissue</font> <font color="#990000">=</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">];</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Issues "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE Quote IS NOT NULL AND TRIM(Quote) != '';"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <font color="#009900">$nbrquote</font> <font color="#990000">=</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">];</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Number of issues: "</font> <font color="#990000">.</font> <font color="#009900">$nbrissue</font> <font color="#990000">.</font> <font color="#FF0000">" &amp;nbsp;&amp;nbsp;("</font> <font color="#990000">.</font> <font color="#009900">$nbrquote</font> <font color="#990000">.</font> <font color="#FF0000">" with quote)"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' FROM Articles;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <font color="#009900">$nbrarticles</font> <font color="#990000">=</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">];</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Number of articles: "</font> <font color="#990000">.</font> <font color="#009900">$nbrarticles</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Articles "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE PageTitle != Title "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"  AND PageTitle != '';"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">" &amp;nbsp;&amp;nbsp;("</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" with title different than index)"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+<i><font color="#9A1900">/*</font></i>
+<i><font color="#9A1900">    fwrite ($fh, "&lt;br&gt;" . "\n");</font></i>
+
+<i><font color="#9A1900">    $sql = "SELECT COUNT(*) AS 'Nbr' " .</font></i>
+<i><font color="#9A1900">           "FROM vw_ArticleInfo " .</font></i>
+<i><font color="#9A1900">           "WHERE PageIn2600Book != 0 ";</font></i>
+<i><font color="#9A1900">    #echo $sql . "&lt;br&gt;";</font></i>
+<i><font color="#9A1900">    $result = mysqli_query ($conn, $sql) or die (mysqli_error ($conn));</font></i>
+<i><font color="#9A1900">    $row = mysqli_fetch_array ($result, MYSQLI_ASSOC);</font></i>
+<i><font color="#9A1900">    </font></i>
+<i><font color="#9A1900">    fwrite ($fh, "Number of artices in Best of 2600 Book: " . $row['Nbr'] . "  (so far - I'm on ");</font></i>
+
+<i><font color="#9A1900">    $sql = "SELECT MAX(PageIn2600Book) AS 'PageIn2600Book' " .</font></i>
+<i><font color="#9A1900">           "FROM Articles";</font></i>
+<i><font color="#9A1900">    #echo $sql . "&lt;br&gt;";</font></i>
+<i><font color="#9A1900">    $result = mysqli_query ($conn, $sql) or die (mysqli_error ($conn));</font></i>
+<i><font color="#9A1900">    $row = mysqli_fetch_array ($result, MYSQLI_ASSOC);</font></i>
+<i><font color="#9A1900">    </font></i>
+<i><font color="#9A1900">    fwrite ($fh, "page " . $row['PageIn2600Book'] . "  of 831 or " . number_format ((($row['PageIn2600Book'] / 831)*100), 2) . "%) ");</font></i>
+
+<i><font color="#9A1900">    $sql = "SELECT Volume, Quarter, IssueYear, Period " .</font></i>
+<i><font color="#9A1900">           "FROM vw_ArticleInfo " .</font></i>
+<i><font color="#9A1900">           "WHERE PageIn2600Book != 0 " .</font></i>
+<i><font color="#9A1900">           "ORDER BY Volume ASC, Quarter ASC " .</font></i>
+<i><font color="#9A1900">           "LIMIT 1";</font></i>
+<i><font color="#9A1900">    #echo $sql . "&lt;br&gt;";</font></i>
+<i><font color="#9A1900">    $result = mysqli_query ($conn, $sql) or die (mysqli_error ($conn));</font></i>
+<i><font color="#9A1900">    $row = mysqli_fetch_array ($result, MYSQLI_ASSOC);</font></i>
+<i><font color="#9A1900">    $first = showIssue ($row);</font></i>
+
+<i><font color="#9A1900">    $sql = "SELECT Volume, Quarter, IssueYear, Period " .</font></i>
+<i><font color="#9A1900">           "FROM vw_ArticleInfo " .</font></i>
+<i><font color="#9A1900">           "WHERE PageIn2600Book != 0 " .</font></i>
+<i><font color="#9A1900">           "ORDER BY Volume DESC, Quarter DESC " .</font></i>
+<i><font color="#9A1900">           "LIMIT 1";</font></i>
+<i><font color="#9A1900">    #echo $sql . "&lt;br&gt;";</font></i>
+<i><font color="#9A1900">    $result = mysqli_query ($conn, $sql) or die (mysqli_error ($conn));</font></i>
+<i><font color="#9A1900">    $row = mysqli_fetch_array ($result, MYSQLI_ASSOC);</font></i>
+<i><font color="#9A1900">    $last = showIssue ($row);</font></i>
+
+<i><font color="#9A1900">    fwrite ($fh, "From " . $first . " thru " . $last . ".");</font></i>
+
+<i><font color="#9A1900">    fwrite ($fh, "&lt;br&gt;" . "\n");</font></i>
+<i><font color="#9A1900">*/</font></i>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"       (SELECT COUNT(*) FROM Keywords WHERE WikipediaLink IS NOT NULL) AS 'NbrLink' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Keywords;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Number of keywords: "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">"&amp;nbsp; &amp;nbsp; ("</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'NbrLink'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" with link)"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' FROM Authors;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Number of authors: "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]);</font>
+    
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' FROM Authors WHERE Name != '';"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp; &amp;nbsp; ("</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" with name,"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' FROM Authors WHERE Email != '';"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp; "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" with email)"</font><font color="#990000">);</font>
+
+    <i><font color="#9A1900">#fwrite ($fh, ".");</font></i>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' FROM Links;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Number of links: "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"SUM(IF (Status = 'Err', 1, 0)) AS 'NbrErrors', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"SUM(IF (Updated = 'Y', 1, 0)) AS 'NbrUpdated', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"SUM(IF (ArchiveLink IS NOT NULL, 1, 0)) AS 'NbrArchiveLink', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"SUM(IF (LocalCopy = 'Y', 1, 0)) AS 'NbrLocalCopy', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"SUM(IF (Type = 'A', 1, 0)) AS 'NbrAddendum', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"SUM(IF (Type = 'I', 1, 0)) AS 'NbrIndex' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Links;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;&amp;nbsp;&amp;nbsp;("</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'NbrUpdated'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" updated, "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'NbrErrors'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" with an error, "</font> <font color="#990000">.</font> 
+                 <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'NbrArchiveLink'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" with Archive.org link, "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'NbrLocalCopy'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" with local copy, "</font> <font color="#990000">.</font>
+                 <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'NbrAddendum'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" addendum link, "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'NbrIndex'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" added when indexed)"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' FROM Addendums;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Number of addendum: "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' FROM KeywordXref;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Number of keyword/article cross references: "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' FROM Articles WHERE AuthorsID != 1;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Number of articles indexed: "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" or "</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">(((</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">/</font> <font color="#009900">$nbrarticles</font><font color="#990000">)*</font><font color="#993399">100</font><font color="#990000">),</font> <font color="#993399">2</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">"%"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT COUNT(*) AS 'Nbr' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM (SELECT a.IssuesID, COUNT(*) AS 'Nbr', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"             (SELECT COUNT(*) "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"              FROM Articles a1 "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"              WHERE a.IssuesID = a1.IssuesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"                AND a1.AuthorsID != 1) AS 'Indexed' "</font><font color="#990000">.</font>
+           <font color="#FF0000">"FROM Articles a "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"GROUP BY IssuesID) AS t "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE t.Nbr = t.Indexed"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Number of issues indexed: "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">" or "</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">(((</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">/</font> <font color="#009900">$nbrissue</font><font color="#990000">)*</font><font color="#993399">100</font><font color="#990000">),</font> <font color="#993399">2</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">"%"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT t.NbrArticle, t.NbrIssue, t.NbrArticle / t.NbrIssue AS 'AvgArticles' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM  (SELECT (SELECT COUNT(*) "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               FROM Articles) AS 'NbrArticle', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"              (SELECT COUNT(*) "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               FROM Issues) AS 'NbrIssue') AS t"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Average number of articles per issue (all): "</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AvgArticles'</font><font color="#990000">],</font> <font color="#993399">1</font><font color="#990000">));</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    
+<i><font color="#9A1900">#&lt;!-- 01/13/2010 update --&gt;</font></i>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT t.NbrArticle, t.NbrIssue, t.NbrArticle / t.NbrIssue AS 'AvgArticles' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM  (SELECT (SELECT COUNT(*) "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               FROM Articles a, "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"                    Issues i "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               WHERE a.IssuesID = i.IssuesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"                 AND i.IssueYear &lt; 1988) AS 'NbrArticle', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"              (SELECT COUNT(*) "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               FROM Issues "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               WHERE IssueYear &lt; 1988) AS 'NbrIssue' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"      ) AS t"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Average number of articles per issue (before 1988 when 2600 was a monthly): "</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AvgArticles'</font><font color="#990000">],</font> <font color="#993399">1</font><font color="#990000">));</font>
+    
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT t.NbrArticle, t.NbrIssue, t.NbrArticle / t.NbrIssue AS 'AvgArticles' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM  (SELECT (SELECT COUNT(*) "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               FROM Articles a, "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"                    Issues i "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               WHERE a.IssuesID = i.IssuesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"                 AND i.IssueYear &gt;= 1988) AS 'NbrArticle', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"              (SELECT COUNT(*) "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               FROM Issues "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               WHERE IssueYear &gt;= 1988) AS 'NbrIssue' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"      ) AS t"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Average number of articles per issue (since 1988 when 2600 became a quarterly): "</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AvgArticles'</font><font color="#990000">],</font> <font color="#993399">1</font><font color="#990000">));</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+<i><font color="#9A1900">#&lt;!-- 01/13/2010 update --&gt;</font></i>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT t.NbrArticle, t.NbrIssue, t.NbrArticle / t.NbrIssue AS 'AvgArticles' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM  (SELECT (SELECT COUNT(*) "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               FROM Articles a, "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"                    Issues i "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               WHERE a.IssuesID = i.IssuesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"                 AND i.IssueYear &gt; YEAR(CURDATE())- 5) AS 'NbrArticle', "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"              (SELECT COUNT(*) "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               FROM Issues "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"               WHERE IssueYear &gt; YEAR(CURDATE())- 5) AS 'NbrIssue' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"      ) AS t"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Average number of articles per issue (last 5 years): "</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AvgArticles'</font><font color="#990000">],</font> <font color="#993399">1</font><font color="#990000">));</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT Issue, COUNT(*) AS 'Nbr', Period, IssueYear, Volume, Quarter "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM vw_ArticleInfo "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"GROUP BY Issue "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY Nbr DESC, IssueYear DESC "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LIMIT 1"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Issue with the most articles (latest one): "</font> <font color="#990000">.</font> <b><font color="#000000">showIssue</font></b><font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">" ("</font><font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">")"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT AVG(Pages) AS 'AvgPages' "</font> <font color="#990000">.</font> 
+           <font color="#FF0000">"FROM Issues "</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Average number of pages per issue (all): "</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AvgPages'</font><font color="#990000">],</font> <font color="#993399">1</font><font color="#990000">));</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    
+<i><font color="#9A1900">#&lt;!-- 01/13/2010 update --&gt;</font></i>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT AVG(Pages) AS 'AvgPages' "</font> <font color="#990000">.</font> 
+           <font color="#FF0000">"FROM Issues "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE IssueYear &lt; 1988 "</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Average number of pages per issue (before 1988 when 2600 was a monthly): "</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AvgPages'</font><font color="#990000">],</font> <font color="#993399">1</font><font color="#990000">));</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT AVG(Pages) AS 'AvgPages' "</font> <font color="#990000">.</font> 
+           <font color="#FF0000">"FROM Issues "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE IssueYear &gt;= 1988 "</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Average number of pages per issue (since 1988 when 2600 became a quarterly): "</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AvgPages'</font><font color="#990000">],</font> <font color="#993399">1</font><font color="#990000">));</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+<i><font color="#9A1900">#&lt;!-- 01/13/2010 update --&gt;</font></i>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT AVG(Pages) AS 'AvgPages' "</font> <font color="#990000">.</font> 
+           <font color="#FF0000">"FROM Issues "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE IssueYear &gt; YEAR(CURDATE()) - 5 "</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Average number of pages per issue (last 5 years): "</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AvgPages'</font><font color="#990000">],</font> <font color="#993399">1</font><font color="#990000">));</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT Pages, Issue, Period, IssueYear, Volume, Quarter "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM vw_Issues i "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY Pages DESC, IssueYear DESC, Quarter DESC "</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Issue with most pages (latest one): "</font> <font color="#990000">.</font> <b><font color="#000000">showIssue</font></b><font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">" ("</font><font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Pages'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">")"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT l.ArticlesID, COUNT(*) AS Nbr, a.Title, "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"       i.IssueYear, i.Period, i.Volume, i.Quarter "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Links l, "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"     Articles a, "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"     Issues i "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE l.ArticlesID = a.ArticlesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"  AND a.IssuesID = i.IssuesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"GROUP BY l.ArticlesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY Nbr DESC, i.IssueYear DESC, i.Quarter DESC "</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Article with most links (latest one): '"</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Title'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">"'  "</font> <font color="#990000">.</font> <b><font color="#000000">showIssue</font></b><font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">" ("</font><font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">")"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT i.IssuesID, COUNT(*) AS Nbr, i.IssueYear, i.Period, i.Volume, i.Quarter "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Links l, "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"     Articles a, "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"     Issues i "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE l.ArticlesID = a.ArticlesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"  AND a.IssuesID = i.IssuesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"GROUP BY i.IssuesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY Nbr DESC, i.IssueYear DESC, i.Quarter DESC "</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Issue with most links (latest one): "</font> <font color="#990000">.</font> <b><font color="#000000">showIssue</font></b><font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">" ("</font><font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">")"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+
+    <i><font color="#9A1900">/* total number of pages */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT SUM(Pages) AS Nbr FROM Issues;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <font color="#009900">$TotalPages</font> <font color="#990000">=</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">];</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Total number of Issue pages (including front, back, index, marketplace, etc): "</font> <font color="#990000">.</font> <font color="#009900">$TotalPages</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+     
+    <i><font color="#9A1900">/* total number of article pages */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT SUM(Pages) AS Nbr FROM Articles;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Total number of Article pages (including Letters/Fiction): "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font> 
+            <font color="#FF0000">"&amp;nbsp;&amp;nbsp ("</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">((</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">/</font> <font color="#009900">$TotalPages</font><font color="#990000">)</font> <font color="#990000">*</font> <font color="#993399">100</font><font color="#990000">,</font> <font color="#993399">2</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">"%)"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    
+    <i><font color="#9A1900">/* total number of letters pages */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT SUM(a.Pages) AS Nbr "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Articles a "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN KeywordXref kx ON a.ArticlesID = kx.ArticlesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN Keywords k ON kx.KeywordsID = k.KeywordsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE k.Keyword = 'Letters';"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Total number of Letter pages (part of Article pages): "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font>
+            <font color="#FF0000">"&amp;nbsp;&amp;nbsp ("</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">((</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">/</font> <font color="#009900">$TotalPages</font><font color="#990000">)</font> <font color="#990000">*</font> <font color="#993399">100</font><font color="#990000">,</font> <font color="#993399">2</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">"%)"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <i><font color="#9A1900">/* total number of fiction pages */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT SUM(a.Pages) AS Nbr "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Articles a "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN KeywordXref kx ON a.ArticlesID = kx.ArticlesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN Keywords k ON kx.KeywordsID = k.KeywordsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE k.Keyword = 'Fiction';"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Total number of Fiction pages (part of Article pages): "</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">.</font>
+            <font color="#FF0000">"&amp;nbsp;&amp;nbsp ("</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">((</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]</font> <font color="#990000">/</font> <font color="#009900">$TotalPages</font><font color="#990000">)</font> <font color="#990000">*</font> <font color="#993399">100</font><font color="#990000">,</font> <font color="#993399">2</font><font color="#990000">)</font> <font color="#990000">.</font> <font color="#FF0000">"%)"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+    <i><font color="#9A1900">/* average number of pages per article */</font></i>
+    <i><font color="#9A1900">#$sql = "SELECT (SELECT SUM(Pages) FROM Articles) / (SELECT COUNT(*) FROM Articles) AS Nbr";</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT (SELECT SUM(Pages) FROM ( "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">"SELECT DISTINCT a.ArticlesID, a.Pages FROM Articles a "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">"LEFT JOIN KeywordXref kx ON a.ArticlesID = kx.ArticlesID "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">"LEFT JOIN Keywords k ON kx.KeywordsID = k.KeywordsID "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">"WHERE k.Keyword NOT IN ('Letters', 'Fiction') "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">") AS t) "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">" / "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">"(SELECT COUNT(*) FROM ( "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">"SELECT DISTINCT a.ArticlesID FROM Articles a "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">"LEFT JOIN KeywordXref kx ON a.ArticlesID = kx.ArticlesID "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">"LEFT JOIN Keywords k ON kx.KeywordsID = k.KeywordsID "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">"WHERE k.Keyword NOT IN ('Letters', 'Fiction') "</font> <font color="#990000">.</font>
+                   <font color="#FF0000">") AS t) AS Nbr;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+    <font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Average number of pages per article (excluding Letters/Fiction): "</font> <font color="#990000">.</font> <b><font color="#000000">number_format</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">],</font> <font color="#993399">3</font><font color="#990000">));</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    
+    <i><font color="#9A1900">/* top 10 article pages */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT DISTINCT v.Issue, v.Title, v.ArticlePages, v.ArticlesID, v.IssuesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM vw_ArticleInfo v "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN KeywordXref kx ON v.ArticlesID = kx.ArticlesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN Keywords k ON kx.KeywordsID = k.KeywordsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE k.Keyword != 'Letters' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY v.ArticlePages DESC, v.Title ASC LIMIT 10"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+    
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Top ten articles by number of pages:"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'&lt;table width="50%" cellspacing="1px" cellpadding="2px" &gt;'</font><font color="#990000">);</font>
+    <font color="#009900">$inbr</font> <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+    <b><font color="#0000FF">while</font></b> <font color="#990000">(</font><font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">))</font>  <font color="#FF0000">{</font>
+
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;tr&gt;\n"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;tr bgcolor="</font><font color="#990000">);</font> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">2</font><font color="#990000">)</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"palegreen"</font><font color="#990000">);</font> <b><font color="#0000FF">else</font></b> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"honeydew"</font><font color="#990000">);</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&gt;\n"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Issue'</font><font color="#990000">]);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Title'</font><font color="#990000">]);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'ArticlePages'</font><font color="#990000">]);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'&lt;a href="article.php?i='</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'IssuesID'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">'&amp;amp;a='</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'ArticlesID'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">'"&gt;..&lt;/a&gt;'</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/tr&gt;\n"</font><font color="#990000">);</font>
+      <font color="#009900">$inbr</font><font color="#990000">++;</font>
+    <font color="#FF0000">}</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/table&gt;\n"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    
+    <i><font color="#9A1900">/* Ignore authors: 1=Not Assigned, 2=Emmanuel Goldstein</font></i>
+<i><font color="#9A1900">                      15=Readers, 346=No Author Specified</font></i>
+<i><font color="#9A1900">    */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT a.AuthorsID, COUNT(*) AS 'Nbr', au.NomDePlume "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Articles a "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN Authors au ON a.AuthorsID = au.AuthorsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"WHERE a.AuthorsID NOT IN (1, 15) "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"GROUP BY a.AuthorsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY Nbr DESC, au.NomDePlume "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LIMIT 12"</font><font color="#990000">;</font>  <i><font color="#9A1900">// will ignore 2 and 346</font></i>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+  <i><font color="#9A1900">/* display results */</font></i>
+    <font color="#009900">$inbr</font> <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+    <font color="#009900">$nbr2</font> <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+    <font color="#009900">$nbr346</font> <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&amp;nbsp;Top ten authors by articles written (ties in alphabetical order):"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'&lt;table width="25%" cellspacing="1px" cellpadding="2px" &gt;'</font><font color="#990000">);</font>
+    <b><font color="#0000FF">while</font></b> <font color="#990000">(</font><font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">))</font>  <font color="#FF0000">{</font>
+
+      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AuthorsID'</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">2</font><font color="#990000">)</font>  <font color="#009900">$nbr2</font> <font color="#990000">=</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">];</font>
+      <b><font color="#0000FF">else</font></b>  <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AuthorsID'</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">346</font><font color="#990000">)</font>  <font color="#009900">$nbr346</font> <font color="#990000">=</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">];</font>
+      <b><font color="#0000FF">else</font></b>  <font color="#FF0000">{</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;tr bgcolor="</font><font color="#990000">);</font> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">2</font><font color="#990000">)</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"palegreen"</font><font color="#990000">);</font> <b><font color="#0000FF">else</font></b> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"honeydew"</font><font color="#990000">);</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&gt;\n"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+            <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'NomDePlume'</font><font color="#990000">]);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+            <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+  <i><font color="#9A1900">// http://localhost/2600/search.php?search=search&amp;FromYear=0&amp;ToYear=9999&amp;Author=770        </font></i>
+            <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'&lt;a href="search.php?search=search&amp;amp;FromYear=0&amp;amp;ToYear=9999&amp;amp;Author='</font> <font color="#990000">.</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'AuthorsID'</font><font color="#990000">]</font> <font color="#990000">.</font> <font color="#FF0000">'" onclick="toPost(this.href); return false;"&gt;..&lt;/a&gt;'</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/tr&gt;\n"</font><font color="#990000">);</font>
+        <font color="#009900">$inbr</font><font color="#990000">++;</font>
+      <font color="#FF0000">}</font>
+    <font color="#FF0000">}</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/table&gt;\n"</font><font color="#990000">);</font>
+
+    <i><font color="#9A1900">//fwrite ($fh, "&lt;br&gt;" . "\n");</font></i>
+    
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'&lt;text class="note"&gt;Not on this list are "Emmanual Goldstein" with '</font> <font color="#990000">.</font> <font color="#009900">$nbr2</font> <font color="#990000">.</font> <font color="#FF0000">' and "No Author Specified" with '</font> <font color="#990000">.</font> <font color="#009900">$nbr346</font> <font color="#990000">.</font> <font color="#FF0000">'.&lt;/text&gt;'</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+  <i><font color="#9A1900">/* top ten keywords */</font></i>
+    <font color="#009900">$sql</font> <font color="#990000">=</font> <font color="#FF0000">"SELECT IFNULL(k.Keyword, 'Not Assigned') AS 'Keyword', COUNT(*) AS 'Nbr' "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"FROM Articles a "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN KeywordXref kx ON a.ArticlesID = kx.ArticlesID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LEFT JOIN Keywords k ON kx.KeywordsID = k.KeywordsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"GROUP BY kx.KeywordsID "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"ORDER BY Nbr DESC, k.Keyword "</font> <font color="#990000">.</font>
+           <font color="#FF0000">"LIMIT 10;"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">#echo $sql . "&lt;br&gt;";</font></i>
+    <font color="#009900">$result</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_query</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">,</font> <font color="#009900">$sql</font><font color="#990000">)</font> <b><font color="#0000FF">or</font></b> <b><font color="#0000FF">die</font></b> <font color="#990000">(</font><b><font color="#000000">mysqli_error</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">));</font>
+
+  <i><font color="#9A1900">/* display results */</font></i>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"Top ten keywords:"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">'&lt;table width="25%" cellspacing="1px" cellpadding="2px" &gt;'</font><font color="#990000">);</font>
+    <b><font color="#0000FF">while</font></b> <font color="#990000">(</font><font color="#009900">$row</font> <font color="#990000">=</font> <b><font color="#000000">mysqli_fetch_array</font></b> <font color="#990000">(</font><font color="#009900">$result</font><font color="#990000">,</font> MYSQLI_ASSOC<font color="#990000">))</font>  <font color="#FF0000">{</font>
+
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;tr bgcolor="</font><font color="#990000">);</font> <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><font color="#009900">$inbr</font> <font color="#990000">%</font> <font color="#993399">2</font><font color="#990000">)</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"palegreen"</font><font color="#990000">);</font> <b><font color="#0000FF">else</font></b> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"honeydew"</font><font color="#990000">);</font> <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&gt;"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Keyword'</font><font color="#990000">]);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;td&gt;"</font><font color="#990000">);</font>
+          <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#009900">$row</font><font color="#990000">[</font><font color="#FF0000">'Nbr'</font><font color="#990000">]);</font>
+        <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/td&gt;"</font><font color="#990000">);</font>
+      <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/tr&gt;"</font><font color="#990000">);</font>
+      <font color="#009900">$inbr</font><font color="#990000">++;</font>
+    <font color="#FF0000">}</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;/table&gt;"</font><font color="#990000">);</font>
+    <b><font color="#000000">fwrite</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">,</font> <font color="#FF0000">"&lt;br&gt;"</font> <font color="#990000">.</font> <font color="#FF0000">"\n"</font><font color="#990000">);</font>
+
+
+    <b><font color="#0000FF">echo</font></b> <font color="#FF0000">"&lt;br&gt; Done! &lt;br&gt;&lt;br&gt;"</font><font color="#990000">;</font>
+<font color="#990000">?&gt;</font>
+    <b><font color="#0000FF">&lt;a</font></b> <font color="#009900">href</font><font color="#990000">=</font><font color="#FF0000">&lt;?php echo $path ?</font><b><font color="#0000FF">&gt;</font></b>stats.html&gt;stats.html<b><font color="#0000FF">&lt;/a&gt;</font></b>
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+<font color="#990000">&lt;?php</font>
+  <b><font color="#000000">fclose</font></b> <font color="#990000">(</font><font color="#009900">$fh</font><font color="#990000">);</font>
+  <b><font color="#000000">mysqli_close</font></b> <font color="#990000">(</font><font color="#009900">$conn</font><font color="#990000">);</font>
+<font color="#990000">?&gt;</font>
+
+  <b><font color="#0000FF">&lt;div</font></b> <font color="#009900">id</font><font color="#990000">=</font><font color="#FF0000">"foot"</font><b><font color="#0000FF">&gt;</font></b>
+    <font color="#990000">&lt;?php</font> <b><font color="#000080">include</font></b> <font color="#990000">(</font><font color="#009900">$path</font> <font color="#990000">.</font> <font color="#FF0000">"footer.php"</font><font color="#990000">);</font> <font color="#990000">?&gt;</font>
+  <b><font color="#0000FF">&lt;/div&gt;</font></b>
+
+  <b><font color="#0000FF">&lt;/body&gt;</font></b>
+<b><font color="#0000FF">&lt;/html&gt;</font></b>
+</tt></pre>
